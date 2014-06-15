@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="ar" ng-app="tajApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taj</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-route.min.js"></script>
+    <script src="js/app/services.js"></script>
+    <script src="js/vendor/fastclick.js"></script>
+    <script src="js/vendor/hammer.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular.hammer.js"></script>
+    <script src="js/vendor/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="js/vendor/angular-strap.min.js"></script>
+    <script src="js/vendor/angular-strap.tpl.min.js"></script>
+
+    <script src="js/app/app.js"></script>
+
+</head>
+<body ng-controller="mainController">
+
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-right hardware-accelarate"
+             ng-class="{'active': menuOpened}">
+
+            <div class=" col-xs-12" id="leftPan">
+                <div ng-click="openMenu()" ng-class="{'menuIcon': menuOpened}" ng-hide="menuHidden"
+                     style="position: absolute; font-size: 18px; top: 6px; z-index: 2; right: 15px; background: #232a2a; color: white; height: 36px; width: 36px; text-align: center; border-radius: 36px; padding-top: 6px;">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <div ng-click="go('/search');" ng-class="{'searchIcon': menuOpened}" ng-hide="searchHidden"
+                     style="position: absolute; font-size: 20px; top: 6px; z-index: 2; right: 60px; background: #139999; color: white; height: 36px; width: 36px; text-align: center; border-radius: 36px; padding-top: 6px;">
+                    <span class="glyphicon glyphicon-search"></span>
+                </div>
+
+                <div class="mainContent" style="position: absolute; z-index:1; top: 0; left: 0; height: 100%; width: 100%; padding: 0; margin: 0;">
+
+                    <div ng-view> </div>
+                    
+
+                </div>
+
+            </div>
+
+            <div class="col-xs-9 sidebar sidebar-offcanvas" id="sidebar" role="navigation">
+                <div style="background: #187874; height: 48px;">
+                    <div dir="rtl" style="right: 40px; text-align: center; color: white; font-size: 30px;">
+                        القـائمــة
+                    </div>
+                    <div class="panel panel-default" style="background: transparent; width: 92%; border-top: none; margin-top: 20px;">
+                        <div class="panel-body" style="height: 100px; padding-left: 15px; padding-right: 15px;">
+                            <ul style="list-style: none; width: 100%; height: 75px; padding: 0; margin: 0;">
+                                <li style="border-radius: 3px; margin-right: 12px; background-color: #313131; ">
+                                    <div style="width: 100%; height: 46px; background-repeat: no-repeat; background-size: contain; background-position: center center; background-image: url('images/panel-icon-over.png')"></div>
+                                    <div style="text-align: center; color:#fec609; font-size:20px;">بحوث</div>
+                                </li>
+                                <li style="border-radius: 3px; background-color: #313131;">
+                                    <div style="width: 100%; height: 46px; background-repeat: no-repeat; background-size: contain; background-position: center center; background-image: url('images/panel-icon2-over.png')"></div>
+                                    <div style="text-align: center; color: #fec609; font-size: 20px;">المفضلة</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- List group -->
+                        <ul class="list-group" style="overflow-y: scroll; height: 65%; position: absolute; width: 90%;">
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">محبة النبى</div>
+                                    <div class="pull-left" style="">458</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">القرآن منهج حياة</div>
+                                    <div class="pull-left">22</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">استثمار التاريخ</div>
+                                    <div class="pull-left">170</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">تزكية النفوس</div>
+                                    <div class="pull-left">285</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">التربية والتعليم</div>
+                                    <div class="pull-left">545</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#/branch/1">
+                                    <div class="pull-right">الذوق الإسلامى</div>
+                                    <div class="pull-left">48</div>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">
+                                    <div class="pull-right">الأوراد والأذكار</div>
+                                    <div class="pull-left">225</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
