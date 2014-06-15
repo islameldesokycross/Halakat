@@ -124,9 +124,105 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
 
 }])
 
-.controller('mainController', ['$scope', '$location', 'CordovaService', function ($scope, $location, CordovaService) {
+.controller('mainController', ['$scope', '$location', 'CordovaService', '$modal', function ($scope, $location, CordovaService, $modal) {
+
+    window.main = $scope;
+    $scope.radioModel = "0";
+    $scope.radio1Model = "0";
+    $scope.radioModel1 = "0";
+    $scope.radioModel2 = "0";
+
+    $scope.openaddnote = function (size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'addnote.html',
+            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
 
+
+                $scope.ok = function () {
+                    $modalInstance.close($scope.selected.item);
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }],
+            size: size,
+            resolve: {
+
+            }
+        });
+    };
+
+    $scope.opennoteview = function (size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'noteview.html',
+            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+
+
+                $scope.ok = function () {
+                    $modalInstance.close($scope.selected.item);
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }],
+            size: size,
+            resolve: {
+
+            }
+        });
+    };
+
+    $scope.opendate = function (size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'date.html',
+            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+
+
+                $scope.ok = function () {
+                    $modalInstance.close($scope.selected.item);
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }],
+            size: size,
+            resolve: {
+
+            }
+        });
+    };
+
+    $scope.opentasme3 = function (size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'tasme3.html',
+            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+
+
+
+                $scope.ok = function () {
+                    $modalInstance.close($scope.selected.item);
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }],
+            size: size,
+            resolve: {
+
+            }
+        });
+    };
 }])
 
 .run(['$rootScope', 'CordovaService', '$state', function ($rootScope, CordovaService, $state) {

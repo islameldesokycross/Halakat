@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="halakat\coms.html" />
     <Content Include="halakat\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="halakat\images\aboutus.png" />
     <Content Include="halakat\images\attend.png" />

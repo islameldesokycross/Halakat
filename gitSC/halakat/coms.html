@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="ar" ng-app="halakatApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Halakat</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+    <script src="js/vendor/angular.min.js"></script>
+    <!--<script src="js/vendor/angular-route.min.js"></script>-->
+    <script src="js/vendor/angular-ui-router.min.js"></script>
+    <script src="js/app/services.js"></script>
+    <script src="js/vendor/fastclick.js"></script>
+    <script src="js/vendor/hammer.js"></script>
+    <!--<script src="js/vendor/angular.min.js"></script>-->
+    <script src="js/vendor/angular.hammer.js"></script>
+    <script src="js/vendor/ui-bootstrap-tpls-0.10.0.min.js"></script>
+    <script src="js/vendor/angular-strap.min.js"></script>
+    <script src="js/vendor/angular-strap.tpl.min.js"></script>
+
+
+    <!-- states -->
+    <script src="states/out/out-ctrl.js"></script>
+    <script src="states/out/welcome/welcome-ctrl.js"></script>
+    <script src="states/out/login/login-ctrl.js"></script>
+    <script src="states/out/signup/signup-ctrl.js"></script>
+
+    <script src="states/home/home-ctrl.js"></script>
+
+
+    <script src="states/halakat/halakat-ctrl.js"></script>
+    <script src="states/halakat/plans/plans-ctrl.js"></script>
+    <script src="states/halakat/data/data-ctrl.js"></script>
+    <script src="states/halakat/attendreports/attendreports-ctrl.js"></script>
+    <script src="states/halakat/attend/attend-ctrl.js"></script>
+    <script src="states/halakat/tsmi3/tsmi3-ctrl.js"></script>
+    <script src="states/halakat/tsmi3reports/tsmi3reports-ctrl.js"></script>
+
+
+    <script src="js/app/app.js"></script>
+
+</head>
+<body class="ar-dir text-right" style="overflow: visible" ng-controller="mainController">
+    <br />
+    <br />
+
+    <div style="position: relative;width: 100%;display: inline-block;padding: 0 10px;">
+        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; width: 100%; font-size: 14pt; margin-left: auto; margin-right: auto; position: relative; display: block; color: rgb(155,155,155); outline: none; box-shadow: none;">
+            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+        </select>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="btn-group tab-group">
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'">فترة شهر</label>
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'0'">زمن مخصص</label>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="btn-group tab1-group">
+        <label class="btn tab-btn" ng-model="radio1Model" btn-radio="'1'">المراجعة</label>
+        <label class="btn tab-btn" ng-model="radio1Model" btn-radio="'0'">الحفظ</label>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="btn-group tab-group">
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'7'"><span class="head">إشعارات</span><span class="content">5</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'6'"><span class="head">تذكير</span><span class="content">20</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'5'"><span class="head">سلبية</span><span class="content">2</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'4'"><span class="head">إيجابية</span><span class="content">10</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'3'"><span class="head">معتذر</span><span class="content">0</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'2'"><span class="head">متأخر</span><span class="content">4</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'1'"><span class="head">غائب</span><span class="content">2</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'0'"><span class="head">حاضر</span><span class="content">5</span></label>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="btn-group tab-group">
+        <!--<label class="btn tab2-btn"><span class="head">إشعارات</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="0"></div></span></label>-->
+        <label class="btn tab2-btn"><span class="head">تذكير</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="0"></div></span></label>
+        <label class="btn tab2-btn"><span class="head">سلبية</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="1" /></div></span></label>
+        <label class="btn tab2-btn"><span class="head">إيجابية</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="2" /></div></span></label>
+        <label class="btn tab2-btn"><span class="head">معتذر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="3" /></div></span></label>
+        <label class="btn tab2-btn"><span class="head">متأخر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="4" /></div></span></label>
+        <label class="btn tab2-btn"><span class="head">غائب</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="5" /></div></span></label>
+        <label class="btn tab2-btn"><span class="head">حاضر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="6" /></div></span></label>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="btn-group tab-group">
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الجمعة</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الخميس</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="1" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأربعاء</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="2" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الثلاثاء</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="3" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأثنين</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="4" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأحد</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="5" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn"><span class="head">السبت</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="6" /></div></span></label>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="btn-group tab-group2">
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'0'">إشعارات</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'1'">حلقة</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'2'">طالب</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'3'">معلم</label>
+    </div>
+
+    <br />
+    <br />
+
+    <br />
+    <br />
+
+    <div style="position: relative;display: inline-block;">
+        <input type="text" placeholder=" 12 | 12 | 12 " style="direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 150px;font-size: 14pt;">
+        <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;"></span>
+    </div>
+
+    <br />
+    <br />
+
+    <button ng-click="opennoteview()">عرض الملاحظات</button>
+
+    <br />
+    <br />
+
+    <button ng-click="openaddnote()">إضافة ملاحظات</button>
+
+    <br />
+    <br />
+
+    <button ng-click="opendate()">التاريخ</button>
+
+    <br />
+    <br />
+
+    <button ng-click="opentasme3()">بداية التسميع</button>
+
+    <script type="text/ng-template" id="noteview.html">
+        <button class="btn bgredy closeicon glyphicon glyphicon-remove whitey" ng-click="cancel()"></button>
+        <div class="modal-header greeny">
+            <h3 class="modal-title">عرض الملاحظات</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+    </script>
+
+
+    <script type="text/ng-template" id="addnote.html">
+        <button class="btn bgredy closeicon glyphicon glyphicon-remove whitey" ng-click="cancel()"></button>
+        <div class="modal-header greeny">
+            <h3 class="modal-title">إضافة ملاحظة</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn modal-btn modal-btn-greeny bggreeny whitey modal-btn-one" ng-click="ok()">حفظ</button>
+        </div>
+
+    </script>
+
+
+    <script type="text/ng-template" id="date.html">
+        <div class="modal-header greeny">
+            <h3 class="modal-title">أختر التاريخ</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn modal-btn modal-btn-greeny bggreeny whitey" ng-click="ok()">حفظ</button>
+            <button class="btn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="tasme3.html">
+        <div class="modal-header greeny">
+            <h3 class="modal-title">بداية التسميع</h3>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn modal-btn modal-btn-greeny bggreeny whitey" ng-click="ok()">حفظ</button>
+            <button class="btn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>
+        </div>
+    </script>
+
+
+
+    <br />
+    <br />
+
+    <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
+        <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">رقم الخطة : 30</div>
+        <div style="width: 66.7%; height: 100%;display: inline-block;position: relative;" class="">
+            <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
+                <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
+            </div>
+            <span style=" width: 70%; display: inline-block;border-bottom: 2px solid #119379; position: absolute; top: 17px; /* right: 13px; */ "></span>
+            <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div style="width: 100%;padding: 0 10px">
+        <table class="table border-table">
+            <thead class="bggreeny whitey">
+                <tr>
+                    <th>البداية</th>
+                    <th>النهاية</th>
+                    <th>المقرر</th>
+                    <th>المنفذ</th>
+                    <th>الفرق</th>
+                    <th>الترتيب</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>الجادلة 1</td>
+                    <td>المجادلة 32</td>
+                    <td>3</td>
+                    <td>4.5</td>
+                    <td>1.5+</td>
+
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!--students list-->
+    <div style="width: 100%;padding: 5px 15px;position: relative;height: 145px;padding-bottom: 0">
+        <ul class="students-list">
+            <li>
+                <div class="st-pic"></div>
+                <div class="st-name">عدنان حسين الشاطري</div>
+                <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
+                <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
+            </li>
+            <li>
+                <div class="st-pic"></div>
+                <div class="st-name">عدنان حسين الشاطري</div>
+
+                <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
+                <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
+
+
+            </li>
+            <li>
+                <div class="st-pic"></div>
+                <div class="st-name">عدنان حسين الشاطري</div>
+                <div class="st-icons"></div>
+            </li>
+            <li>
+                <div class="st-pic"></div>
+                <div class="st-name">عدنان حسين الشاطري</div>
+                <div class="st-icons"></div>
+            </li>
+            <li>
+                <div class="st-pic"></div>
+                <div class="st-name">عدنان حسين الشاطري</div>
+                <div class="st-icons"></div>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+</html>
