@@ -1,0 +1,77 @@
+﻿
+<div style="height: 100%;">
+
+    <style>
+    </style>
+
+
+    <form role="form">
+
+        <div ng-show="active == 1">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="اسم المستخدم" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="كلمة المرور" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="تأكيد كلمة المرور" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+        </div>
+
+
+        <div ng-show="active == 2">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="الدولة" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control textboxy" placeholder="البريد الالكترونى" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="tel" class="form-control textboxy" placeholder="رقم الجوال" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div ng-show="active == 3">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="الاسم الاول" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="اسم الاب" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+
+
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control textboxy" placeholder="اسم العائلة" />
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            </div>
+        </div>
+
+        <br />
+        <button ng-show="active == 1" type="submit" class="btn whitey bggreeny base-btn" style="width: 100%;" ng-click="setActive(2)">متابعة</button>
+        <button ng-show="active == 2" type="submit" class="btn whitey bggreeny base-btn" style="width: 100%;" ng-click="setActive(3)">التالى</button>
+        <button ng-show="active == 3" type="submit" class="btn whitey bggreeny base-btn" style="width: 100%;">تسجيل</button>
+
+        
+    </form>
+
+</div>
+

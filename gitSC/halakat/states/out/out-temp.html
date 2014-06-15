@@ -1,0 +1,29 @@
+﻿
+
+<div class="bg-pattern" style=" background-color: rgba(17, 147, 121, 0.7);">
+    <style>
+        
+
+        .bg-logo {
+            height: 100%;
+            width: 100%;
+            background-image: url(images/bg-logo.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+
+        
+    </style>
+
+    <div class="container-fluid" style="height: 100% !important; top: 0; position: absolute; left: 0; width: 100%;">
+        <div class="row text-center" style="height: 30%;padding: 5% 10%">
+            <div class="bg-logo"></div>
+        </div>
+        <div class="row text-center" style="height: 70%; padding: 10%;">
+            <div ui-view style="height: 100%; width: 100%;"></div>
+        </div>
+    </div>
+
+
+</div>

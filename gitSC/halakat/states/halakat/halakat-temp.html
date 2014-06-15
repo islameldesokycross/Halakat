@@ -1,0 +1,66 @@
+﻿
+<div>
+    <style>
+        .header {
+            height: 44px;
+            border-radius: 0px !important;
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            min-height: 44px;
+            left: 15px;
+        }
+
+        .menu-icon {
+            height: 100%;
+            width: 100%;
+            background-image: url(images/menuicon.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            height: 40px;
+            width: 22px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+
+        .menubtn {
+            height: 40px;
+            background-color: transparent;
+            outline: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .header-title {
+            width: 100%;
+            padding: 0 36px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+    </style>
+
+    <div class="container-fluid" style="height: 100% !important; top: 0; position: absolute; left: 0; width: 100%; padding: 0;">
+
+        <div class="header row navbar bggreeny">
+            <div class="text-left ">
+                <button type="button" class="btn btn-lg pull-left menubtn" ng-click="funs.opemMenu()" style="">
+                    <span class="menu-icon"></span>
+                </button>
+            </div>
+            <h4 class="text-center whitey header-title" style="">
+                {{vars.titleTxt}}
+            </h4>
+
+
+        </div>
+
+        <div ui-view style="height: 100%; padding-top: 44px;">
+
+        </div>
+
+    </div>
+
+</div>
