@@ -1,5 +1,5 @@
 ﻿
-<div style="height: 100%;">
+<div style="height: 100%;overflow: hidden">
 
     <style>
     </style>
@@ -10,10 +10,20 @@
     </div>
 
 
-    <div></div>
+    <div style="padding: 20px 10px;position: relative">
+        <span style="font-size: 14pt">رقم الخطة :</span>
+        <br/>
+        <span style="font-size: 10pt">يمثل عدد الايام المقرر ان يختم الطالب فيها جزءا واحدا</span>
+        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 14pt; margin-left: auto; margin-right: auto; position: relative; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; position: absolute; top: 50%; left: 10px; margin-top: -22px;">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </div>
 
     <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
-        <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">الحالة</div>
+        <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">ايام التسميع</div>
         <div style="width: 66.7%; height: 100%;display: inline-block;position: relative;" class="">
             <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
                 <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
@@ -23,7 +33,7 @@
         </div>
     </div>
 
-    <div class="btn-group tab-group">
+    <div class="btn-group tab-group" style="padding: 10px 10px;">
         <label class="btn tab2-btn7 tab2-btn"><span class="head">الجمعة</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div></span></label>
         <label class="btn tab2-btn7 tab2-btn"><span class="head">الخميس</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="1" /></div></span></label>
         <label class="btn tab2-btn7 tab2-btn"><span class="head">الأربعاء</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="2" /></div></span></label>
@@ -34,7 +44,7 @@
     </div>
 
     <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
-        <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey"><input type="checkbox" style="margin-left: 6px;" />اختيار الطلاب</div>
+        <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">اختيار الطلاب</div>
         <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
             <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
                 <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
@@ -43,47 +53,47 @@
             <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
         </div>
     </div>
-</div>
+    
+    <!--students list-->
+    <div style="position: relative; width: 100%; padding-bottom: 310px; height: 100%;">
 
-<!--students list-->
-<div style="position: absolute; width: 100%; padding-top: 342px; top: 0; height: 100%;">
+        <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
+            <ul class="students-list">
+                <li>
+                    <div class="st-pic"></div>
+                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
+                    <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
+                </li>
+                <li>
+                    <div class="st-pic"></div>
+                    <div class="st-name">عدنان حسين الشاطري</div>
 
-    <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
-        <ul class="students-list">
-            <li>
-                <div class="st-pic"></div>
-                <div class="st-name">عدنان حسين الشاطري</div>
-                <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
-                <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
-            </li>
-            <li>
-                <div class="st-pic"></div>
-                <div class="st-name">عدنان حسين الشاطري</div>
-
-                <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
-                <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
+                    <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
+                    <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
 
 
-            </li>
-            <li>
-                <div class="st-pic"></div>
-                <div class="st-name">عدنان حسين الشاطري</div>
-                <div class="st-icons"></div>
-            </li>
-            <li>
-                <div class="st-pic"></div>
-                <div class="st-name">عدنان حسين الشاطري</div>
-                <div class="st-icons"></div>
-            </li>
-            <li>
-                <div class="st-pic"></div>
-                <div class="st-name">عدنان حسين الشاطري</div>
-                <div class="st-icons"></div>
-            </li>
+                </li>
+                <li>
+                    <div class="st-pic"></div>
+                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <div class="st-icons"></div>
+                </li>
+                <li>
+                    <div class="st-pic"></div>
+                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <div class="st-icons"></div>
+                </li>
+                <li>
+                    <div class="st-pic"></div>
+                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <div class="st-icons"></div>
+                </li>
 
-        </ul>
+            </ul>
+        </div>
     </div>
-</div>
 
 </div>
+
 
