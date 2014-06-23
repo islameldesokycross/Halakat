@@ -3,7 +3,7 @@
     $scope.vars = {};
     $scope.funs = {};
 
-    $scope.$parent.vars.titleTxt = 'الحضور';
+    $scope.$parent.vars.titleTxt = 'شاشة التحضير والملاحظات';
 
 
 }];

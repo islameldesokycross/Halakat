@@ -135,3 +135,382 @@
     background-position: center center;
     background-size: cover;
 }
+
+    /*shared by aboalnaga*/
+    th {
+        text-align: center;
+    }
+
+    td {
+        text-align: center
+    }
+
+
+
+    /*modals css*/  
+    /*shared*/
+.modal-dialog {
+    margin-top: 80px;
+}
+
+.modal-content {
+    border-radius: 4px;
+    text-align: center;
+    min-height: 150px;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-footer {
+    border: none;
+    text-align: center;padding: 19px 20px 20px;
+}
+
+.modal-btn {
+    min-height: 40px;
+    border-radius: 4px !important;
+    font-size: 17pt;
+    border: none !important;
+    outline: none !important;
+    min-width: 118px;
+    margin: 0 !important;
+    width: 48%;
+}
+
+.modal-btn-greeny {
+    border-bottom: 2px solid rgb(2,105,84)!important;
+}
+
+.modal-btn-redy {
+    border-bottom: 2px solid rgb(105,2,2)!important;
+}
+
+.modal-btn-one {
+    width: 100%;
+}
+
+.closeicon {
+    position: absolute;
+    left: 0;
+    top: -35px;
+    border-radius: 0;
+    font-size: 15pt;
+    height: 35px;
+    outline: none !important;
+}
+   
+    /*modals css*/
+
+    /*tabs css*/
+    /*---------------1--------------*/
+.tab-group {
+    width: 100%;
+    padding: 0 10px;
+}
+
+    .tab-group .tab-btn {
+        width: 50%;
+        border-radius: 2px;
+        height: 45px;
+        font-size: 16pt;
+        color: #119379;
+        background-color: white;
+        border-color: #119379;
+    }
+
+.tab-group .tab-btn:active, .tab-group .tab-btn.active, .open .dropdown-toggle.tab-group .tab-btn {
+background-image: none;
+}
+
+.tab-group .tab-btn:hover, .tab-group .tab-btn:focus, .tab-group .tab-btn:active, .tab-group .tab-btn.active, .open .dropdown-toggle.tab-group .tab-btn {
+color: #fff;
+background-color: #119379;
+border-color: #119379;
+}
+
+/*------------------2-------------------*/
+.tab-group .tab1-btn {
+    width: 12.6%;
+    border-radius: 2px;
+    height: 70px;
+    font-size: 10pt;
+    text-align: center;
+    padding: 6px 3px;
+    font-weight: bold;
+    background-color: white;
+    border-color: lightgray;
+}
+
+    .tab-group .tab1-btn .head {
+        display: block;
+        height: 57%;
+    }
+
+    .tab-group .tab1-btn .content {
+        display: block;
+        font-size: 12pt;
+    }
+
+
+.tab-group .tab1-btn:active, .tab-group .tab1-btn.active, .open .dropdown-toggle.tab-group .tab1-btn {
+background-image: none;
+}
+
+.tab-group .tab1-btn:hover, .tab-group .tab1-btn:focus, .tab-group .tab1-btn:active, .tab-group .tab1-btn.active, .open .dropdown-toggle.tab-group .tab1-btn {
+color: #fff;
+background-color: #119379;
+border-color: #119379;
+}
+
+
+/*------------------------3---------------------------*/
+.tab1-group {
+    width: 100%;
+    padding: 0px ;
+}
+
+    .tab1-group .tab-btn {
+        width: 50%;
+        border-radius: 0;
+        height: 45px;
+        font-size: 16pt;
+        color: white;
+        background-color: #3b3a38;
+        border-top: 2px solid black;
+        margin:0!important
+    }
+
+    .tab1-group .tab-btn:first-child {
+        border-right: 1px solid black;
+        border-left: 0!important
+    }
+    .tab1-group .tab-btn:last-child {
+        border-right: 0!important;
+        border-left: 0!important
+    }
+
+.tab1-group .tab-btn:active, .tab1-group .tab-btn.active, .open .dropdown-toggle.tab1-group .tab-btn {
+background-image: none;
+}
+
+.tab1-group .tab-btn:hover, .tab1-group .tab-btn:focus, .tab1-group .tab-btn:active, .tab1-group .tab-btn.active, .open .dropdown-toggle.tab-btn {
+        border-bottom: 5px solid #119379;
+}
+
+/*----------------4---------------------*/
+.tab-group .tab2-btn {
+    width: 14.2%;
+    border-radius: 2px;
+    height: 60px;
+    font-size: 10pt;
+    text-align: center;
+    padding: 6px 3px;
+    font-weight: bold;
+    background-color: white;
+    border-color: lightgray;
+}
+.tab2-btn7 {
+    width: 14.2%!important;
+}
+
+    .tab-group .tab2-btn .head {
+        display: block;
+        height: 57%;
+    }
+
+    .tab-group .tab2-btn .content {
+        display: block;
+        font-size: 12pt;
+    }
+
+    .tab-group .tab2-btn .content input:focus {
+    outline: none;
+}
+        .tab-group .tab2-btn .content .chkboxparent {
+            /* padding: 0; */
+            width: 18px;
+            border: 2px solid#119379;
+            height: 18px;
+            font-size: 15px;
+            -webkit-border-radius: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .tab-group .tab2-btn .content input {
+            border: 3px solid transparent;
+            font-size: 15px;
+            /* background: silver; */
+            -webkit-appearance: none;
+            /* -webkit-box-shadow: 1px 1px 1px #333; */
+            -webkit-border-radius: 50px;
+            margin: 0;
+        }
+            .tab-group .tab2-btn .content input[type=checkbox] {
+                padding: 0;
+                width: 10px;
+                height: 10px;
+                display: block;
+                margin-top: 2px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .tab-group .tab2-btn .content input[type=checkbox]:checked {
+                background: #119379;
+                -webkit-appearance: none;
+            }
+
+
+.tab-group .tab2-btn:active, .tab-group .tab2-btn.active, .open .dropdown-toggle.tab-group .tab2-btn {
+background-image: none;
+}
+
+.tab-group .tab2-btn:hover, .tab-group .tab2-btn:focus, .tab-group .tab2-btn:active, .tab-group .tab2-btn.active, .open .dropdown-toggle.tab-group .tab2-btn {
+
+}
+
+/*-------------------------5-------------------------*/
+.tab-group2 {
+    width: 100%;
+    padding: 0 10px ;
+}
+
+    .tab-group2 .tab1-btn {
+        width: 25%;
+        border-radius: 2px;
+        height: 40px;
+        font-size: 12pt;
+        text-align: center;
+        padding: 10px 6px;
+        font-weight: bold;
+        background-color: white;
+        border-color: lightgray;
+    }
+
+    .tab-group2 .tab1-btn .head {
+        display: block;
+        height: 57%;
+    }
+
+    .tab-group2 .tab1-btn .content {
+        display: block;
+        font-size: 12pt;
+    }
+
+
+.tab-group2 .tab1-btn:active, .tab-group2 .tab1-btn.active, .open .dropdown-toggle.tab-group2 .tab1-btn {
+background-image: none;
+}
+
+.tab-group2 .tab1-btn:hover, .tab-group2 .tab1-btn:focus, .tab-group2 .tab1-btn:active, .tab-group2 .tab1-btn.active, .open .dropdown-toggle.tab-group2 .tab1-btn {
+color: #fff;
+background-color: #119379;
+border-color: #119379;
+}
+
+    /*tabs css*/
+
+    /*table css*/
+    .border-table{}
+
+    .border-table>thead>tr>th, 
+    .border-table>thead>tr>td {
+border-bottom-width: 0;
+}
+    .border-table>thead {
+        border-right: 1.5px solid #119379;
+    }
+
+    /*.border-table>thead>tr>th,*/
+     .border-table>tbody>tr>th, 
+    .border-table>tfoot>tr>th, 
+    /*.border-table>thead>tr>td,*/ 
+    .border-table>tbody>tr>td, 
+    .border-table>tfoot>tr>td {
+border: 1px solid #ddd;
+}
+
+     /*table css*/
+
+     /*students list css*/
+     .students-list {
+         width: 100%;
+         height: 100%;
+         overflow-y: scroll;
+         overflow-x: hidden;
+         list-style: none;
+         padding: 0;
+         margin-bottom: 0
+     }
+
+        .students-list > li {
+            width: 100%;
+            height: 50px;
+            padding: 0 55px 0  0;
+            position: relative;
+            margin-bottom: 10px;
+            border: 1px solid lightgray;
+
+        }
+
+            .students-list > li :hover,
+            .students-list > li :focus,
+            .students-list > li :active,
+            .students-list > li .active,
+            .open .dropdown-toggle.students-list > li {
+                color: #fff;
+                background-color: #119379;
+                border-color: #119379;
+            }
+
+
+            .students-list > li .st-pic {
+                height: 100%;
+                width: 55px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-repeat: no-repeat;
+                background-image: url(../images/pic.png);
+                background-size: 55px;
+            }
+            .students-list > li .st-name {
+                height: 100%;
+                width: 100%;
+                padding: 12px 10px;
+                font-size: 13pt;
+                border-right: 1px solid white;
+            }
+            .students-list > li .st-icons {
+                position: absolute;
+                top: 10px;
+                left: 12px;
+                outline: none
+            }
+
+            .students-list > li .st-icons:hover,
+            .students-list > li .st-icons:focus,
+            .students-list > li .st-icons:active,
+            .students-list > li .st-icons.active,
+            .open .dropdown-toggle.students-list > li .st-icons{
+                outline: none
+            }
+            .students-list > li .btn {
+                height: 30px;
+                width: 32px;
+                padding: 0;
+                border: 1px solid lightgray;
+                background-color: white;
+                background: -webkit-linear-gradient(white, rgb(237,237,237)); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(white, rgb(237,237,237)); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(white, rgb(237,237,237)); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(white, rgb(237,237,237)); /* Standard syntax */
+                border-bottom: 3px solid lightgray;
+                outline: 0;
+            }
+
+
+            
+     /*students list css*/

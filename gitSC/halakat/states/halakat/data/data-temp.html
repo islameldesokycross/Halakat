@@ -2,10 +2,61 @@
 <div style="height: 100%;">
 
     <style>
+        .dataul {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+        }
+
+            .dataul > li {
+                height: 35px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                margin-bottom: 1px;
+            }
+
+        .third {
+            width: 40%;
+            border-left: 1px solid #ddd;
+            height: 100%;
+        }
+        .twothird {
+            width: 60%;
+            height: 100%;
+        }
     </style>
 
-
+    <div style="width: 100%; padding: 0; height: 31px; margin: 20px 0;">
+        <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">عرض البيانات</div>
+        <div style="width: 66.7%; height: 100%;display: inline-block;position: relative;" class="">
+            <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
+                <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
+            </div>
+            <span style=" width: 70%; display: inline-block;border-bottom: 2px solid #119379; position: absolute; top: 17px; /* right: 13px; */ "></span>
+            <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
+        </div>
+    </div>
+    
+    <div class="btn-group tab-group2">
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'0'">إشعارات</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'1'">حلقة</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'2'">طالب</label>
+        <label class="btn tab1-btn" ng-model="radioModel2" btn-radio="'3'">معلم</label>
+    </div>
    
+    <div style="width: 100%;padding: 30px 10px">
+        <ul class="dataul">
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+            <li><div class="third"></div><div class="twothird"></div></li>
+           
+        </ul>
+    </div>
 
 </div>
 
