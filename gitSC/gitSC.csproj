@@ -93,10 +93,14 @@
     <Content Include="halakat\js\vendor\jquery-1.11.0.min.js" />
     <Content Include="halakat\js\vendor\spin.min.js" />
     <Content Include="halakat\js\vendor\ui-bootstrap-tpls-0.10.0.min.js" />
+    <Content Include="halakat\states\halakat\aboutus\aboutus-ctrl.js" />
+    <Content Include="halakat\states\halakat\aboutus\aboutus-temp.html" />
     <Content Include="halakat\states\halakat\attendreports\attendreports-ctrl.js" />
     <Content Include="halakat\states\halakat\attendreports\attendreports-temp.html" />
     <Content Include="halakat\states\halakat\attend\attend-ctrl.js" />
     <Content Include="halakat\states\halakat\attend\attend-temp.html" />
+    <Content Include="halakat\states\halakat\contactus\contactus-ctrl.js" />
+    <Content Include="halakat\states\halakat\contactus\contactus-temp.html" />
     <Content Include="halakat\states\halakat\data\data-ctrl.js" />
     <Content Include="halakat\states\halakat\data\data-temp.html" />
     <Content Include="halakat\states\halakat\halakat-ctrl.js" />

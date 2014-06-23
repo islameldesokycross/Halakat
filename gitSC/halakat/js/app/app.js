@@ -102,6 +102,22 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
         templateUrl: 'states/halakat/attendreports/attendreports-temp.html',
         controller: attendreportsCtrl,
         parent: halakat
+    },
+
+    contactus = {
+        name: 'contactus',
+        url: '/contactus',
+        templateUrl: 'states/halakat/contactus/contactus-temp.html',
+        controller: contactUsCtrl,
+        parent: halakat
+    },
+
+    aboutus = {
+        name: 'aboutus',
+        url: '/aboutus',
+        templateUrl: 'states/halakat/aboutus/aboutus-temp.html',
+        controller: abouusCtrl,
+        parent: halakat
     }
 
 
@@ -121,6 +137,8 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
     $stateProvider.state(data);
     $stateProvider.state(attend);
     $stateProvider.state(attendreports);
+    $stateProvider.state(contactus);
+    $stateProvider.state(aboutus);
 
 }])
 
