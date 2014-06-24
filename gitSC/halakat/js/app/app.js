@@ -5,6 +5,7 @@ var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'ham
 // configure our routes
 halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
 
+    $urlRouterProvider.when('', '/welcome');
 
 
     $urlRouterProvider.otherwise("/login");
@@ -249,10 +250,11 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
     $rootScope.currState = {};
 
 
-    $state.transitionTo('welcome');
 
 
-    $rootScope.$on("$stateChangeStart", function (event, curr, currParams, prev, prevParams) { });
+    $rootScope.$on("$stateChangeStart", function (event, curr, currParams, prev, prevParams) {
+
+    });
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 

@@ -6,4 +6,8 @@
     $scope.$parent.vars.titleTxt = 'تقرير الحضور';
 
 
+
+
+    
+
 }];

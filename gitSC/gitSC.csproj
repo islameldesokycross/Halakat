@@ -91,6 +91,11 @@
     <Content Include="halakat\js\vendor\fastclick.js" />
     <Content Include="halakat\js\vendor\hammer.js" />
     <Content Include="halakat\js\vendor\jquery-1.11.0.min.js" />
+    <Content Include="halakat\js\vendor\jquery.calendars.islamic-ar.js" />
+    <Content Include="halakat\js\vendor\jquery.calendars.islamic.min.js" />
+    <Content Include="halakat\js\vendor\jquery.calendars.js" />
+    <Content Include="halakat\js\vendor\jquery.calendars.picker.js" />
+    <Content Include="halakat\js\vendor\jquery.calendars.plus.js" />
     <Content Include="halakat\js\vendor\spin.min.js" />
     <Content Include="halakat\js\vendor\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="halakat\states\halakat\aboutus\aboutus-ctrl.js" />
