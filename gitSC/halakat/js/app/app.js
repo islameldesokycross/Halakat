@@ -256,6 +256,7 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
 
     });
 
+
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 
 
