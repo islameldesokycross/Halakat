@@ -65,7 +65,17 @@ tajApp.config(function ($routeProvider) {
 
 .controller('mainController', function ($scope, $location, CordovaService, mainServices) {
     
-    mainServices.updatedCategoryCount(1200);
+    mainServices.getCategoryList(null);
+    mainServices.getCategoryList(655);
+    mainServices.getUpdatedcategorycount(null);
+    mainServices.getUpdatedcategorycount(1400760840);
+    mainServices.getUpdatedcategories(null, 100);
+    mainServices.getUpdatedcategories(1400760840, 0);
+    mainServices.getContentTypes();
+    mainServices.getUpdatedcategories(32, 2);
+    mainServices.getFullContent(841);
+
+
 
     CordovaService.ready.then(function () {
         Notification.alert('cordova ready', function () { }, 'Alert', 'OK');

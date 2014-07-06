@@ -22,7 +22,7 @@ tajAppAppServices.factory("serviceUtils", function ($http/*, log*/) {
         cache: false,
         responseType: "",
         success: function (data, status, headers, config) {
-            console.log(data.replace(/'/g, '"'));
+            console.log(data);
         },
         error: function (data, status, headers, config) {
             console.log("http error > " + status + ": " + JSON.stringify(data));
@@ -55,29 +55,101 @@ tajAppAppServices.factory("serviceUtils", function ($http/*, log*/) {
 
 tajAppAppServices.filter('replace2Json', function () {
     return function (text) {
-        var json = text.replace(/'/g, '"');
-        return json;
+        //var json = text.replace(/'/g, '"');
+        //return json;
     }
 });
 
-// post services factory
+
 tajAppAppServices.factory("mainServices", function (serviceUtils) {
 
-    var updatedCategoryCount = function (lastupdate, successFn, errorFn) {
+    // get main or sub categories 
+    // if categoryId == null ? Main : sub;
+    var 
+        getCategoryList = function (categoryId, successFn, errorFn) {
 
-        serviceUtils.callService({
-            method: 'GET',
-            url: 'query=updatedcategorycount&lastupdate= ' + lastupdate,
-            data: null,
-            success: successFn,
-            error: errorFn
-        });
-    }
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=categorylist&categoryid=' + categoryId,
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        },
+
+        // get number of updated categories cout
+        // if lastUpdatedDate == null ? last 24 hour : since lastUpdatedDate;
+        getUpdatedcategorycount = function (lastUpdatedDate, successFn, errorFn) {
+
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=updatedcategorycount&lastupdate=' + lastUpdatedDate,
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        },
+
+        // get number of updated categories 
+        // if lastUpdatedDate == null ? last 24 hour : since lastUpdatedDate;
+        // 100 per call as max
+        getUpdatedcategories = function (lastUpdatedDate, from, successFn, errorFn) {
+
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=updatedcategory&lastupdate=' + lastUpdatedDate + '&from=' + from,
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        },
+
+        // get list of contents types
+        getContentTypes = function ( successFn, errorFn) {
+
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=typelist',
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        },
+
+        // get contents of a type inside category         
+        getUpdatedcategories = function (categoryId, typeId, successFn, errorFn) {
+
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=contentlist&categoryid=' + categoryId + '&typeid=' + typeId,
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        },
+
+        // get full content         
+        getFullContent = function (contentId, successFn, errorFn) {
+
+            serviceUtils.callService({
+                method: 'GET',
+                url: 'query=content&contentid=' + contentId ,
+                data: null,
+                success: successFn,
+                error: errorFn
+            });
+        }
+
 
     
 
     return {
-        updatedCategoryCount: updatedCategoryCount
+        getCategoryList: getCategoryList,
+        getUpdatedcategorycount: getUpdatedcategorycount,
+        getUpdatedcategories: getUpdatedcategories,
+        getContentTypes: getContentTypes,
+        getUpdatedcategories: getUpdatedcategories,
+        getFullContent: getFullContent
     };
 });
 
