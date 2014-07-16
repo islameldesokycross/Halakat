@@ -1,5 +1,5 @@
 ﻿// create the module and name it scotchApp
-var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services']);
+var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services', 'ngAnimate']);
 
 
 // configure our routes
@@ -18,108 +18,102 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
         //,
         //abstract: true
     },
-
-    welcome = {
-        name: 'welcome',
-        url: 'welcome',
-        templateUrl: 'states/out/welcome/welcome-temp.html',
-        controller: welcomeCtrl,
-        parent: out
-    },
-
-    login = {
-        name: 'login',
-        url: 'login',
-        templateUrl: 'states/out/login/login-temp.html',
-        controller: loginCtrl,
-        parent: out
-    },
-
-    signup = {
-        name: 'signup',
-        url: 'signup',
-        templateUrl: 'states/out/signup/signup-temp.html',
-        controller: signupCtrl,
-        parent: out
-    },
-
-    home = {
-        name: 'home',
-        url: '/home',
-        templateUrl: 'states/home/home-temp.html',
-        controller: homeCtrl
-    },
-
-    halakat = {
-        name: 'halakat',
-        url: '',
-        templateUrl: 'states/halakat/halakat-temp.html',
-        controller: halakatCtrl        
-    },
-
-    tsmi3 = {
-        name: 'tsmi3',
-        url: '/tsmi3',
-        templateUrl: 'states/halakat/tsmi3/tsmi3-temp.html',
-        controller: tsmi3Ctrl,
-        parent: halakat
-    },
-
-    tsmi3reports = {
-        name: 'tsmi3reports',
-        url: '/tsmi3reports',
-        templateUrl: 'states/halakat/tsmi3reports/tsmi3reports-temp.html',
-        controller: tsmi3reportsCtrl,
-        parent: halakat
-    },
-
-    plans = {
-        name: 'plans',
-        url: '/plans',
-        templateUrl: 'states/halakat/plans/plans-temp.html',
-        controller: plansCtrl,
-        parent: halakat
-    },
-
-    data = {
-        name: 'data',
-        url: '/data',
-        templateUrl: 'states/halakat/data/data-temp.html',
-        controller: dataCtrl,
-        parent: halakat
-    },
-
-    attend = {
-        name: 'attend',
-        url: '/attend',
-        templateUrl: 'states/halakat/attend/attend-temp.html',
-        controller: attendCtrl,
-        parent: halakat
-    },
-
-    attendreports = {
-        name: 'attendreports',
-        url: '/attendreports',
-        templateUrl: 'states/halakat/attendreports/attendreports-temp.html',
-        controller: attendreportsCtrl,
-        parent: halakat
-    },
-
-    contactus = {
-        name: 'contactus',
-        url: '/contactus',
-        templateUrl: 'states/halakat/contactus/contactus-temp.html',
-        controller: contactUsCtrl,
-        parent: halakat
-    },
-
-    aboutus = {
-        name: 'aboutus',
-        url: '/aboutus',
-        templateUrl: 'states/halakat/aboutus/aboutus-temp.html',
-        controller: abouusCtrl,
-        parent: halakat
-    }
+        welcome = {
+            name: 'welcome',
+            url: 'welcome',
+            templateUrl: 'states/out/welcome/welcome-temp.html',
+            controller: welcomeCtrl,
+            parent: out
+        },
+        login = {
+            name: 'login',
+            url: 'login',
+            templateUrl: 'states/out/login/login-temp.html',
+            controller: loginCtrl,
+            parent: out
+        },
+        signup = {
+            name: 'signup',
+            url: 'signup',
+            templateUrl: 'states/out/signup/signup-temp.html',
+            controller: signupCtrl,
+            parent: out
+        },
+        home = {
+            name: 'home',
+            url: '/home',
+            templateUrl: 'states/home/home-temp.html',
+            controller: homeCtrl
+        },
+        halakat = {
+            name: 'halakat',
+            url: '',
+            templateUrl: 'states/halakat/halakat-temp.html',
+            controller: halakatCtrl
+        },
+        tsmi3 = {
+            name: 'tsmi3',
+            url: '/tsmi3',
+            templateUrl: 'states/halakat/tsmi3/tsmi3-temp.html',
+            controller: tsmi3Ctrl,
+            parent: halakat
+        },
+        tsmi3reports = {
+            name: 'tsmi3reports',
+            url: '/tsmi3reports',
+            templateUrl: 'states/halakat/tsmi3reports/tsmi3reports-temp.html',
+            controller: tsmi3reportsCtrl,
+            parent: halakat
+        },
+        plans = {
+            name: 'plans',
+            url: '/plans',
+            templateUrl: 'states/halakat/plans/plans-temp.html',
+            controller: plansCtrl,
+            parent: halakat
+        },
+        data = {
+            name: 'data',
+            url: '/data',
+            templateUrl: 'states/halakat/data/data-temp.html',
+            controller: dataCtrl,
+            parent: halakat
+        },
+        attend = {
+            name: 'attend',
+            url: '/attend',
+            templateUrl: 'states/halakat/attend/attend-temp.html',
+            controller: attendCtrl,
+            parent: halakat
+        },
+        attendreports = {
+            name: 'attendreports',
+            url: '/attendreports',
+            templateUrl: 'states/halakat/attendreports/attendreports-temp.html',
+            controller: attendreportsCtrl,
+            parent: halakat
+        },
+        contactus = {
+            name: 'contactus',
+            url: '/contactus',
+            templateUrl: 'states/halakat/contactus/contactus-temp.html',
+            controller: contactUsCtrl,
+            parent: halakat
+        },
+        aboutus = {
+            name: 'aboutus',
+            url: '/aboutus',
+            templateUrl: 'states/halakat/aboutus/aboutus-temp.html',
+            controller: abouusCtrl,
+            parent: halakat
+        },        
+        elmoshaf = {
+            name: 'elmoshaf',
+            url: '/elmoshaf',
+            templateUrl: 'states/halakat/elmoshaf/elmoshaf-temp.html',
+            controller: elmoshafCtrl,
+            parent: halakat
+        };
 
 
     $stateProvider.state(out);
@@ -140,6 +134,7 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
     $stateProvider.state(attendreports);
     $stateProvider.state(contactus);
     $stateProvider.state(aboutus);
+    $stateProvider.state(elmoshaf);
 
 }])
 

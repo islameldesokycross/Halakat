@@ -29,7 +29,7 @@
     <script src="js/vendor/ui-bootstrap-tpls-0.10.0.min.js"></script>
     <script src="js/vendor/angular-strap.min.js"></script>
     <script src="js/vendor/angular-strap.tpl.min.js"></script>
-
+    <script src="js/vendor/bgImg.js"></script>
     <script src="js/app/app.js"></script>
 
 </head>
@@ -78,48 +78,13 @@
                         </div>
                         <!-- List group -->
                         <ul class="list-group" style="overflow-y: scroll; height: 65%; position: absolute; width: 90%;">
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">محبة النبى</div>
+                            <li class="list-group-item" ng-repeat="branch in branches">
+                                <a href="#/branch/{{branch.category_id}}">
+                                    <div class="pull-right">{{branch.category_title}}</div>
                                     <div class="pull-left" style="">458</div>
                                 </a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">القرآن منهج حياة</div>
-                                    <div class="pull-left">22</div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">استثمار التاريخ</div>
-                                    <div class="pull-left">170</div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">تزكية النفوس</div>
-                                    <div class="pull-left">285</div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">التربية والتعليم</div>
-                                    <div class="pull-left">545</div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#/branch/1">
-                                    <div class="pull-right">الذوق الإسلامى</div>
-                                    <div class="pull-left">48</div>
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="#">
-                                    <div class="pull-right">الأوراد والأذكار</div>
-                                    <div class="pull-left">225</div>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

@@ -96,6 +96,9 @@
     <Content Include="halakat\js\vendor\jquery.calendars.js" />
     <Content Include="halakat\js\vendor\jquery.calendars.picker.js" />
     <Content Include="halakat\js\vendor\jquery.calendars.plus.js" />
+    <Content Include="halakat\js\vendor\quran-data.js" />
+    <Content Include="halakat\js\vendor\quran-simple.js" />
+    <Content Include="halakat\js\vendor\quran-simple.txt" />
     <Content Include="halakat\js\vendor\spin.min.js" />
     <Content Include="halakat\js\vendor\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="halakat\states\halakat\aboutus\aboutus-ctrl.js" />
@@ -108,6 +111,8 @@
     <Content Include="halakat\states\halakat\contactus\contactus-temp.html" />
     <Content Include="halakat\states\halakat\data\data-ctrl.js" />
     <Content Include="halakat\states\halakat\data\data-temp.html" />
+    <Content Include="halakat\states\halakat\elmoshaf\elmoshaf-ctrl.js" />
+    <Content Include="halakat\states\halakat\elmoshaf\elmoshaf-temp.html" />
     <Content Include="halakat\states\halakat\halakat-ctrl.js" />
     <Content Include="halakat\states\halakat\halakat-temp.html" />
     <Content Include="halakat\states\halakat\plans\plans-ctrl.js" />
@@ -168,7 +173,9 @@
     <Content Include="Taj\js\vendor\angular-touch.min.js" />
     <Content Include="Taj\js\vendor\angular.hammer.js" />
     <Content Include="Taj\js\vendor\angular.min.js" />
+    <Content Include="Taj\js\vendor\bgImg.js" />
     <Content Include="Taj\js\vendor\bootstrap.min.js" />
+    <Content Include="Taj\js\vendor\compile.js" />
     <Content Include="Taj\js\vendor\fastclick.js" />
     <Content Include="Taj\js\vendor\hammer.js" />
     <Content Include="Taj\js\vendor\jquery-1.11.0.min.js" />

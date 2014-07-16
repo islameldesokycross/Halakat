@@ -1,7 +1,8 @@
 ﻿html, body {
     height: 100%;
     overflow: hidden;
-}
+        color: #2c2c2c;
+    }
 
 .container-fluid, .row-offcanvas {
     height: 100%;
@@ -93,7 +94,7 @@
     direction: rtl;
     bottom: 0;
     position: absolute;
-    height: 45%;
+    height: 120px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -101,7 +102,68 @@
 }
 
 .mainContent .mainLstTxtArea {
-    color: black;
+    color: white;
+    font-size: 24px;
+    text-align: right;
+    bottom: 50%;
+    position: absolute;
+    height: 25px;
+    width: 92%;
+    padding: 0;
+    margin: 0;
+    right: 10px;
+}
+
+.mainLstBootomArea2>span:nth-child(2) {
+    background: #363636;
+    background: rgba(54, 54, 54,1);
+    border-right: solid 2px #252525;
+    border-right: solid 2px rgba(37,37,37,1);
+    border-left: solid 2px #252525;
+    border-left: solid 2px rgba(37,37,37,1);
+}
+
+.mainLstBootomArea2>span {
+    width: 33.3%;
+    height: 100%;
+    display: inline-block;
+    background: #434343;
+    background: rgba(67, 67, 67,1);
+    font-size: 17px;
+    color: white;
+    text-align: center;
+   
+}
+
+.mainLstBootomArea span span {
+    display: block;
+}
+
+
+/*dddddd*/
+.mainContent .list-group-item {
+    border: 2px solid;
+    border-radius: 0px !important;
+    height: 26%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.mainContent .mainLstBootomArea1 {
+    font-size: 0;
+    direction: rtl;
+    bottom: 0;
+    position: absolute;
+    height: 45%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    left: 0;display: table
+}
+
+.mainContent .mainLstTxtArea1 {
+    color: white;
     font-size: 24px;
     text-align: right;
     bottom: 50%;
@@ -113,23 +175,25 @@
     left: 0;
 }
 
-.mainLstBootomArea>span:nth-child(2) {
+.mainLstBootomArea1>span:nth-child(2) {
     background: rgba(0, 0, 0, 0.7);
 }
 
-.mainLstBootomArea>span {
-    width: 33.2%;
+.mainLstBootomArea1>span {
+    width: 33.4%;
     height: 100%;
-    display: inline-block;
+    display: table-cell;
     background: rgba(0, 0, 0, 0.5);
     font-size: 17px;
     color: white;
     text-align: center;
+    margin-left: -4px
 }
 
-.mainLstBootomArea span span {
+.mainLstBootomArea1 span span {
     display: block;
 }
+/**/
 
 @media screen and (max-width: 767px) {
 

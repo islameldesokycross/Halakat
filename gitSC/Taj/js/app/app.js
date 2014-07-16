@@ -1,5 +1,5 @@
 ﻿// create the module and name it scotchApp
-var tajApp = angular.module('tajApp', ['ngRoute', 'ui.bootstrap', 'hammer', 'tajApp.services']);
+var tajApp = angular.module('tajApp', ['ngRoute', 'ui.bootstrap', 'hammer', 'tajApp.services', 'bgimageApp']);
 
 // configure our routes
 tajApp.config(function ($routeProvider) {
@@ -65,7 +65,7 @@ tajApp.config(function ($routeProvider) {
 
 .controller('mainController', function ($scope, $location, CordovaService, mainServices) {
     
-    mainServices.getCategoryList(null);
+    
     mainServices.getCategoryList(655);
     mainServices.getUpdatedcategorycount(null);
     mainServices.getUpdatedcategorycount(1400760840);
@@ -75,7 +75,14 @@ tajApp.config(function ($routeProvider) {
     mainServices.getUpdatedcategories(32, 2);
     mainServices.getFullContent(841);
 
-
+    $scope.branches = [];
+    mainServices.getCategoryList(null, function (data) {
+        var arr = [];
+        for (var x in data) {
+            arr.push(data[x]);
+        }
+        $scope.branches = arr;
+    });
 
     CordovaService.ready.then(function () {
         Notification.alert('cordova ready', function () { }, 'Alert', 'OK');
@@ -104,10 +111,19 @@ tajApp.config(function ($routeProvider) {
     }
 })
 
-.controller('homeController', function ($scope) {
+.controller('homeController', function ($scope, mainServices) {
     $scope.$parent.menuOpened = false;
     $scope.$parent.menuHidden = false;
     $scope.$parent.searchHidden = false;
+    
+    $scope.branches = [];
+    mainServices.getCategoryList(null, function (data) {
+        var arr = [];
+        for (var x in data) {
+            arr.push(data[x]);
+        }
+        $scope.branches = arr;
+    });
 })
 
 .controller('searchController', function ($scope) {

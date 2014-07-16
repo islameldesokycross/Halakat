@@ -1,29 +1,32 @@
 ﻿<div class="branchPage">
-    <div style="position: relative; height: 220px; direction: rtl; margin-bottom: 20px;" >
+    <div style="position: relative; height: 240px; direction: rtl; margin-bottom: 20px;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 120px; background-image: url('images/home-img3.png'); background-repeat: no-repeat; background-size: cover; background-position: center center; "></div>
-        <div class="" style="color: black; font-size: 24px; text-align: right; bottom: 60%; position: absolute; height: 25px; width: 98%; padding: 0; margin: 0; left: 0;">التربية والتعليم</div>
-        <div class="" style="color: black; font-size: 18px; text-align: right; bottom: 45%; position: absolute; height: 25px; width: 98%; padding: 0; margin: 0; left: 0;">من حقى أن أتعلم كل جديد</div>
-        <div class="mainLstBootomArea" style="width: 100%;">
-            <span style="height: 50%;">
-                <span>شجرة رئيسية</span>
-                <span>17</span>
-            </span>
-            <span style="height: 50%;">
-                <span>إجمالى الفروع</span>
-                <span>1192</span>
-            </span>
-            <span style="height: 50%;">
-                <span>إجمالى النصوص</span>
-                <span>0</span>
-            </span>
+        <div class="" style="color: white; font-size: 24px; text-align: right; top:48px; position: absolute; height: 25px; width: 98%; padding: 0; margin: 0; left: 0;">التربية والتعليم</div>
+        <div class="" style="color: white; font-size: 18px; text-align: right; top:80px; position: absolute; height: 25px; width: 98%; padding: 0; margin: 0; left: 0;">من حقى أن أتعلم كل جديد</div>
+        <div class="mainLstBootomArea" style="width: 100%;display: table">
+            
+            <div class="mainLstBootomArea2" style="display: table-row">
+                <span style="height: 100%; padding-top: 12px;">
+                    <span>شجرة رئيسية</span>
+                    <span>17</span>
+                </span>
+                <span style="height: 100%; padding-top: 12px;">
+                    <span>إجمالى الفروع</span>
+                    <span>1192</span>
+                </span>
+                <span style="height: 100%; padding-top: 12px;">
+                    <span>إجمالى النصوص</span>
+                    <span>0</span>
+                </span>
+            </div>
 
-            <div style="bottom: 0; position: absolute; width: 100%; height: 50px; ">
-                
+            <div style="bottom: 0; position: absolute; width: 100%; height: 50px;display: table-row">
+
                 <div style="padding:5px; height: 75%; font-size: 20px; color: rgba(0,0,0,0.6);">
                     <span style="">اجمالى الفروع</span>
                     <span style=" float: left;">175</span>
                 </div>
-                <div style="padding:5px; height: 75%; font-size: 14px; color: rgba(0,0,0,0.7);">
+                <div style="padding:5px; height: 75%; font-size: 14px; color: rgba(0,0,0,0.7);margin-top: -8px">
                     التوحيد / توحيد الأسماء والصفات / أحكام الإيمان بالأسماء والصفات
                 </div>
 
@@ -31,9 +34,9 @@
         </div>
     </div>
 
-    <div style="height: 100%;">
+    <div style="position: absolute; height: 100%; width: 100%; top: 0px; margin-top: 263px; padding-bottom: 263px;">
 
-        <accordion close-others="oneAtATime" style="text-align: right;">
+        <accordion close-others=" oneatatime" style="text-align: right;">
             <!--is-open="true-->
             <accordion-group ng-repeat="group in groups" is-open="isopen">
                 <accordion-heading>
@@ -48,56 +51,47 @@
                     </div>
                     <!--<button class="btn btn-small" ng-click="removeGroup($index, $event)" ng-show="$index">-</button>-->
                 </accordion-heading>
-                <div style="height: 56px; padding: 0 19px;">
+                <div style="height: 56px; padding: 0 19px; background-color: #323232; ">
                     <span class="scrollcontrol-left" ng-click="left($index)"></span>
                     <span class="scrollcontrol-right" ng-click="right($index)"></span>
                     <ul id="caresoule{{$index}}" class="h-Ul animate" hammer-dragright="handleGesture($event, $index)" hammer-dragleft="handleGesture($event, $index)" hammer-swipeleft="handleGesture($event, $index)" hammer-swiperight="handleGesture($event, $index)" ng-style="style()">
                         <li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon1.png')"></span>
-                            <span style="color:white;height: 18px">kkk1</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">قرآن</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon2.png')"></span>
-                            <span style="color:white;height: 18px">kkk2</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">حديث</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon3.png')"></span>
-                            <span style="color:white;height: 18px">kkk3</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">قصص</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon4.png')"></span>
-                            <span style="color:white;height: 18px">kkk4</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">أثار السلف</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon5.png')"></span>
-                            <span style="color:white;height: 18px">kkk5</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">شعر</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon6.png')"></span>
-                            <span style="color:white;height: 18px">kkk6</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">شعر</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon7.png')"></span>
-                            <span style="color:white;height: 18px">kkk7</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">أثار السلف</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon8.png')"></span>
-                            <span style="color:white;height: 18px">kkk8</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">قصص</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon9.png')"></span>
-                            <span style="color:white;height: 18px">kkk9</span>
-                        </li>
-                        <li ng-click="go('/section');">
+                            <span style="color:white;height: 18px">حديث</span>
+                        </li><li ng-click="go('/section');">
                             <span class="scrollerimg" style="background-image: url('images/icon10.png')"></span>
-                            <span style="color:white;height: 18px">kkk10</span>
+                            <span style="color:white;height: 18px">قرآن</span>
                         </li>
                     </ul>
                 </div>
 
                 <!--{{group.content}}
-            <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
-            <div ng-repeat="item in items">{{item}}</div>-->
+                <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+                <div ng-repeat="item in items">{{item}}</div>-->
             </accordion-group>
         </accordion>
 

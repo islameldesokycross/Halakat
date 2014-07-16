@@ -1,9 +1,28 @@
 ﻿<div class="homePage">
     <ul class="list-group" style="border: none; height: 100%; overflow-y: scroll; ">
-        <li class="list-group-item" style="background-image: url('images/home-img4.png')">
+        <!--<li class="list-group-item" style="background-image: url('images/home-img4.png')">
             <a href="#/branch/1" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0;">
-                <div class="mainLstTxtArea">تعاليم الخالق</div>
-                <div class="mainLstBootomArea">
+                <div class="mainLstTxtArea1">تعاليم الخالق</div>
+                <div class="mainLstBootomArea1">
+                    <span>
+                        <span>شجرة رئيسية</span>
+                        <span>17</span>
+                    </span>
+                    <span>
+                        <span>إجمالى الفروع</span>
+                        <span>1192</span>
+                    </span>
+                    <span>
+                        <span>إجمالى النصوص</span>
+                        <span>0</span>
+                    </span>
+                </div>
+            </a>
+        </li>-->
+        <li class="list-group-item" style="" ng-repeat="branch in branches" bg-image="{{'http://tajalfhars.com/taj/images/category/thumb_'+branch.category_image}}">
+            <a href="#/branch/{{branch.category_id}}" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0;">
+                <div class="mainLstTxtArea1">{{branch.category_title}}</div>
+                <div class="mainLstBootomArea1">
                     <span>
                         <span>شجرة رئيسية</span>
                         <span>17</span>
@@ -19,29 +38,10 @@
                 </div>
             </a>
         </li>
-        <li class="list-group-item" style="background-image: url('images/home-img3.png')">
+        <!--<li class="list-group-item" style="background-image: url('images/home-img1.png')">
             <a href="#/branch/1" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0;">
-                <div class="mainLstTxtArea">التربية والتعليم</div>
-                <div class="mainLstBootomArea">
-                    <span>
-                        <span>شجرة رئيسية</span>
-                        <span>17</span>
-                    </span>
-                    <span>
-                        <span>إجمالى الفروع</span>
-                        <span>1192</span>
-                    </span>
-                    <span>
-                        <span>إجمالى النصوص</span>
-                        <span>0</span>
-                    </span>
-                </div>
-            </a>
-        </li>
-        <li class="list-group-item" style="background-image: url('images/home-img1.png')">
-            <a href="#/branch/1" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0;">
-                <div class="mainLstTxtArea">الوظائف والمهن</div>
-                <div class="mainLstBootomArea">
+                <div class="mainLstTxtArea1">الوظائف والمهن</div>
+                <div class="mainLstBootomArea1">
                     <span>
                         <span>شجرة رئيسية</span>
                         <span>17</span>
@@ -59,8 +59,8 @@
         </li>
         <li class="list-group-item" style="background-image: url('images/home-img.png')">
             <a href="#/branch/1" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0;">
-                <div class="mainLstTxtArea">السياحة</div>
-                <div class="mainLstBootomArea">
+                <div class="mainLstTxtArea1">السياحة</div>
+                <div class="mainLstBootomArea1">
                     <span>
                         <span>شجرة رئيسية</span>
                         <span>17</span>
@@ -75,6 +75,6 @@
                     </span>
                 </div>
             </a>
-        </li>        
+        </li>-->
     </ul>
 </div>
