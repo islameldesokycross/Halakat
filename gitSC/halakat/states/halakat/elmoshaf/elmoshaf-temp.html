@@ -1,0 +1,42 @@
+﻿
+<div style="height: 100%;overflow: auto" hammer-swiperight="nextPage()" hammer-swipeleft="prevPage()">
+    <style>
+        .ayaSelected {
+            background-color: rgba(17, 147, 121, .4);
+        }
+
+        .right {
+            text-align: justify;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .ayaNumber {
+            /*font-size: .85em;
+            white-space: nowrap;
+            color: #050;
+            cursor: pointer;*/
+            padding: 0 4px;
+            display: inline-block;
+        }
+    </style>
+
+    <input type="text" ng-model="vars.pageNum" />
+    <button ng-click="getAyasOfPage(vars.pageNum)">go</button>
+    <button ng-click="nextPage()">Next</button>
+    <button ng-click="prevPage()">Previous</button>
+
+    <!--<span ng-bind="vars.initialJuz"></span>
+        <span ng-bind="vars.initialSura"></span>
+        <span ng-bind="vars.initialPage"></span>-->
+
+    <div ng-repeat="sura in vars.pagesuar" class="right" style="font-size: 14pt; line-height: 2.35em; width: 98%; margin-left: auto; margin-right: auto;" ng-class="{'center' :  vars.pageNum == 1 || vars.pageNum == 2}">
+        <div ng-bind="sura.header"></div>
+        <span ng-repeat="aya in sura.ayas"
+              ng-class="{'ayaSelected': vars.selectedAya==aya['index']}"
+              ng-click="selectAya(aya['index'])"><span>{{aya["text"]}}</span><span class="ayaNumber">﴿{{aya["index"]}}﴾</span></span>
+    </div>
+</div>
+
