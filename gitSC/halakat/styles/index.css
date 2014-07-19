@@ -3,6 +3,12 @@
     overflow: hidden;
 }
 
+textarea,select {
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+}
+
 .parentView, .parentView > div {
     height: 100%;
     overflow: hidden;
@@ -79,15 +85,20 @@
 
 
 /*Home*/
+.home-content-box>li:nth-child(even) {
+    margin: 0 20px;
+}
+
 
 .hom-box {
     display: inline-block;
-    margin: 0 0 7% 3%;
-    height: 80px;
-    min-width: 80px;
-    border: 3px solid #45ad98;
-    border-radius: 3px;
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.35) inset;
+margin: 0 0 24px 0;
+height: 67px;
+min-width: 67px;
+border: 3px solid #45ad98;
+border-radius: 3px;
+box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.35) inset;
+font-size: .89em;
 }
 
     .hom-box > div {
@@ -99,7 +110,7 @@
 
     .hom-box .pic {
         height: 50%;
-        margin: 10%;
+        margin: 7px 0;
     }
 
     .hom-box .txt {
@@ -480,7 +491,7 @@ border: 1px solid #ddd;
                 height: 100%;
                 width: 100%;
                 padding: 12px 10px;
-                font-size: 13pt;
+                font-size: 1.2em;
                 border-right: 1px solid white;
             }
             .students-list > li .st-icons {

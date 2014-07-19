@@ -5,18 +5,18 @@
     </style>
     <div style="position: absolute; width: 100%; z-index: 10;">
         <!-- Calendar -->
-        <div style="width: 100%; direction: rtl; padding: 0; margin: 0; padding-top: 5px; height: 160px;">
-            <div class="greeny" style="width: 100%; height: 20px; line-height: 20px; text-align: center; font-weight: bold; font-size: 1.2em; padding: 0px 0px;">
-                <div class="" style="float: left; display: inline-block; width: 10%;">
+        <div style="width: 100%; direction: rtl; padding: 0; margin: 0; padding-top: 5px; height: 190px;">
+            <div class="greeny" style="width: 100%; height: 27px; line-height: 20px; text-align: center; font-weight: bold; font-size: 1.2em; padding: 0px 0px;">
+                <div class="" style="float: left; display: inline-block; width: 10%; margin-top: 3px;">
                     <a href="" role="button" ng-click="$parent.calendar.prevMonth()" class="">
                         <span class="glyphicon glyphicon-chevron-left greeny"></span>
                     </a>
                 </div>
-                <div class="dw-cal-btnw-m" style="width: 78%; display: inline-block; float: left;">
+                <div class="dw-cal-btnw-m" style="width: 78%; display: inline-block; float: left; height: 27px; padding: 3px;">
                     <span aria-live="assertive" class="dw-cal-month" data-val="calendar.selectedMonth">{{$parent.calendar.monthNames[calendar.selectedMonth]}}</span>
                     <span aria-live="assertive" class="dw-cal-month" data-val="calendar.selectedYear">{{$parent.calendar.selectedYear}}</span>
                 </div>
-                <div class="" style="float: right; display: inline-block; width: 10%; ">
+                <div class="" style="float: right; display: inline-block; width: 10%; margin-top: 3px;">
                     <a href="" role="button" ng-click="$parent.calendar.nxtMonth()" class="">
                         <span class="glyphicon glyphicon-chevron-right greeny"></span>
                     </a>
@@ -25,7 +25,7 @@
 
             <table style="width: 100%; border-collapse: collapse;">
                 <thead class="bggreeny whitey">
-                    <tr>
+                    <tr style="height:26px">
                         <th ng-repeat="dayName in $parent.calendar.dayNames"
                             data-val="{{$index}}"
                             style="text-align: center; width: 13%;">
@@ -48,7 +48,7 @@
         </div>
 
         <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
-            <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey">الحالة</div>
+            <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">الحالة</div>
             <div style="width: 66.7%; height: 100%;display: inline-block;position: relative;" class="">
                 <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
                     <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
@@ -70,7 +70,7 @@
         </div>
 
         <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
-            <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 13pt;" class="bggreeny whitey"><input type="checkbox" style="margin-left: 6px;" />اختيار الطلاب</div>
+            <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey"><input type="checkbox" style="margin-left: 6px;" />اختيار الطلاب</div>
             <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
                 <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
                     <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
@@ -82,7 +82,7 @@
     </div>
     
     <!--students list-->
-    <div style="position: absolute; width: 100%; padding-top: 362px; top: 0; height: 100%;">
+    <div style="position: absolute; width: 100%; padding-top: 388px; top: 0; height: 100%;">
         
         <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
             <ul class="students-list">

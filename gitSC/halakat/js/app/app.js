@@ -192,28 +192,7 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
         });
     };
 
-    $scope.opendate = function (size) {
-
-        var modalInstance = $modal.open({
-            templateUrl: 'date.html',
-            controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-
-
-
-                $scope.ok = function () {
-                    $modalInstance.close($scope.selected.item);
-                };
-
-                $scope.cancel = function () {
-                    $modalInstance.dismiss('cancel');
-                };
-            }],
-            size: size,
-            resolve: {
-
-            }
-        });
-    };
+    
 
     $scope.opentasme3 = function (size) {
 
@@ -239,12 +218,49 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
     };
 }])
 
-.run(['$rootScope', 'CordovaService', '$state', function ($rootScope, CordovaService, $state) {
+.run(['$rootScope', 'CordovaService', '$state', '$templateCache', function ($rootScope, CordovaService, $state, $templateCache) {
     FastClick.attach(document.body);
     $rootScope.previousState = {};
     $rootScope.currState = {};
 
-
+    $templateCache.put('date.html',
+        '<style>.datedropdown{min-width: 45px; background-color: transparent;border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px;padding-left: 20px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;background-image: url(images/arrows.png);background-repeat: no-repeat;background-position: 14%;background-size: 11px; }' +
+            '.datecontaner{position:relative;display:inline-block}' +
+            '.middle{margin:0 5px}' +
+            '.smallbtn{width:118px}' +
+            '</style>' +
+        '<div class="modal-header greeny">' +
+            '<h3 class="modal-title">أختر التاريخ</h3>' +
+        '</div>' +
+        '<div class="modal-body">' +
+            '<div class="datecontaner"><select class="datedropdown">' +
+                '<option>اليوم</option> '+
+                '<option>1</option>'+
+                '<option>2</option>'+
+                '<option>3</option>'+
+            '</select>'+
+            '</div>'+
+            '<div class="datecontaner middle"><select class="datedropdown">' +
+                '<option>الشهر</option>'+
+                 '<option>رمضان</option>'+
+                '<option>1</option>'+
+                '<option>2</option>'+
+                '<option>3</option>'+
+            '</select>'+
+            '</div>'+
+            '<div class="datecontaner"><select class="datedropdown">' +
+                '<option>السنة</option>'+
+                '<option>1000</option>'+
+                '<option>1</option>'+
+                '<option>2</option>'+
+                '<option>3</option>'+
+            '</select>'+
+            '</div>'+ 
+        '</div>' +
+        '<div class="modal-footer">' +
+            '<button class="btn smallbtn modal-btn modal-btn-greeny bggreeny whitey" style="margin-left:5px !important" ng-click="ok()">حفظ</button>' +
+            '<button class="btn smallbtn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>' +
+        '</div>');
 
 
     $rootScope.$on("$stateChangeStart", function (event, curr, currParams, prev, prevParams) {
