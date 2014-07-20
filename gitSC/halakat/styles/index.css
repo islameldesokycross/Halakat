@@ -144,7 +144,7 @@ font-size: .89em;
     background-image: url(../images/bg-pattern.png);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: 100%;
 }
 
     /*shared by aboalnaga*/
