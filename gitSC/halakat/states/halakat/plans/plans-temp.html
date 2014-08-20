@@ -1,7 +1,7 @@
 ﻿
 <div style="height: 100%;overflow: hidden">
 
-    <script type="text/ng-template" id="tasme3.html">
+    <!--<script type="text/ng-template" id="tasme3.html">
         <div class="modal-header greeny">
             <h3 class="modal-title">بداية التسميع</h3>
         </div>
@@ -9,7 +9,7 @@
             <div style="width: 100%; ">
                 <span style="width: 59%;">
                     <select style="min-width: 58%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;">
-                        <option>السورة</option>
+                        <option value="" disabled selected>السورة</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -17,7 +17,7 @@
                 </span>
                 <span style="width: 39%;">
                     <select style=" min-width: 40%; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; position: relative; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
-                        <option>الآية</option>
+                        <option value="" disabled selected>الآية</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -36,24 +36,24 @@
             <div style="width: 100%;">
 
                 <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
-                    <option>اليوم</option>
+                    <option value="" disabled selected>اليوم</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                 </select>
-                <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
-                    <option>الشهر</option>
-                    <option>رمضان</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select ng-model="selectedM"
+                        style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
+                    <option value="" disabled selected>الشهر</option>
+                    <option ng-repeat="n in _.range($parent.picker.currentYear, $parent.picker.currentYear + 2)"
+                            value="n">
+                        {{n}}
+                    </option>
                 </select>
-                <select style="min-width: 35%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
-                    <option>السنة</option>
-                    <option>1000</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select ng-model="selectedY"
+                        style="min-width: 35%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
+                    <option value="" disabled selected>السنة</option>
+                    <option ng-repeat="n in _.range($parent.picker.currentYear, $parent.picker.currentYear + 2)"
+                            value="n">{{n}}</option>
                 </select>
 
             </div>
@@ -62,7 +62,7 @@
             <button class="btn modal-btn modal-btn-greeny bggreeny whitey" ng-click="ok()">حفظ</button>
             <button class="btn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>
         </div>
-    </script>
+    </script>-->
 
     <style>
     </style>
@@ -302,7 +302,7 @@
             <div style="width: 100%; ">
                 <span style="width: 59%;">
                     <select style="min-width: 58%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;">
-                        <option>السورة</option>
+                        <option value="" disabled selected>السورة</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -310,7 +310,7 @@
                 </span>
                 <span style="width: 39%;">
                     <select style=" min-width: 40%; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; position: relative; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
-                        <option>الآية</option>
+                        <option value="" disabled selected>الآية</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -328,25 +328,29 @@
             </div>
             <div style="width: 100%;">
 
-                <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
-                    <option>اليوم</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select ng-model="selectedD"
+                        style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
+                    <option value="" disabled selected>اليوم</option>
+                    <option ng-repeat="n in days"
+                    value="{{n}}">
+                    {{n}}
+                    </option>
                 </select>
-                <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
-                    <option>الشهر</option>
-                    <option>رمضان</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select ng-model="selectedM" ng-change="getDays(selectedY, selectedM)"
+                        style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
+                    <option value="" disabled selected>الشهر</option>
+                    <option ng-repeat="n in monthes"
+                            value="{{n}}">
+                        {{n}}
+                    </option>
                 </select>
-                <select style="min-width: 35%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
-                    <option>السنة</option>
-                    <option>1000</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select ng-model="selectedY" ng-change="getMonths(selectedY)"
+                        style="min-width: 35%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
+                    <option value="" disabled selected>السنة</option>
+                    <option ng-repeat="n in getRange(picker.currentYear, picker.currentYear + 2)"
+                            value="{{n}}">
+                        {{n}}
+                    </option>
                 </select>
 
             </div>

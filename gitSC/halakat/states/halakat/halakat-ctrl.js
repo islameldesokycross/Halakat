@@ -92,4 +92,28 @@
 
     $scope.calendar.config();
 
+
+
+
+    // Hijri picker
+    $scope.picker = {};
+    $scope.picker.currentDate = $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar");
+    $scope.picker.currentYear = $scope.picker.currentDate._year;
+    $scope.picker.currentMonth = $scope.picker.currentDate._month - 1;
+    $scope.picker.currentDay = $scope.picker.currentDate._day;
+    $scope.picker.monthCount = 12;
+    $scope.picker.remainingMonths = 12 - $scope.picker.currentMonth;
+    $scope.picker.getRemainMonths = function (curM) {
+        return 12 - curM;
+    }
+    $scope.picker.getDaysInMonth = function (y, m) {
+        var xDate = $.calendars.newDate(y, m, 1, "Islamic", "ar");
+        return xDate.daysInMonth();
+    }
+    $scope.picker.getRemainDaysInMonth = function (y, m , curD) {
+        var DIM = $scope.picker.getDaysInMonth(y, m);
+        return DIM - curD;
+    }
+
+
 }];
