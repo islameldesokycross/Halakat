@@ -2,7 +2,7 @@
 
     $scope.vars = {};
     $scope.funs = {};
-    
+
     $scope.$parent.vars.titleTxt = 'من نحن';
 
 }];
