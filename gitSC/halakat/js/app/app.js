@@ -224,11 +224,6 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
     $rootScope.currState = {};
 
     $templateCache.put('date.html',
-        '<style>.datedropdown{min-width: 45px; background-color: transparent;border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px;padding-left: 20px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;background-image: url(images/arrows.png);background-repeat: no-repeat;background-position: 14%;background-size: 11px; }' +
-            '.datecontaner{position:relative;display:inline-block}' +
-            '.middle{margin:0 5px}' +
-            '.smallbtn{width:118px}' +
-            '</style>' +
         '<div class="modal-header greeny">' +
             '<h3 class="modal-title">أختر التاريخ</h3>' +
         '</div>' +
