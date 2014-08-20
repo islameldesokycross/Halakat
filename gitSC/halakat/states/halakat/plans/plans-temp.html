@@ -61,7 +61,7 @@
             <ul class="students-list">
                 <li>
                     <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <div class="st-name" ng-click="openTasme3()" style="cursor: pointer; ">عدنان حسين الشاطري</div>
                     <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
                     <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
                 </li>
@@ -93,6 +93,72 @@
             </ul>
         </div>
     </div>
+
+
+
+
+    <script type="text/ng-template" id="tasme3.html">
+        <div class="modal-header greeny">
+            <h3 class="modal-title">بداية التسميع</h3>
+        </div>
+        <div class="modal-body">
+            <div style="width: 100%; ">
+                <span style="width: 59%;">
+                    <select style="min-width: 58%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;">
+                        <option>السورة</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </span>
+                <span style="width: 39%;">
+                    <select style=" min-width: 40%; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; position: relative; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
+                        <option>الآية</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </span>
+               
+                
+            </div>
+            <div style="width: 100%; padding: 0; height: 30px; margin: 10px 0;">
+                <div style="width: 30%; height: 100%; display: block; float: right; text-align: right; padding: 6px 2px; font-size: 1.2em;" class="greeny">تاريخ البداية</div>
+                <div style="width: 69%; height: 100%; display: inline-block; position: relative;">
+
+                    <span style=" width: 100%; display: inline-block; border-bottom: 2px solid #119379; position: absolute; top: 17px; right: 0px; "></span>
+                </div>
+            </div>
+            <div style="width: 100%;">
+
+                <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
+                    <option>اليوم</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <select style="min-width: 30%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; margin-left: auto; margin-right: auto; display: inline-block; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px; ">
+                    <option>الشهر</option>
+                    <option>رمضان</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <select style="min-width: 35%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
+                    <option>السنة</option>
+                    <option>1000</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn modal-btn modal-btn-greeny bggreeny whitey" ng-click="ok()">حفظ</button>
+            <button class="btn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>
+        </div>
+    </script>
 
 </div>
 
