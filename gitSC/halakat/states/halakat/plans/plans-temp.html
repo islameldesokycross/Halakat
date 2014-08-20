@@ -1,25 +1,61 @@
 ﻿
 <div style="height: 100%;overflow: hidden">
-
-    <style>
-    </style>
+   
+    <script type="text/ng-template" id="tasme3.html">
+        <div class="modal-header greeny">
+            <h3 class="modal-title">بداية التسميع</h3>
+        </div>
+        <div class="modal-body">
+            <select><option>السورة</option></select>
+            <select><option>الايه</option></select>
+            
+            <div class="datecontaner">
+                <select class="datedropdown">
+                    <option value="اليوم">اليوم</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="datecontaner middle">
+                <select class="datedropdown">
+                    <option value="الشهر">الشهر</option>
+                    <option value="رمضان">رمضان</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="datecontaner">
+                <select class="datedropdown">
+                    <option value="السنة">السنة</option>
+                    <option value="1000">1000</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn modal-btn modal-btn-greeny bggreeny whitey" ng-click="ok()">حفظ</button>
+            <button class="btn modal-btn modal-btn-redy bgredy whitey" ng-click="cancel()">إلغاء</button>
+        </div>
+    </script>
 
     <!--<div class="btn-group tab1-group">
             <label class="btn tab-btn" ng-model="radio1Model" btn-radio="'1'">المراجعة</label>
             <label class="btn tab-btn" ng-model="radio1Model" btn-radio="'0'">الحفظ</label>
         </div>-->
-        <input type="text" placeholder="اسم الخطة" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; margin-left: .5%; margin-right: .5%; margin-top: 5px; position: relative; width: 99%; font-size: 14pt; text-align: center;" />
+    <select ng-model="vars.selectedRingPlan" ng-options="ringplan.Name for ringplan in vars.ringPlans" ng-change="loadPlanData(vars.selectedRingPlan.Id)" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;color: rgb(155,155,155);outline: none;box-shadow: none;background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;margin-left: .5%;margin-right: .5%;margin-top: 5px;width: 99%;font-size: 14pt;"></select>
+    <input type="text" placeholder="اسم الخطة" ng-model="vars.plan.name" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; margin-left: .5%; margin-right: .5%; margin-top: 5px; position: relative; width: 99%; font-size: 14pt; text-align: center;" />
 
     <div style="padding: 10px 10px;position: relative">
         <span style="font-size: 1.2em">رقم الخطة :</span>
         <br/>
         <span style="font-size: 10pt">يمثل عدد الايام المقرر ان يختم الطالب فيها جزءا واحدا</span>
-        <select style="min-width: 60px; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none; position: absolute; top: 50%; left: 10px; margin-top: -22px; background-image: url(images/arrows.png); background-repeat: no-repeat; background-position: 14%; background-size: 11px;">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-        </select>
+        <input type="text" ng-model="vars.plan.number"
+               style="border: 1px solid lightgray;height: 45px;border-radius: 2px;padding: 6px 6px 6px 18px;font-size: 1.2em;color: rgb(155,155,155);outline: none;box-shadow: none;position: absolute;top: 50%;left: 10px;margin-top: -22px;background-image: url(images/arrows.png);background-repeat: no-repeat;background-position: 13%;background-size: 11px;width: 45px;text-align: center;" />
+        
     </div>
 
     <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
@@ -34,14 +70,17 @@
     </div>
 
     <div class="btn-group tab-group" style="padding: 10px 10px;">
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الجمعة</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الخميس</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="1" /></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأربعاء</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="2" /></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الثلاثاء</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="3" /></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأثنين</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="4" /></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">الأحد</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="5" /></div></span></label>
-        <label class="btn tab2-btn7 tab2-btn"><span class="head">السبت</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx2" value="6" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.friday" btn-checkbox><span class="head">الجمعة</span><span class="content"><div class="chkboxparent"><span class="inner"/></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.thursday" btn-checkbox><span class="head">الخميس</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.wensday" btn-checkbox><span class="head">الأربعاء</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.tuesday" btn-checkbox><span class="head">الثلاثاء</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.monday" btn-checkbox><span class="head">الأثنين</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.sunday" btn-checkbox><span class="head">الأحد</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+        <label class="btn tab2-btn7 tab2-btn" ng-model="checkModel.saturday" btn-checkbox><span class="head">السبت</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
     </div>
+    
+    <button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="savePlan()">save</button>
+
 
     <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
         <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">اختيار الطلاب</div>
@@ -59,13 +98,14 @@
 
         <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
             <ul class="students-list">
-                <li>
+                <li ng-repeat="student in vars.ringStudents" ng-click="opentasme3(student.Id)" ng-class="{'assigned': isAssigned(student.Id)}">
                     <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
+                    <div class="st-name">{{student.Name}}</div>
                     <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
+                    <button class="btn st-icons glyphicon glyphicon-remove redy " ng-class="{'hidden': !isAssigned(student.Id)}"></button>
+
                 </li>
-                <li>
+                <!--<li>
                     <div class="st-pic"></div>
                     <div class="st-name">عدنان حسين الشاطري</div>
 
@@ -73,22 +113,8 @@
                     <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
 
 
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
+                </li>-->
+         
 
             </ul>
         </div>

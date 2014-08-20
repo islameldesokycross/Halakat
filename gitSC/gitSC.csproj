@@ -89,6 +89,7 @@
     <Content Include="halakat\js\vendor\angular-ui-router.min.js" />
     <Content Include="halakat\js\vendor\angular.hammer.js" />
     <Content Include="halakat\js\vendor\angular.min.js" />
+    <Content Include="halakat\js\vendor\ayat-data.js" />
     <Content Include="halakat\js\vendor\bootstrap.min.js" />
     <Content Include="halakat\js\vendor\fastclick.js" />
     <Content Include="halakat\js\vendor\hammer.js" />
@@ -103,6 +104,7 @@
     <Content Include="halakat\js\vendor\quran-simple.txt" />
     <Content Include="halakat\js\vendor\spin.min.js" />
     <Content Include="halakat\js\vendor\ui-bootstrap-tpls-0.10.0.min.js" />
+    <Content Include="halakat\js\vendor\underscore.js" />
     <Content Include="halakat\states\halakat\aboutus\aboutus-ctrl.js" />
     <Content Include="halakat\states\halakat\aboutus\aboutus-temp.html" />
     <Content Include="halakat\states\halakat\attendreports\attendreports-ctrl.js" />

@@ -352,13 +352,13 @@ background-image: none;
         .tab-group .tab2-btn .content input {
             border: 3px solid transparent;
             font-size: 15px;
-            /* background: silver; */
+            
             -webkit-appearance: none;
-            /* -webkit-box-shadow: 1px 1px 1px #333; */
+            
             -webkit-border-radius: 50px;
             margin: 0;
         }
-            .tab-group .tab2-btn .content input[type=checkbox] {
+            .tab-group .tab2-btn .content .inner {
                 padding: 0;
                 width: 10px;
                 height: 10px;
@@ -366,9 +366,10 @@ background-image: none;
                 margin-top: 2px;
                 margin-right: auto;
                 margin-left: auto;
+                border-radius: 6px;
             }
 
-            .tab-group .tab2-btn .content input[type=checkbox]:checked {
+            .tab-group .tab2-btn.active .content .inner {
                 background: #119379;
                 -webkit-appearance: none;
             }
@@ -466,7 +467,7 @@ border: 1px solid #ddd;
 
         }
 
-            .students-list > li :hover,
+            /*.students-list > li :hover,
             .students-list > li :focus,
             .students-list > li :active,
             .students-list > li .active,
@@ -474,8 +475,12 @@ border: 1px solid #ddd;
                 color: #fff;
                 background-color: #119379;
                 border-color: #119379;
+            }*/
+            .students-list > li.assigned {
+                color: #fff;
+                background-color: #119379;
+                border-color: #119379;
             }
-
 
             .students-list > li .st-pic {
                 height: 100%;
@@ -525,3 +530,31 @@ border: 1px solid #ddd;
 
             
      /*students list css*/
+
+.datedropdown {
+    min-width: 45px;
+    background-color: transparent;
+    border: 1px solid lightgray;
+    height: 45px;
+    border-radius: 2px;
+    padding: 6px;
+    padding-left: 20px;
+    font-size: 1.2em;
+    color: rgb(155,155,155);
+    outline: none;
+    box-shadow: none;
+    background-image: url(../images/arrows.png);
+    background-repeat: no-repeat;
+    background-position: 14%;
+    background-size: 11px;
+}
+.datecontaner {
+    position: relative;
+    display: inline-block;
+}
+.middle {
+    margin: 0 5px;
+}
+.smallbtn {
+    width: 118px;
+}
