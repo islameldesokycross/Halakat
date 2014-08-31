@@ -228,27 +228,19 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
             '<h3 class="modal-title">أختر التاريخ</h3>' +
         '</div>' +
         '<div class="modal-body">' +
-            '<div class="datecontaner"><select class="datedropdown">' +
-                '<option>اليوم</option> '+
-                '<option>1</option>'+
-                '<option>2</option>'+
-                '<option>3</option>'+
+            '<div class="datecontaner"><select class="datedropdown" ng-model="selectedD">' +
+                '<option value="" disabled selected>اليوم</option> ' +
+                '<option ng-repeat="n in days" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+
-            '<div class="datecontaner middle"><select class="datedropdown">' +
-                '<option>الشهر</option>'+
-                 '<option>رمضان</option>'+
-                '<option>1</option>'+
-                '<option>2</option>'+
-                '<option>3</option>'+
+            '<div class="datecontaner middle"><select class="datedropdown" ng-model="selectedM" ng-change="getDays(selectedY, selectedM)">' +
+                '<option value="" disabled selected>الشهر</option>' +
+                '<option  ng-repeat="n in monthes" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+
-            '<div class="datecontaner"><select class="datedropdown">' +
-                '<option>السنة</option>'+
-                '<option>1000</option>'+
-                '<option>1</option>'+
-                '<option>2</option>'+
-                '<option>3</option>'+
+            '<div class="datecontaner"><select class="datedropdown"  ng-model="selectedY" ng-change="getMonths(selectedY)">' +
+                '<option  value="" disabled selected>السنة</option>' +
+                '<option ng-repeat="n in getRange(picker.currentYear - 1, picker.currentYear + 1)" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+ 
         '</div>' +
