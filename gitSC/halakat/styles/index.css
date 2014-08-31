@@ -86,7 +86,7 @@ textarea,select {
 
 /*Home*/
 .home-content-box>li:nth-child(even) {
-    margin: 0 20px;
+    /*margin: 0 20px;*/
 }
 
 
@@ -99,6 +99,7 @@ border: 3px solid #45ad98;
 border-radius: 3px;
 box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.35) inset;
 font-size: .89em;
+margin-left: 20px
 }
 
     .hom-box > div {

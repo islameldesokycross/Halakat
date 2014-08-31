@@ -57,14 +57,13 @@ halakatServices.factory("userServices", function (serviceUtils) {
     var baseurl = "api/User/";
     // get main or sub categories 
     // if categoryId == null ? Main : sub;
-    var login = function(userName, pass, userType, successFn, errorFn) {  
+    var login = function(userName, pass, successFn, errorFn) {  
         serviceUtils.callService({
             method: 'Post',
-            url: baseurl+'CheckForAdminLogin',
+            url: baseurl + 'CheckForLogin',
             data: {
-                "PassWord": pass,
-                "UserName": userName,
-                "UserTypeId": userType
+                "Email": userName,
+                "Password": pass,
             },
             success: successFn,
             error: errorFn
@@ -233,7 +232,7 @@ halakatServices.factory("planServices", function (serviceUtils) {
         getAllPlansByStudentId = function(studentId, successFn, errorFn) {
             serviceUtils.callService({
                 method: 'GET',
-                url: baseurl + 'getAllSavingPlansByStudentID?Id=' + studentId,
+                url: baseurl + 'GetSavingPlanByStudentId?Id=' + studentId,
                 data: {},
                 success: successFn,
                 error: errorFn
@@ -277,7 +276,7 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
     var baseurl = "api/RecitationsPlan/";
     // get main or sub categories 
     // if categoryId == null ? Main : sub;
-    var createNewPlan = function(studentId, swraStart, startDate, savingPlanId, recitationsAssignments, successFn, errorFn) {
+    var createNewPlan = function (studentId, swraStart, startDate, savingPlanId, savingPlanNumber,planDays, successFn, errorFn) {
         serviceUtils.callService({
             method: 'Post',
             url: baseurl + 'CreateNewRecitationsPlan',
@@ -286,7 +285,8 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
                 "SwraStart": swraStart,
                 "StartDate": startDate,
                 "SavingPlanId": savingPlanId,
-                "RecitationsAssignments": recitationsAssignments
+                "SavingPlanNumber": savingPlanNumber,
+                "PlanDays":planDays
             },
             success: successFn,
             error: errorFn
@@ -420,6 +420,7 @@ halakatServices.factory("Mos7afData", function() {
     var getJuzNumberOfAyas = function(juzNum) {
         return getJuzData(juzNum, "ayasNum");
     };
+
     var getJuzStartPage = function (juzNum) {
         var startPage = "";
         if (juzNum == "1" || juzNum == "7" || juzNum == "11") {
@@ -453,8 +454,9 @@ halakatServices.factory("Mos7afData", function() {
         return getJuzStartPage(juzNum + 1) - getJuzStartPage(juzNum);
     };
     var getQuraanSuras = function() {
-        return QuranData.sura;
+        return QuranData.suras.sura;
     };
+    
     return {
         getSuraData: getSuraData,
         getJuzData: getJuzData,
