@@ -62,7 +62,7 @@
             <div class="bg-logo"></div>
         </div>
         <div class="row text-center" style="height: 70%;">
-            <div>
+            <div ng-class="{'hidden': userType == 'student'}">
                 <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">حلقة:</label>
                 <select ng-model="vars.myRing" ng-options="ring.Name for ring in vars.rings" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;width: 212px;font-size: 14pt;color: rgb(155,155,155);outline: none;box-shadow: none;background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;margin-bottom: 12px;"></select>
             </div>
@@ -73,7 +73,7 @@
                         <div class="txt text-center">المصحف</div>
                     </div>
                 </li>
-                <li class="bggreeny whitey hom-box" style="" ng-click="funs.goto('plans',{})">
+                <li class="bggreeny whitey hom-box" ng-class="{'hidden': userType == 'student'}" style="" ng-click="funs.goto('plans',{})">
                     <div>
                         <div class="pic box-icon box-icon-plans"></div>
                         <div class="txt text-center">الخطط</div>

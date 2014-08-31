@@ -1,4 +1,4 @@
-﻿var homeCtrl = ['$scope', '$state', 'ringServices', function ($scope, $state, ringServices) {
+﻿var homeCtrl = ['$scope', '$state', 'ringServices', '$rootScope', function ($scope, $state, ringServices, $rootScope) {
 
     window.home = $scope;
     $scope.vars = { rings: [],myRing:{Name:"إختر حلقتك"} };

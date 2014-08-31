@@ -1,4 +1,4 @@
-﻿var loginCtrl = ['$state', '$scope', 'userServices', function ($state, $scope, userServices) {
+﻿var loginCtrl = ['$rootScope', '$state', '$scope', 'userServices', function ($rootScope, $state, $scope, userServices) {
 
     $scope.loginObj = { userName: "", password: "", msg1: "user name is required", msg2: "password is required", required1: '0', required2: '0' };
     
@@ -17,12 +17,17 @@
         } else {
             $scope.loginObj.required2 = 0;
         }
-        userServices.login(userName, pass, type,
+        userServices.login(userName, pass, 
             function(data) {
                 console.log(data);
                 $scope.loginObj.required1 = 0;
                 $scope.loginObj.required2 = 0;
-                //$state.transitionTo('home');
+                if (data.UserTypeId == 3) {
+                    $rootScope.userType = "teacher";
+                } else {
+                    $rootScope.userType = "student";
+                }
+                $state.transitionTo('home');
             },
             function(err) {
                 console.log(err);
