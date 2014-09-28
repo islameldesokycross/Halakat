@@ -14,6 +14,13 @@
             controller: ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
 
+                $scope.modalVars = {
+                    selectedD: 0,
+                    selectedM: 0,
+                    selectedY: 0
+                };
+
+
                 $scope.getRange = function (n, m) {
                     return _.range(n, m);
                 }
@@ -55,7 +62,7 @@
                       //:
                       $scope.getRange(1, $scope.picker.getDaysInMonth(selY, selM));
 
-                    alert($scope.selectedD, $scope.selectedM, $scope.selectedY);
+                    alert($scope.modalVars.selectedD +  $scope.modalVars.selectedM + $scope.modalVars.selectedY);
                 }
 
 
