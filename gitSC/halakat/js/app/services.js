@@ -7,6 +7,7 @@ halakatServices.factory("serviceUtils", ['$http', '$log', function ($http, $log)
     var utils = {};
 
 
+
     // main service URL
     utils.serviceURL = 'http://halaqat.gplanet-tech.com/';
 
