@@ -5,6 +5,7 @@
     $scope.funs = {};
     $scope.radio1Model = '0';
     $scope.$parent.vars.titleTxt = 'الخطط';
+    $scope.selectedRing = $scope.$parent.$parent.selectedRing;
 
     $scope.checkModel = {
         saturday: false,
@@ -196,15 +197,16 @@
                 templateUrl: 'tasme3.html',
                 controller: ['$scope', '$modalInstance', 'Mos7afData', 'planServices', 'studentId', 'tsmi3Services','selectedPlan', function (scope, $modalInstance, Mos7afData, planServices, studentId, tsmi3Services, selectedPlan) {
 
-                    $scope.studentplans = [];
+                    scope.studentplans = [];
                     planServices.getAllPlansByStudentId(studentId,
                         function(data) {
-                            $scope.studentplans = data;
+                            scope.studentplans = data;
+                            console.log(scope.studentplans)
                         },
                         function(err) {
                             console.log(err)
                             if (err.ErrorDes == "No available Saving Plan") {
-                                $scope.studentplans = [];
+                                scope.studentplans = [];
                             }
                         });
 
@@ -281,6 +283,15 @@
                           : scope.getRange(1, scope.picker.getDaysInMonth(selY, selM));
                     }
 
+                    scope.delete = function (plan) {
+                        $('#' + plan.Id).remove();
+                        planServices.unassignStudFromPlan(studentId, plan.Id, function () {
+                            console.log('deleted successfully');
+                        }, function (error) {
+                            console.log(error)
+                        })
+                        
+                    }
 
                     scope.ok = function () {
                         if (scope.RecPlan.selectedSura == null || scope.RecPlan.selectedAya == null) {
@@ -327,7 +338,9 @@
         }
     };
 
+    console.log($scope.selectedRing);
     $scope.getStudentsByRingId($scope.selectedRing.ID);
-    $scope.getRingPlans($scope.selectedRing.ID)
+    $scope.getRingPlans($scope.selectedRing.ID);
+    
     
 }];

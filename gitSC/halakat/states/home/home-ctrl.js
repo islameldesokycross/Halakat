@@ -11,7 +11,7 @@
                     $scope.vars.rings = data;
                     $scope.vars.myRing = $scope.vars.rings[0];
                     $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
-                } else {
+                   } else {
                     alert("خطأ أثناء استرجاع الحلقات من فضلك تحقق من الانترنت واضغط ok")
                     $scope.getAllRings()
                 }
@@ -37,6 +37,7 @@
     }
     };
 
-    
-
+    $scope.selectAction = function () {
+        $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
+    }
 }];
