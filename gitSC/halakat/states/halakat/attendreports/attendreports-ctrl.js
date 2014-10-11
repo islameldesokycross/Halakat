@@ -1,9 +1,22 @@
-﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', function ($scope, $state, $modal, $templateCache) {
+﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices',
+    function ($scope, $state, $modal, $templateCache, studentServices) {
 
-    $scope.vars = {};
+    $scope.vars = {ringStudents:[]};
     $scope.funs = {};
     $scope.radioModel = "0";
     $scope.$parent.vars.titleTxt = 'تقرير الحضور';
+    $scope.selectedRing = $scope.$parent.$parent.selectedRing;
+
+    $scope.getStudentsByRingId = function (ringId) {
+        studentServices.getAllStudentByRingId(ringId,
+            function (data) {
+                $scope.vars.ringStudents = data;
+            },
+            function (err) {
+                console.log(err);
+            })
+    };
+    $scope.getStudentsByRingId($scope.selectedRing.ID);
 
 
 

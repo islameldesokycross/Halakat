@@ -6,11 +6,7 @@
 
     <div style="position: relative; width: 100%; display: inline-block; padding: 10px 10px; padding-top: 20px;">
         <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
-            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
-            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
-            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
-            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
-            <option value="حمزه حسين الشاطري">حمزه حسين الشاطري</option>
+            <option ng-repeat="student in vars.ringStudents" value="{{student.Name}}">{{student.Name}}</option>
         </select>
     </div>
 

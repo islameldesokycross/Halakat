@@ -1,7 +1,9 @@
-﻿var tsmi3reportsCtrl = ['$scope', '$state', '$modal', '$templateCache', function ($scope, $state, $modal, $templateCache) {
+﻿var tsmi3reportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices',
+    function ($scope, $state, $modal, $templateCache, studentServices) {
 
-    $scope.vars = {};
+    $scope.vars = { ringStudents: [] };
     $scope.funs = {};
+    $scope.selectedRing = $scope.$parent.$parent.selectedRing;
 
     
     $scope.$parent.vars.titleTxt = 'تقرير التسميع';
@@ -25,4 +27,16 @@
             }
         });
     };
+
+    $scope.getStudentsByRingId = function (ringId) {
+        studentServices.getAllStudentByRingId(ringId,
+            function (data) {
+                $scope.vars.ringStudents = data;
+            },
+            function (err) {
+                console.log(err);
+            })
+    };
+    $scope.getStudentsByRingId($scope.selectedRing.ID);
+
 }];

@@ -1,6 +1,5 @@
 ﻿
 <div style="height: 100%;">
-
     <style>
     </style>
     <div style="position: absolute; width: 100%; z-index: 10;">
@@ -22,7 +21,6 @@
                     </a>
                 </div>
             </div>
-
             <table style="width: 100%; border-collapse: collapse;">
                 <thead class="bggreeny whitey">
                     <tr style="height:26px">
@@ -33,7 +31,6 @@
                         </th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr ng-repeat="constructedDaysRow in $parent.calendar.constructedDays track by $index">
                         <td ng-repeat="constructedDay in constructedDaysRow track by $index"
@@ -42,11 +39,8 @@
                         </td>
                     </tr>
                 </tbody>
-
             </table>
-
         </div>
-
         <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
             <div style="width: 33.3%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">الحالة</div>
             <div style="width: 66.7%; height: 100%;display: inline-block;position: relative;" class="">
@@ -57,18 +51,18 @@
                 <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
             </div>
         </div>
-
         <div class="btn-group tab-group">
-            <!--<label class="btn tab2-btn"><span class="head">إشعارات</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="0"></div></span></label>-->
-            <label class="btn tab2-btn"><span class="head">تذكير</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="0"></div></span></label>
-            <label class="btn tab2-btn"><span class="head">سلبية</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="1" /></div></span></label>
-            <label class="btn tab2-btn"><span class="head">إيجابية</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="2" /></div></span></label>
-            <label class="btn tab2-btn"><span class="head">معتذر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="3" /></div></span></label>
-            <label class="btn tab2-btn"><span class="head">متأخر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="4" /></div></span></label>
-            <label class="btn tab2-btn"><span class="head">غائب</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="5" /></div></span></label>
-            <label class="btn tab2-btn"><span class="head">حاضر</span><span class="content"><div class="chkboxparent"><input type="checkbox" name="chkbx1" value="6" /></div></span></label>
+           <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'6'"><span class="head">تذكير</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'5'"><span class="head">سلبية</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'4'"><span class="head">إيجابية</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'3'"><span class="head">معتذر</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'2'"><span class="head">متأخر</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'1'"><span class="head">غائب</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
+            <label class="btn  tab2-btn" ng-model="checkModel" btn-radio="'0'"><span class="head">حاضر</span><span class="content"><div class="chkboxparent"><span class="inner" /></div></span></label>
         </div>
-
+        <div style="margin: 10px 0; width: 100%;padding-right: 17px; padding-left: 10px;">
+            <input ng-model="comment" type="text" style="border: 1px solid lightgray; height: 35px; border-radius: 2px; padding: 6px 6px 6px 25px; width:100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none;" />
+        </div>
         <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
             <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;position: relative" class="bggreeny whitey"><input type="checkbox" style="position: absolute; top: 67%; margin-top: -11px; right: 8%; " />اختيار الطلاب</div>
             <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
@@ -80,45 +74,20 @@
             </div>
         </div>
     </div>
-    
+
     <!--students list-->
-    <div style="position: absolute; width: 100%; padding-top: 388px; top: 0; height: 100%;">
-        
+    <div style="width: 100%; padding-top: 388px; top: 0; height: 93%;">
+
         <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
             <ul class="students-list">
-                <li>
+                <li ng-repeat="student in vars.ringStudents">
                     <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
+                    <div class="st-name">{{student.Name}}</div>
                     <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
                     <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
                 </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-
-                    <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
-                    <button class="btn st-icons glyphicon glyphicon-remove redy"></button>
-
-
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
-                <li>
-                    <div class="st-pic"></div>
-                    <div class="st-name">عدنان حسين الشاطري</div>
-                    <div class="st-icons"></div>
-                </li>
-
             </ul>
         </div>
     </div>
+    <button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="saveAtten()">save</button>
 </div>
-

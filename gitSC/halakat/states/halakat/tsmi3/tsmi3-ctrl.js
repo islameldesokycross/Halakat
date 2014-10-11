@@ -1,7 +1,9 @@
-﻿var tsmi3Ctrl = ['$scope', '$state', function ($scope, $state) {
+﻿var tsmi3Ctrl = ['$scope', '$state', 'studentServices',
+    function ($scope, $state, studentServices) {
 
-    $scope.vars = {};
+        $scope.vars = { ringStudents: [] };
     $scope.funs = {};
+    $scope.selectedRing = $scope.$parent.$parent.selectedRing;
 
     $scope.$parent.vars.titleTxt = 'التسميع';
 
@@ -79,4 +81,14 @@
         });
     };
 
+    $scope.getStudentsByRingId = function (ringId) {
+        studentServices.getAllStudentByRingId(ringId,
+            function (data) {
+                $scope.vars.ringStudents = data;
+            },
+            function (err) {
+                console.log(err);
+            })
+    };
+    $scope.getStudentsByRingId($scope.selectedRing.ID);
 }];
