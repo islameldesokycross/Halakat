@@ -167,7 +167,6 @@ halakatServices.factory("ringServices", function (serviceUtils) {
     };
 });
 
-
 halakatServices.factory("planServices", function (serviceUtils) {
     var baseurl = "api/SavingPlan/";
     // get main or sub categories 
@@ -334,6 +333,37 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
 
     };
 });
+
+halakatServices.factory("attendServices", function (serviceUtils) {
+    var baseurl = "api/Attendance/";
+    var CreateNewAttendanceNote = function (StudentIds, AttendanceType, Date, Note, successFn, errorFn) {
+        serviceUtils.callService({
+            method: 'Post',
+            url: baseurl + 'CreateNewAttendanceNote',
+            data: {
+                "StudentIds": StudentIds,
+                "AttendanceType": AttendanceType,
+                "Note": Note,
+                "Date": Date,
+            },
+            success: successFn,
+            error: errorFn
+        });
+    },
+    GetStudentAttendance = function (StudnetId, fromDate, toDate, successFn, errorFn) {
+        serviceUtils.callService({
+            method: 'GET',
+            url: baseurl + 'GetStudentAttendance?StudnetId=' + StudnetId + '&fromDate=' + fromDate + '&toDate=' + toDate,
+            data: {},
+            success: successFn,
+            error: errorFn
+        });
+    };
+    return {
+        CreateNewAttendanceNote: CreateNewAttendanceNote,
+        GetStudentAttendance: GetStudentAttendance
+    };
+})
 
 halakatServices.factory("Mos7afNoteServices", function (serviceUtils) {
     var baseurl = "api/Mos7afNote/";

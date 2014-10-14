@@ -1,17 +1,18 @@
-﻿var attendCtrl = ['$scope', '$state', 'studentServices', function ($scope, $state, studentServices) {
+﻿var attendCtrl = ['$scope', '$state', 'studentServices', 'attendServices',
+    function ($scope, $state, studentServices, attendServices) {
 
     $scope.vars = {ringStudents:[]};
     $scope.funs = {};
     $scope.selectedRing = $scope.$parent.$parent.selectedRing;
-    $scope.checkModel = '-1';
+    $scope.checkModel = '0';
     //    {
-    //    attend: false,
-    //    absent: false,
-    //    late: false,
-    //    execuse: false,
-    //    positive: false,
-    //    negative: false,
-    //    reminder: false,
+    //    attend: 1,
+    //    absent: 2,
+    //    late: 3,
+    //    execuse: 4,
+    //    positive: 5,
+    //    negative: 6,
+    //    reminder: 7,
     //};
     $scope.comment=''
 
@@ -28,5 +29,12 @@
     };
     $scope.getStudentsByRingId($scope.selectedRing.ID);
 
-    //console.log($scope.$parent.calendar)
+    $scope.createNewAttendance = function (StudentIds, AttendanceType, Date, Note) {
+        attendServices.CreateNewAttendanceNote(StudentIds, AttendanceType, Date, Note, function (data) {
+            console.log(data);
+        }, function (error) {
+            console.log(error);
+        })
+    }('2','1','10/14/2014','حاضر')
+    
 }];

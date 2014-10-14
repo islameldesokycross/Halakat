@@ -1,11 +1,51 @@
-﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices',
-    function ($scope, $state, $modal, $templateCache, studentServices) {
+﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices', 'attendServices',
+    function ($scope, $state, $modal, $templateCache, studentServices, attendServices) {
 
     $scope.vars = {ringStudents:[]};
     $scope.funs = {};
     $scope.radioModel = "0";
     $scope.$parent.vars.titleTxt = 'تقرير الحضور';
     $scope.selectedRing = $scope.$parent.$parent.selectedRing;
+    $scope.AttendanceCount={
+        attend: 0, //1
+        absent: 0, //2
+        late: 0, //3
+        execuse: 0, //4
+        positive: 0, //5
+        negative: 0, //6
+        reminder: 0 //7
+    }
+       
+    $scope.updateCounters = function (attendanceDays) {
+        for (var i in attendanceDays) {
+            var day = attendanceDays[i];
+            switch (attendanceDays[i].AttendanceTypeId) {
+                case 1:
+                    $scope.AttendanceCount.attend++;
+                    break;
+                case 2:
+                    $scope.AttendanceCount.absent++;
+                    break;
+                case 3:
+                    $scope.AttendanceCount.late++;
+                    break;
+                case 4:
+                    $scope.AttendanceCount.execuse++;
+                    break;
+                case 5:
+                    $scope.AttendanceCount.positive++;
+                    break;
+                case 6:
+                    $scope.AttendanceCount.negative++;
+                    break;
+                case 7:
+                    $scope.AttendanceCount.reminder++;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     $scope.getStudentsByRingId = function (ringId) {
         studentServices.getAllStudentByRingId(ringId,
@@ -18,7 +58,14 @@
     };
     $scope.getStudentsByRingId($scope.selectedRing.ID);
 
-
+    $scope.getAttendance = function (studentId, startDate, endDate) {
+        attendServices.GetStudentAttendance(studentId, startDate, endDate, function (data) {
+            console.log(data);
+            $scope.updateCounters(data)
+        }, function (error) {
+            console.log(error);
+        })
+    }('2', '03/10/2014', '10/10/2014');
 
     $scope.opendate = function (size) {
 
@@ -93,6 +140,7 @@
             }
         });
     };
+    
     
 
 }];
