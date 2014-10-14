@@ -6,8 +6,8 @@
     </style>
 
     <div ng-class="{'hidden': userType == 'student'}" style="position: relative; width: 100%; display: inline-block; padding: 10px 10px 0 10px">
-        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
-            <option ng-repeat="student in vars.ringStudents" value="{{student.Name}}">{{student.Name}}</option>
+        <select id="select" ng-model="studentId" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
+            <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
     </div>
     
@@ -18,18 +18,20 @@
     <div ng-show="radioModel=='0'" style="position: relative;width: 100%;display: inline-block;padding: 0px 10px;">
         <div style="display: inline-block; float: right; width: 50%;">
             <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 87%; float: left">
-                <input type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate()" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                <input ng-model="fromDate" value="fromDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(1)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
         </div>
         <div style="display: inline-block; float: right; width: 50%;">
             <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 87%;float:left">
-                <input type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate()" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                <input ng-model="toDate" value="toDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(2)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
         </div>
     </div>
    
+    <button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="getAttendance()">ادخال</button>
+
     <div class="btn-group tab-group" style="padding: 2.5px 1px 5px 1px">
         <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'7'"><span class="head">تذكير</span><span class="content">{{AttendanceCount.reminder}}</span></label>
         <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'6'"><span class="head">سلبية</span><span class="content">{{AttendanceCount.negative}}</span></label>
