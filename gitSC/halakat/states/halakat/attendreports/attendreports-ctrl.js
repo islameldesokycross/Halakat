@@ -15,11 +15,9 @@
         negative: 0, //6
         reminder: 0 //7
     }
-    $scope.fromDate = '';//TODO today's date
-    $scope.toDate = '';//TODO after month
+        $scope.dates={fromDate:'', toDate:'',index:1}
     $scope.studentId = '';
-    $scope.index = 1;
-
+    
     $scope.updateCounters = function (attendanceDays) {
         for (var i in attendanceDays) {
             var day = attendanceDays[i];
@@ -71,8 +69,8 @@
 
     $scope.getAttendance = function () {
         var studentId= $scope.studentId;
-        var startDate=$scope.fromDate;
-        var endDate = $scope.toDate;
+        var startDate=$scope.dates.fromDate;
+        var endDate = $scope.dates.toDate;
         attendServices.GetStudentAttendance(studentId, startDate, endDate, function (data) {
             console.log(data);
             $scope.updateCounters(data)
@@ -82,12 +80,19 @@
     }
     //('2', '03/10/2014', '10/10/2014');
 
-    $scope.opendate = function (index, fromDate, toDate) {
-        $scope.index = index;
+    $scope.fireEvent = function () {
+        if ($scope.dates.fromDate != '' && $scope.dates.toDate != '') {
+            $scope.getAttendance();
+        }
+    }
+
+    $scope.opendate = function (index, dates) {
+        $scope.dates.index = index;
         var modalInstance = $modal.open({
             template: $templateCache.get('date.html'),
-            controller: ['$scope', '$modalInstance', 'index', 'fromDate', 'toDate',
-                function ($scope, $modalInstance, index, fromDate, toDate) {
+            controller: ['$scope', '$modalInstance', 'dates',
+                function ($scope, $modalInstance, dates) {
+                
                 $scope.modalVars = {
                     selectedD: 0,
                     selectedM: 0,
@@ -130,23 +135,17 @@
 
                 $scope.getDays = function (selY, selM) {
                     $scope.days =
-                      //  (selM == $scope.picker.currentMonth) ?
-                      //  $scope.getRange($scope.picker.currentDay, $scope.picker.getDaysInMonth(selY, selM) + 1)
-                      //:
                       $scope.getRange(1, $scope.picker.getDaysInMonth(selY, selM));
-
                 }
 
                 $scope.ok = function () {
                     console.log($scope.modalVars)
-                    if (index==1) {
-                        fromDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
+                    if (dates.index==1) {
+                        dates.fromDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
                     }
                     else {
-                        toDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
+                        dates.toDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
                     }
-                    console.log(fromDate)
-                    console.log(toDate)
                     $modalInstance.dismiss('cancel');
                 };
 
@@ -155,27 +154,21 @@
                 };
             }],
             resolve: {
-                index: function () {
-                    return $scope.index;
-                },
-                fromDate: function () {
-                    return $scope.fromDate;
-                },
-                toDate: function () {
-                    return $scope.toDate;
+                dates: function () {
+                    return $scope.dates;
                 }
             }
         });
-        //modalInstance.result.then(function () {
-        //    if ($scope.fromDate != '' && $scope.toDate != '') {
-        //        $scope.getAttendance($scope.studentId, $scope.fromDate, $scope.toDate)
-        //    }
-        //    console.log($scope.fromDate)
-        //    console.log($scope.toDate)
-        //}, function () {
-        //    $scope.fromDate = fromDate;
-        //    $scope.toDate = toDate;
-        //})
+
+        modalInstance.result.then(function () {
+            if ($scope.dates.fromDate != '' && $scope.dates.toDate != '' && $scope.studentId != '') {
+                $scope.getAttendance();
+            }
+           }, function () {
+               if ($scope.dates.fromDate != '' && $scope.dates.toDate != '' && $scope.studentId != '') {
+                   $scope.getAttendance();
+               }
+        })
     };
     
 }];
