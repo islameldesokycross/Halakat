@@ -24,6 +24,14 @@ textarea,select {
     color: #119379 !important;
 }
 
+.redy {
+    color: #af2b2b !important;
+}
+
+.grayna {
+    color: #dddddd !important;
+}
+
 .whitey {
     color: #ffffff !important;
 }
@@ -47,6 +55,14 @@ textarea,select {
 
 .bggreeny {
     background-color: #119379;
+}
+
+.bgredy {
+    background-color: #af2b2b;
+}
+
+.bggrayna {
+    background-color: #dddddd;
 }
 
 .bgwhitey {

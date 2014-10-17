@@ -21,22 +21,48 @@
             padding: 0 4px;
             display: inline-block;
         }
+
+        .header {
+            display : none;
+        }
+
+        .halakat-view {
+            padding-top:initial !important;
+        }
+        
+        .rn-carousel-container, .rn-carousel-container ul {
+            height: 100%;
+            direction: ltr;
+        }
+
+            .rn-carousel-container li {
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                background-size: 100% 100%;
+            }
     </style>
 
-    <input type="text" ng-model="vars.pageNum" />
+    <!--<input type="text" ng-model="vars.pageNum" />
     <button ng-click="getAyasOfPage(vars.pageNum)">go</button>
     <button ng-click="nextPage()">Next</button>
-    <button ng-click="prevPage()">Previous</button>
+    <button ng-click="prevPage()">Previous</button>-->
 
     <!--<span ng-bind="vars.initialJuz"></span>
         <span ng-bind="vars.initialSura"></span>
         <span ng-bind="vars.initialPage"></span>-->
 
-    <div ng-repeat="sura in vars.pagesuar" class="right" style="font-size: 14pt; line-height: 2.35em; width: 98%; margin-left: auto; margin-right: auto;" ng-class="{'center' :  vars.pageNum == 1 || vars.pageNum == 2}">
+    <!--<div ng-repeat="sura in vars.pagesuar" class="right" style="font-size: 14pt; line-height: 2.35em; width: 98%; margin-left: auto; margin-right: auto;" ng-class="{'center' :  vars.pageNum == 1 || vars.pageNum == 2}">
         <div ng-bind="sura.header"></div>
         <span ng-repeat="aya in sura.ayas"
               ng-class="{'ayaSelected': vars.selectedAya==aya['index']}"
               ng-click="selectAya(aya['index'])"><span>{{aya["text"]}}</span><span class="ayaNumber">﴿{{aya["index"]}}﴾</span></span>
-    </div>
+    </div>-->
+
+    <ul rn-carousel rn-carousel-buffered rn-carousel-index="vars.pageInx" class="image">
+        <li ng-repeat="sura in vars.suwr" ng-style="{ backgroundImage: 'url(' + sura.img + ')' }">
+            <!--<div class="layer">{{ sura.img }}</div>-->
+        </li>
+    </ul>
+
 </div>
 

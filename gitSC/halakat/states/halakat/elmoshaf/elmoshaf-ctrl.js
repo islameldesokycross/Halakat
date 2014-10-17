@@ -13,7 +13,9 @@
         pagesuar: [],
         NumPageSuar: 0,
         pageLastAya: 0,
-        pageNum:1
+        pageNum: 1,
+        suwr: [],
+        pageInx: 603
     };
     
     //get the content of a page
@@ -210,4 +212,14 @@
     };
     
     $scope.getAyasOfPage($scope.vars.pageNum);
+
+
+    // load suwr
+    for (var i = 604; i > 0; i--) {
+        $scope.vars.suwr.push(
+            {
+                img: "http://halaqat.gplanet-tech.com/quran/" + i + ".png"
+            }
+        );
+    }
 }];
