@@ -63,13 +63,13 @@
         };
         $scope.getStudentsByRingId($scope.selectedRing.ID);
     }
-    else {//TODO student
-        //$scope.studentId = '';
+    else {//student
+        $scope.studentId = $scope.$parent.$parent.userId;
     }
 
     $scope.getAttendance = function () {
-        var studentId= $scope.studentId;
-        var startDate=$scope.dates.fromDate;
+        var studentId=$scope.studentId;
+        var startDate= $scope.dates.fromDate;
         var endDate = $scope.dates.toDate;
         attendServices.GetStudentAttendance(studentId, startDate, endDate, function (data) {
             console.log(data);

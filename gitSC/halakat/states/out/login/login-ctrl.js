@@ -27,6 +27,7 @@
                 } else {
                     $rootScope.userType = "student";
                 }
+                $scope.$parent.$parent.userId = data.Id;
                 $state.transitionTo('home');
             },
             function(err) {
