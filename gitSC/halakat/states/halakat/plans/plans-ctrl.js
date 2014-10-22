@@ -302,10 +302,17 @@
                             alert("من فضلك اختر تاريخ البداية اولا")
                             return;
                         }
+
+                        var d = '';
+                        var x = $.calendars.newDate(scope.RecPlan.selectedY, scope.RecPlan.selectedM, scope.RecPlan.selectedD, "Islamic", "ar");
+                        var y = x.toJSDate();
+                        d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
+
+
                         tsmi3Services.createNewPlan(
                             studentId,
                             parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
-                            scope.RecPlan.selectedD + "/" + scope.RecPlan.selectedM + "/" + scope.RecPlan.selectedY, //hijiri date
+                            d, //hijiri date
                             selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
                             selectedPlan.NumberOfDaysReq || selectedPlan.number,//plan number in prev or new plan
                             selectedPlan.PlanDayWeeks || selectedPlan.days,//plan days in the week in prev or new plan

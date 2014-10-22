@@ -33,13 +33,13 @@
     <!--<button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="getAttendance()">ادخال</button>-->
 
     <div class="btn-group tab-group" style="padding: 2.5px 1px 5px 1px">
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'7'"><span class="head">تذكير</span><span class="content">{{AttendanceCount.reminder}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'6'"><span class="head">سلبية</span><span class="content">{{AttendanceCount.negative}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'5'"><span class="head">إيجابية</span><span class="content">{{AttendanceCount.positive}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'4'"><span class="head">معتذر</span><span class="content">{{AttendanceCount.execuse}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'3'"><span class="head">متأخر</span><span class="content">{{AttendanceCount.late}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'2'"><span class="head">غائب</span><span class="content">{{AttendanceCount.absent}}</span></label>
-        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'1'"><span class="head">حاضر</span><span class="content">{{AttendanceCount.attend}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'7'" ng-click="onSelectAttType()"><span class="head">تذكير</span><span class="content">{{AttendanceCount.reminder}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'6'" ng-click="onSelectAttType()"><span class="head">سلبية</span><span class="content">{{AttendanceCount.negative}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'5'" ng-click="onSelectAttType()"><span class="head">إيجابية</span><span class="content">{{AttendanceCount.positive}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'4'" ng-click="onSelectAttType()"><span class="head">معتذر</span><span class="content">{{AttendanceCount.execuse}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'3'" ng-click="onSelectAttType()"><span class="head">متأخر</span><span class="content">{{AttendanceCount.late}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'2'" ng-click="onSelectAttType()"><span class="head">غائب</span><span class="content">{{AttendanceCount.absent}}</span></label>
+        <label class="btn tab1-btn" ng-model="radioModel1" btn-radio="'1'" ng-click="onSelectAttType()"><span class="head">حاضر</span><span class="content">{{AttendanceCount.attend}}</span></label>
     </div>
     
 
@@ -48,7 +48,7 @@
     <div style="width: 100%; direction: rtl; padding: 0; margin: 0; padding-top: 5px; height: 190px;">
         <div class="greeny" style="width: 100%; height: 27px; line-height: 20px; text-align: center; font-weight: bold; font-size: 1.2em; padding: 0px 0px;">
             <div class="" style="float: left; display: inline-block; width: 10%; margin-top: 3px;">
-                <a href="" role="button" ng-click="$parent.calendar.prevMonth()" class="">
+                <a href="" role="button" ng-click="getPrevMonth()" class="">
                     <span class="glyphicon glyphicon-chevron-left greeny"></span>
                 </a>
             </div>
@@ -57,7 +57,7 @@
                 <span aria-live="assertive" class="dw-cal-month" data-val="calendar.selectedYear">{{$parent.calendar.selectedYear}}</span>
             </div>
             <div class="" style="float: right; display: inline-block; width: 10%; margin-top: 3px;">
-                <a href="" role="button" ng-click="$parent.calendar.nxtMonth()" class="">
+                <a href="" role="button" ng-click="getNxtMonth()" class="">
                     <span class="glyphicon glyphicon-chevron-right greeny"></span>
                 </a>
             </div>
@@ -76,7 +76,8 @@
                 <tr ng-repeat="constructedDaysRow in $parent.calendar.constructedDays track by $index">
                     <td ng-repeat="constructedDay in constructedDaysRow track by $index"
                         style="text-align: center;">
-                        <a href="" class="greeny calendar-cell">{{constructedDay}}</a>
+                        <a href="" class="greeny calendar-cell"
+                           ng-class="{ whitey: selectedDays[$parent.$index][$index].isSelected, bggreeny: selectedDays[$parent.$index][$index].isSelected}">{{constructedDay}}</a>
                     </td>
                 </tr>
             </tbody>

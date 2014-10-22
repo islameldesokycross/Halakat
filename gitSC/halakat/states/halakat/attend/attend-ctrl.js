@@ -6,7 +6,7 @@
         $scope.selectedRing = $scope.$parent.$parent.selectedRing;
         $scope.checkModel = '0';
         $scope.selectedDays = [];
-        $scope.seletedDate = '';
+        $scope.seletedDate = [];
         //    {
         //    attend: 1,
         //    absent: 2,
@@ -44,8 +44,10 @@
             }, $scope.selectedDays);
 
             $scope.selectedDays[pinx][inx].isSelected = true;
-            $scope.seletedDate = ($scope.$parent.calendar.selectedMonth + 1) + '/' + day + '/' + $scope.$parent.calendar.selectedYear;
-            console.log($scope.seletedDate);
+            //$scope.seletedDate = ($scope.$parent.calendar.selectedMonth + 1) + '/' + day + '/' + $scope.$parent.calendar.selectedYear;
+            $scope.seletedDate = [day, ($scope.$parent.calendar.selectedMonth + 1), $scope.$parent.calendar.selectedYear];
+            //console.log($.calendars.newDate($scope.seletedDate[2], $scope.seletedDate[1], $scope.seletedDate[0], "Islamic", "ar"));
+            //console.log($scope.seletedDate);
         };
 
         $scope.selectAllStud = function () {
@@ -84,7 +86,12 @@
                 if (student.selected) selectedStudents += ", " + student.Id;
             });
             selectedStudents = selectedStudents.substr(1);
-            attendServices.CreateNewAttendanceNote(selectedStudents, $scope.checkModel, $scope.seletedDate, $scope.comment, function (data) {
+            var d = '';
+            var x = $.calendars.newDate($scope.seletedDate[2], $scope.seletedDate[1], $scope.seletedDate[0], "Islamic", "ar");
+            var y = x.toJSDate();
+            d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear()
+
+            attendServices.CreateNewAttendanceNote(selectedStudents, $scope.checkModel, d, $scope.comment, function (data) {
                 console.log(data);
             }, function (error) {
                 console.log(error);
