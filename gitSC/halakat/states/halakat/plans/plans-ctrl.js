@@ -1,4 +1,5 @@
-﻿var plansCtrl = ['$scope', '$state', '$modal', 'planServices', 'studentServices', function ($scope, $state, $modal, planServices, studentServices, Mos7afData) {
+﻿var plansCtrl = ['$scope', '$state', '$modal', 'planServices', 'studentServices',
+    function ($scope, $state, $modal, planServices, studentServices, Mos7afData) {
 
     window.plans = $scope;
     $scope.vars = {plan:{id:null,name:"",number:"",days:"",assignedStudents:[]},ringStudents:[],ringPlans:[],selectedRingPlan:null};
@@ -120,6 +121,7 @@
         }
 
         if ($scope.vars.plan.Id != null) {
+            //TODO change parameters
             planServices.updatePlan($scope.vars.plan.Id, $scope.vars.plan.name, $scope.vars.plan.number, $scope.vars.plan.days, $scope.selectedRing.ID,
             function (data) {
                 $scope.vars.selectedRingPlan = data;
@@ -127,9 +129,11 @@
                 console.log("updated successfully --> " + data)
             },
             function (err) {
-                console.log(err)
+                console.log(err);
+                alert(err.ErrorDes);
             });
         } else {
+            //TODO change parameters
             planServices.createNewPlan($scope.vars.plan.name, $scope.vars.plan.number, $scope.vars.plan.days, $scope.selectedRing.ID,
             function (data) {
                 $scope.vars.selectedRingPlan = data;
@@ -142,11 +146,28 @@
         }
         
     };
+
     $scope.getSssignedStudenttoAplan = function () {
         if ($scope.vars.plan.Id != null) {
             planServices.getStudentsassignedtoplan($scope.vars.plan.Id,
-                function(data) {
+                function (data) {
+                    console.log('here are students')
+                    console.log(data);
                     $scope.vars.plan.assignedStudents = data;
+                    for (var i in $scope.vars.ringStudents) {
+                        var student = $scope.vars.ringStudents[i];
+                        for (var j in $scope.vars.plan.assignedStudents) {
+                            var assiggned = $scope.vars.plan.assignedStudents[j];
+                            if (student.Id == assiggned.StudentId) {
+                                $scope.vars.ringStudents[i].isAssigned = true;
+                                break;
+                            }
+                            else {
+                                $scope.vars.ringStudents[i].isAssigned = false;
+                            }
+                        }
+                        
+                    }
                 },
                 function(err) {
                     console.log(err);
@@ -167,29 +188,21 @@
                 console.log(err);
             })
     };
-    $scope.isAssigned = function(id) {
-        var assigned = _.indexOf($scope.vars.plan.assignedStudents, id);
-        if (assigned != -1) {
-            return true;
-        }
-        return false;
-    };
-    
+
     //handel the student click
-    $scope.opentasme3 = function (id) {
+    $scope.opentasme3 = function (student) {
+        var id = student.Id;
         if ($scope.vars.selectedRingPlan == null) {
             alert("please save or select a plan first");
             return;
         }
-        if ($scope.isAssigned(id)) {
-            studentServices.unassignStudFromPlan(id, $scope.vars.selectedRingPlan,
-                function (data) {
-                    console.log("success" + data);
-                },
-                function(err) {
-                    
-                }
-            );
+        if (student.isAssigned) {
+            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
+                console.log(data);
+                student.isAssigned = false;
+            }, function (error) {
+                console.log(error);
+            })
         } else {
             $scope.StuId = id;
             //open pop of student
@@ -306,16 +319,13 @@
                         var d = '';
                         var x = $.calendars.newDate(scope.RecPlan.selectedY, scope.RecPlan.selectedM, scope.RecPlan.selectedD, "Islamic", "ar");
                         var y = x.toJSDate();
-                        d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
+                        d = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
 
-
-                        tsmi3Services.createNewPlan(
+                        tsmi3Services.updatetsmi3Plan(
                             studentId,
                             parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
                             d, //hijiri date
                             selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
-                            selectedPlan.NumberOfDaysReq || selectedPlan.number,//plan number in prev or new plan
-                            selectedPlan.PlanDayWeeks || selectedPlan.days,//plan days in the week in prev or new plan
                             function (data) {
                                 console.log(data)
                                 $modalInstance.close();
@@ -345,9 +355,11 @@
         }
     };
 
-    console.log($scope.selectedRing);
     $scope.getStudentsByRingId($scope.selectedRing.ID);
     $scope.getRingPlans($scope.selectedRing.ID);
     
+    //$scope.unAssign = function (student) {
+    
+    //}
     
 }];

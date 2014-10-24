@@ -53,11 +53,11 @@
 
         <div style="width: 100%; padding: 5px 15px; position: relative; height: 100%; padding-bottom: 0">
             <ul class="students-list">
-                <li ng-repeat="student in vars.ringStudents" ng-click="opentasme3(student.Id)" ng-class="{'assigned': isAssigned(student.Id)}">
+                <li ng-repeat="student in vars.ringStudents" ng-click="opentasme3(student)" ng-class="{'assigned': student.isAssigned}">
                     <div class="st-pic"></div>
                     <div class="st-name">{{student.Name}}</div>
-                    <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus"></button>
-                    <button class="btn st-icons glyphicon glyphicon-remove redy " ng-class="{'hidden': !isAssigned(student.Id)}"></button>
+                    <button style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus" ng-class="{'hidden': student.isAssigned}"></button>
+                    <button class="btn st-icons glyphicon glyphicon-remove redy " ng-class="{'hidden': !student.isAssigned}"></button>
                 </li>
             </ul>
         </div>

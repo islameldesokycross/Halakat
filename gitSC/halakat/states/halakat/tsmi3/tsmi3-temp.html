@@ -14,14 +14,13 @@
     </style>
 
     <div style="position: relative; width: 100%; display: inline-block; padding: 20px 10px; ">
-        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 54%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
-            <option ng-repeat="student in vars.ringStudents" value="{{student.Name}}">{{student.Name}}</option>
+        <select ng-change="getPlans()" ng-model="student" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 54%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
+            <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
         
 
-        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 44%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
-            <option value="الخطط الممسجلة">الخطط الممسجلة</option>
-            <option value="الخطط الممسجلة">الخطط الممسجلة</option>
+        <select ng-change="getTsme3Data()" ng-model="plan" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 44%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
+            <option ng-repeat="plan in vars.studentPlans" value="{{plan.Id}}">{{plan.Name}}</option>
         </select>
         
     </div>
@@ -58,11 +57,24 @@
         <tbody>
             <tr>
                 <th colspan="6" class="bgblacky whitey" style="text-align: right; font-weight: bold; border: 1px solid; border-radius: 3px;">
-                    البداية آل عمران 20
+                    {{startSura}}
                 </th>
             </tr>
 
-            <tr>
+            <tr ng-repeat="assig in vars.tsme3Records.RecitationPlanAssignments">
+                <td>
+                    <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div>
+                </td>
+                <td>آل عمران 25</td>
+                <td>{{assig.AssignmentPages | number:2}}</td>
+                <td>
+                    <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> {{assig.ScheduledDate}} </span>
+                    <span  id="{{assig.Id}}" ng-click="opendate(assig)" style="width: 45%; display: inline-block; margin: 0; padding: 0;">{{assig.ActualDate}} </span>
+                </td>
+                <td>{{assig.DayDifferent}}</td>
+                <td style="width: 12%;"><input style="font-size: 11px;width:100%" type="number" ng-model="assig.NumberOfFaults" ng-change="update(assig)" /></td>
+            </tr>
+            <!--<tr>
                 <td>
                     <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div>
                 </td>
@@ -70,7 +82,7 @@
                 <td>0.35</td>
                 <td>
                     <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> 12|08|14 </span>
-                    <span style="width: 45%; display: inline-block; margin: 0; padding: 0;"> 12|08|14 </span>                
+                    <span style="width: 45%; display: inline-block; margin: 0; padding: 0;"> 12|08|14 </span>
                 </td>
                 <td>-3</td>
                 <td>15</td>
@@ -87,20 +99,7 @@
                 </td>
                 <td>-3</td>
                 <td>15</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div>
-                </td>
-                <td>آل عمران 25</td>
-                <td>0.35</td>
-                <td>
-                    <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> 12|08|14 </span>
-                    <span style="width: 45%; display: inline-block; margin: 0; padding: 0;"> 12|08|14 </span>
-                </td>
-                <td>-3</td>
-                <td>15</td>
-            </tr>
+            </tr>-->
         </tbody>
     </table>
 

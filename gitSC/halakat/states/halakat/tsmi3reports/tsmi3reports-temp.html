@@ -5,21 +5,21 @@
     </style>
 
     <div style="position: relative; width: 100%; display: inline-block; padding: 10px 10px; padding-top: 20px;">
-        <select style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
-            <option ng-repeat="student in vars.ringStudents" value="{{student.Name}}">{{student.Name}}</option>
+        <select ng-model="studentId" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;">
+            <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
     </div>
 
     <div style="position: relative;width: 100%;display: inline-block;padding: 10px 10px;">
         <div style="display: inline-block; float: right; width: 50%;">
             <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 87%; float: left">
-                                                                                             <input type="text" ng-focus="opendate()" placeholder=" 12 | 12 | 12 " style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                <input ng-model="dates.fromDate" value="dates.fromDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(1)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
         </div>
         <div style="display: inline-block; float: right; width: 50%;">
             <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 87%;float:left">
-                                                                                              <input type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate()" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                <input ng-model="dates.toDate" value="dates.toDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(2)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
         </div>
