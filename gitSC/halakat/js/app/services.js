@@ -110,11 +110,21 @@ halakatServices.factory("studentServices", function(serviceUtils) {
                 success: successFn,
                 error: errorFn
             });
-        };
+        },
+        getStudentSavingPlansReport = function (studentId, startDate, endDate, successFn, errorFn) {
+            serviceUtils.callService({
+                method: 'GET',
+                url: baseurl + 'GetStudentSavingPlansReport?StudentId=' + studentId + '&StartDate=' + startDate + '&EndDate=' + endDate,
+                data: {},
+                success: successFn,
+                error: errorFn
+            });
+        }
 
     return {
         getAll: getAll,
-        getAllStudentByRingId: getAllStudentByRingId
+        getAllStudentByRingId: getAllStudentByRingId,
+        getStudentSavingPlansReport:getStudentSavingPlansReport
     };
 });
 

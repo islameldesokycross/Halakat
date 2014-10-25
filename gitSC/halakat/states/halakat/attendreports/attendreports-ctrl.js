@@ -133,8 +133,8 @@
                 var x1 = x.toJSDate();
                 var y1 = y.toJSDate();
 
-                var sd = x1.getDate() + '/' + (x1.getMonth() + 1) + '/' + x1.getFullYear();
-                var ed = y1.getDate() + '/' + (y1.getMonth() + 1) + '/' + y1.getFullYear();
+                var sd = (x1.getMonth() + 1) + '/' + x1.getDate() + '/' + x1.getFullYear();
+                var ed = (y1.getMonth() + 1) + '/' + y1.getDate() + '/' + y1.getFullYear();
                 console.log(startDate, endDate);
             }
             attendServices.GetStudentAttendance(studentId, sd, ed, function (data) {

@@ -192,24 +192,20 @@
     //handel the student click
     $scope.opentasme3 = function (student) {
         var id = student.Id;
+        $scope.student = student;
         if ($scope.vars.selectedRingPlan == null) {
             alert("please save or select a plan first");
             return;
         }
-        if (student.isAssigned) {
-            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
-                console.log(data);
-                student.isAssigned = false;
-            }, function (error) {
-                console.log(error);
-            })
-        } else {
+        
             $scope.StuId = id;
             //open pop of student
             var modalInstance = $modal.open({
                 templateUrl: 'tasme3.html',
-                controller: ['$scope', '$modalInstance', 'Mos7afData', 'planServices', 'studentId', 'tsmi3Services','selectedPlan', function (scope, $modalInstance, Mos7afData, planServices, studentId, tsmi3Services, selectedPlan) {
-
+                controller: ['$scope', '$modalInstance', 'Mos7afData', 'planServices', 'studentId', 'tsmi3Services',
+                    'selectedPlan','student',
+                    function (scope, $modalInstance, Mos7afData, planServices, studentId, tsmi3Services,
+                        selectedPlan, student) {
                     scope.studentplans = [];
                     planServices.getAllPlansByStudentId(studentId,
                         function(data) {
@@ -319,24 +315,44 @@
                         var d = '';
                         var x = $.calendars.newDate(scope.RecPlan.selectedY, scope.RecPlan.selectedM, scope.RecPlan.selectedD, "Islamic", "ar");
                         var y = x.toJSDate();
-                        d = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+                        d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
-                        tsmi3Services.updatetsmi3Plan(
-                            studentId,
-                            parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
-                            d, //hijiri date
-                            selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
-                            function (data) {
-                                console.log(data)
-                                $modalInstance.close();
+                        if (student.isAssigned) {
+                            tsmi3Services.updatetsmi3Plan(
+                                                    studentId,
+                                                    parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
+                                                    d, //hijiri date
+                                                    selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
+                                                    function (data) {
+                                                        console.log(data)
+                                                        $modalInstance.close();
 
-                            },
-                            function (err) {
-                                console.log(err)
-                                $modalInstance.close();
+                                                    },
+                                                    function (err) {
+                                                        console.log(err)
+                                                        $modalInstance.close();
 
 
-                            });
+                                                    });
+                        } else {
+                            student.isAssigned = true;
+                            tsmi3Services.createNewPlan(
+                                                   studentId,
+                                                   parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
+                                                   d, //hijiri date
+                                                   selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
+                                                   function (data) {
+                                                       console.log(data)
+                                                       $modalInstance.close();
+
+                                                   },
+                                                   function (err) {
+                                                       console.log(err)
+                                                       $modalInstance.close();
+
+
+                                                   });
+                        }
                     };
 
                     scope.cancel = function () {
@@ -349,17 +365,25 @@
                     },
                     selectedPlan: function() {
                         return $scope.vars.selectedRingPlan;
+                    },
+                    student: function () {
+                        return $scope.student;
                     }
                 }
             });
-        }
+        
     };
 
     $scope.getStudentsByRingId($scope.selectedRing.ID);
     $scope.getRingPlans($scope.selectedRing.ID);
     
-    //$scope.unAssign = function (student) {
-    
-    //}
+    $scope.unAssign = function (student) {
+            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
+                console.log(data);
+                student.isAssigned = false;
+            }, function (error) {
+                console.log(error);
+            })
+    }
     
 }];

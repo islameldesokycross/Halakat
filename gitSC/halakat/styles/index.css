@@ -511,7 +511,7 @@ border: 1px solid #ddd;
             }
             .students-list > li .st-name {
                 height: 100%;
-                width: 100%;
+                width: 85%;
                 padding: 12px 10px;
                 font-size: 1.2em;
                 border-right: 1px solid white;

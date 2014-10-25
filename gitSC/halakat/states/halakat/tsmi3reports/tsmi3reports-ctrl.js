@@ -10,7 +10,21 @@
     $scope.$parent.vars.titleTxt = 'تقرير التسميع';
 
     $scope.getReport = function () {
+        var fromDate = $scope.dates.fromDate.split('/');
+        var x = $.calendars.newDate(fromDate[2], fromDate[1], fromDate[0], "Islamic", "ar");
+        var y = x.toJSDate();
+        d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
+        var toDate = $scope.dates.toDate.split('/');
+        var x = $.calendars.newDate(toDate[2], toDate[1], toDate[0], "Islamic", "ar");
+        var y = x.toJSDate();
+        d1 = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
+
+        studentServices.getStudentSavingPlansReport($scope.studentId, d, $scope.dates.toDate, function (data) {
+            console.log(data);
+        }, function (error) {
+            console.log(error)
+        })
     }
 
     $scope.opendate = function (index, dates) {

@@ -70,17 +70,19 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                       $scope.getRange(1, ($scope.picker.currentDay + 1));
                     }
                 }
+
                 $scope.ok = function () {
                     console.log($scope.modalVars)
                     date.actualDate = $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedY;
                     $('#' + assig.Id).text(date.actualDate);
                     date.assig.ActualDate = date.actualDate;
+                    date.assig.done = true;
 
                     //var d = '';
                     //var x = $.calendars.newDate($scope.modalVars.selectedY, $scope.modalVars.selectedM, $scope.modalVars.selectedD, "Islamic", "ar");
                     //var y = x.toJSDate();
 
-                    //d = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+                    //d = (y.getMonth() + 1) + '/' +y.getDate() + '/' +  y.getFullYear();
 
                     tsmi3AssignmentServices.updateRecitationsAssignment(date.assig.Id, date.plan, date.assig.ScheduledDate,
                     date.assig.ActualDate, date.assig.DayDifferent, date.assig.NumberOfFaults, date.assig.AssignmentPages, date.assig.EndAya,
@@ -142,6 +144,15 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                 $scope.vars.tsme3Records = data;
                 if ($scope.vars.tsme3Records.RecitationPlan.SwraStart) {
                     $scope.startSura = "البداية" + ' ' + QuranData.suras.sura[$scope.vars.tsme3Records.RecitationPlan.SwraStart].name;
+                }
+                for (var i in $scope.vars.tsme3Records.RecitationPlanAssignments) {
+                    if ($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate != null){
+                        $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = true;
+                    }
+                    else {
+                        $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = false;
+                    }
+                    $scope.vars.tsme3Records.RecitationPlanAssignments[i].StartSura = QuranData.suras.sura[$scope.vars.tsme3Records.RecitationPlanAssignments[i].StartSura].name
                 }
                 console.log('tsmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee3');
                 console.log(data)
