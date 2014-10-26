@@ -12,13 +12,13 @@
 
     <div style="position: relative;width: 100%;display: inline-block;padding: 10px 10px;">
         <div style="display: inline-block; float: right; width: 50%;">
-            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 87%; float: left">
+            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 85%; float: left">
                 <input ng-model="dates.fromDate" value="dates.fromDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(1)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
         </div>
         <div style="display: inline-block; float: right; width: 50%;">
-            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 87%;float:left">
+            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 85%;float:left">
                 <input ng-model="dates.toDate" value="dates.toDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(2)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
                 <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
             </div>
@@ -27,7 +27,44 @@
 
     <div style="position: relative; width: 100%; top: 0; height: 100%; padding-bottom: 140px; ">
         <ul style="list-style: none; margin: 0; padding: 0; overflow-y: scroll; overflow-x: hidden;height: 100% ">
-            <li>
+            <li ng-repeat="r in reports">
+                <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
+                    <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">{{r.SavingPlanName}} {{r.SavingPlanNumber}}</div>
+                    <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
+                        <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
+                            <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
+                        </div>
+                        <span style=" width: 70%; display: inline-block;border-bottom: 2px solid #119379; position: absolute; top: 17px; /* right: 13px; */ "></span>
+                        <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
+                    </div>
+                </div>
+
+                <div style="width: 100%;padding: 0 10px">
+                    <table class="table border-table">
+                        <thead class="bggreeny whitey">
+                            <tr>
+                                <th>البداية</th>
+                                <th>النهاية</th>
+                                <th>المقرر</th>
+                                <th>المنفذ</th>
+                                <th>الفرق</th>
+                                <th>الترتيب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{r.SuraStart}} {{r.AyaStart}}</td>
+                                <td>{{r.SuraEnd}} {{r.AyaEnd}}</td>
+                                <td>{{r.ScheduledAssignments}}</td>
+                                <td>{{r.FinishedAssignments}}</td>
+                                <td>{{r.Difference}}</td>
+                                <td>{{r.Order}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <!--<li>
                 <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
                     <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">رقم الخطة : 30</div>
                     <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
@@ -140,45 +177,7 @@
                         </tbody>
                     </table>
                 </div>
-            </li>
-            <li>
-                <div style="width: 100%; padding: 0; height: 31px; margin: 10px 0;">
-                    <div style="width: 40%; height: 100%; display: block; float: right; text-align: center; padding: 6px 10px; font-size: 1.2em;" class="bggreeny whitey">رقم الخطة : 30</div>
-                    <div style="width: 60%; height: 100%;display: inline-block;position: relative;" class="">
-                        <div style=" position: relative; height: 100%; width: 12px; background-color: white; z-index: 10;">
-                            <span style="width: 8px; height: 8px; border: 2px solid #119379; margin-top: 14px; margin-right: 5px; display: inline-block; border-radius: 17px; "></span>
-                        </div>
-                        <span style=" width: 70%; display: inline-block;border-bottom: 2px solid #119379; position: absolute; top: 17px; /* right: 13px; */ "></span>
-                        <span style=" width: 29%; display: inline-block; border-bottom: 2px solid gray; position: absolute; top: 17px; right: 71%; "></span>
-                    </div>
-                </div>
-
-                <div style="width: 100%;padding: 0 10px">
-                    <table class="table border-table">
-                        <thead class="bggreeny whitey">
-                            <tr>
-                                <th>البداية</th>
-                                <th>النهاية</th>
-                                <th>المقرر</th>
-                                <th>المنفذ</th>
-                                <th>الفرق</th>
-                                <th>الترتيب</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>الجادلة 1</td>
-                                <td>المجادلة 32</td>
-                                <td>3</td>
-                                <td>4.5</td>
-                                <td>1.5+</td>
-
-                                <td>1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>

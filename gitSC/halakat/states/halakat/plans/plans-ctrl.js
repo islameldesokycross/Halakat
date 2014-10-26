@@ -313,7 +313,8 @@
                         }
 
                         var d = '';
-                        var x = $.calendars.newDate(scope.RecPlan.selectedY, scope.RecPlan.selectedM, scope.RecPlan.selectedD, "Islamic", "ar");
+                        var x = $.calendars.newDate(parseInt(scope.RecPlan.selectedY), parseInt(scope.RecPlan.selectedM),
+                            parseInt(scope.RecPlan.selectedD), "Islamic", "ar");
                         var y = x.toJSDate();
                         d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 

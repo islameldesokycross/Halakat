@@ -78,14 +78,15 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     date.assig.ActualDate = date.actualDate;
                     date.assig.done = true;
 
-                    //var d = '';
-                    //var x = $.calendars.newDate($scope.modalVars.selectedY, $scope.modalVars.selectedM, $scope.modalVars.selectedD, "Islamic", "ar");
-                    //var y = x.toJSDate();
+                    var d = '';
+                    var x = $.calendars.newDate(parseInt($scope.modalVars.selectedY), parseInt($scope.modalVars.selectedM),
+                        parseInt($scope.modalVars.selectedD), "Islamic", "ar");
+                    var y = x.toJSDate();
 
-                    //d = (y.getMonth() + 1) + '/' +y.getDate() + '/' +  y.getFullYear();
+                    d = (y.getMonth() + 1) + '/' +y.getDate() + '/' +  y.getFullYear();
 
                     tsmi3AssignmentServices.updateRecitationsAssignment(date.assig.Id, date.plan, date.assig.ScheduledDate,
-                    date.assig.ActualDate, date.assig.DayDifferent, date.assig.NumberOfFaults, date.assig.AssignmentPages, date.assig.EndAya,
+                    d, date.assig.DayDifferent, date.assig.NumberOfFaults, date.assig.AssignmentPages, date.assig.EndAya,
                     date.assig.StartAya, function (data) {
                         console.log(data);
                     }, function (error) {
@@ -162,17 +163,30 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     }
 
     $scope.update = function (assig) {
-        //if (assig.ActualDate != null && assig.ActualDate!= undefined) {
-        //    var dateActual = assig.ActualDate.split('/');
+        if (assig.ActualDate != null && assig.ActualDate!= undefined) {
+            var dateActual = assig.ActualDate.split('/');
 
-        //    var d1 = '';
-        //    var x = $.calendars.newDate(dateActual[2], dateActual[1], dateActual[0], "Islamic", "ar");
-        //    var y = x.toJSDate();
-        //    d1 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
-        //}
+            var d1 = '';
+            var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
+            var y = x.toJSDate();
+            d1 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+        } else {
+            d1 = assig.ActualDate;
+        }
 
-        tsmi3AssignmentServices.updateRecitationsAssignment(assig.Id, $scope.plan, assig.ScheduledDate,
-            assig.ActualDate, assig.DayDifferent, assig.NumberOfFaults, assig.AssignmentPages, assig.EndAya,
+        if (assig.ScheduledDate != null && assig.ScheduledDate != undefined) {
+            var dateActual = assig.ScheduledDate.split('/');
+
+            var d2 = '';
+            var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
+            var y = x.toJSDate();
+            d2 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+        } else {
+            d2 = assig.ScheduledDate;
+        }
+
+        tsmi3AssignmentServices.updateRecitationsAssignment(assig.Id, $scope.plan, d2,
+            d1, assig.DayDifferent, assig.NumberOfFaults, assig.AssignmentPages, assig.EndAya,
             assig.StartAya, function (data) {
                 console.log(data);
             }, function (error) {

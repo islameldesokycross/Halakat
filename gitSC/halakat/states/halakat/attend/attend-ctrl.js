@@ -87,7 +87,8 @@
             });
             selectedStudents = selectedStudents.substr(1);
             var d = '';
-            var x = $.calendars.newDate($scope.seletedDate[2], $scope.seletedDate[1], $scope.seletedDate[0], "Islamic", "ar");
+            var x = $.calendars.newDate(parseInt($scope.seletedDate[2]), parseInt($scope.seletedDate[1]),
+                parseInt($scope.seletedDate[0]), "Islamic", "ar");
             var y = x.toJSDate();
             d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear()
 

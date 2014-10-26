@@ -6,22 +6,30 @@
     $scope.selectedRing = $scope.$parent.$parent.selectedRing;
     $scope.dates = { fromDate: '', toDate: '', index: 1 };
     $scope.studentId = "";
+    $scope.reports = [];
     
     $scope.$parent.vars.titleTxt = 'تقرير التسميع';
 
     $scope.getReport = function () {
         var fromDate = $scope.dates.fromDate.split('/');
-        var x = $.calendars.newDate(fromDate[2], fromDate[1], fromDate[0], "Islamic", "ar");
+        var x = $.calendars.newDate(parseInt(fromDate[2]), parseInt(fromDate[1]), parseInt(fromDate[0]), "Islamic", "ar");
         var y = x.toJSDate();
         d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
         var toDate = $scope.dates.toDate.split('/');
-        var x = $.calendars.newDate(toDate[2], toDate[1], toDate[0], "Islamic", "ar");
+        var x = $.calendars.newDate(parseInt(toDate[2]), parseInt(toDate[1]), parseInt(toDate[0]), "Islamic", "ar");
         var y = x.toJSDate();
         d1 = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
-        studentServices.getStudentSavingPlansReport($scope.studentId, d, $scope.dates.toDate, function (data) {
-            console.log(data);
+        studentServices.getStudentSavingPlansReport(
+            //$scope.studentId
+            4, d, d1, function (data) {
+                console.log(data);
+                $scope.reports = data;
+                for (var i in $scope.reports) {
+                    $scope.reports[i].SuraStart = QuranData.suras.sura[$scope.reports[i].SuraStart].name
+                    $scope.reports[i].SuraEnd = QuranData.suras.sura[$scope.reports[i].SuraEnd].name
+                }
         }, function (error) {
             console.log(error)
         })
