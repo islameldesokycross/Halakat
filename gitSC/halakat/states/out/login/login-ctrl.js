@@ -30,7 +30,10 @@
                 $scope.$parent.$parent.userId = data.Id;
                 $state.transitionTo('home');
             },
-            function(err) {
+            function (err) {
+                if (err.ErrorDes == "Not Autharized.") {
+                    alert('اسم المستخدم أو كلمة السر غير صحيحة')
+                }
                 console.log(err);
             });
     };
