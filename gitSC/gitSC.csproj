@@ -83,6 +83,7 @@
     <Content Include="halakat\js\vendor\angular-carousel.js" />
     <Content Include="halakat\js\vendor\angular-carousel.min.js" />
     <Content Include="halakat\js\vendor\angular-route.min.js" />
+    <Content Include="halakat\js\vendor\angular-spinner.js" />
     <Content Include="halakat\js\vendor\angular-spinner.min.js" />
     <Content Include="halakat\js\vendor\angular-strap.min.js" />
     <Content Include="halakat\js\vendor\angular-strap.tpl.min.js" />
@@ -105,6 +106,7 @@
     <Content Include="halakat\js\vendor\quran-data.js" />
     <Content Include="halakat\js\vendor\quran-simple.js" />
     <Content Include="halakat\js\vendor\quran-simple.txt" />
+    <Content Include="halakat\js\vendor\spin.js" />
     <Content Include="halakat\js\vendor\spin.min.js" />
     <Content Include="halakat\js\vendor\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="halakat\js\vendor\underscore.js" />

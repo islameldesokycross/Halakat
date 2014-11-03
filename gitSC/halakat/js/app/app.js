@@ -1,5 +1,6 @@
 ﻿// create the module and name it scotchApp
-var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services', 'ngAnimate', 'angular-carousel']);
+var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services',
+    'ngAnimate', 'angular-carousel','angularSpinner']);
 
 
 // configure our routes

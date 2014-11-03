@@ -12,6 +12,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     $scope.date = { actualDate: '', assig: {}, plan: '' };
 
     $scope.$parent.vars.titleTxt = 'التسميع';
+    $scope.spin = false;
 
     $scope.opendate = function (assig, date) {
         $scope.date.assig = assig;
@@ -110,21 +111,26 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     };
 
     $scope.getStudentsByRingId = function (ringId) {
+        $scope.spin = true;
         studentServices.getAllStudentByRingId(ringId,
             function (data) {
+                $scope.spin = false;
                 $scope.vars.ringStudents = data;
                 $scope.student = $scope.vars.ringStudents[0].Id;
                 $scope.getPlans();
             },
             function (err) {
+                $scope.spin = false;
                 console.log(err);
             })
     };
     $scope.getStudentsByRingId($scope.selectedRing.ID);
 
     $scope.getPlans = function () {
+        $scope.spin = true;
         planServices.getAllPlansByStudentId($scope.student,
                         function (data) {
+                            $scope.spin = false;
                             $scope.vars.studentPlans = data;
                             $scope.plan = $scope.vars.studentPlans[0].Id;
                             $scope.getTsme3Data();
@@ -132,16 +138,20 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                             console.log($scope.vars.studentPlans)
                         },
                         function (err) {
+                            $scope.spin = false;
                             console.log(err)
                             if (err.ErrorDes == "No available Saving Plan") {
                                 $scope.vars.studentPlans = [];
+                                $scope.spin = false;
                             }
                         });
     };
 
     $scope.getTsme3Data = function () {
+        $scope.spin = true;
         tsmi3AssignmentServices.getRecitationPlanAndAssignmentsByStudentIdAndSavingPlanID($scope.plan,
             $scope.student, function myfunction(data) {
+                $scope.spin = false;
                 $scope.vars.tsme3Records = data;
                 if ($scope.vars.tsme3Records.RecitationPlan.SwraStart) {
                     $scope.startSura = "البداية" + ' ' + QuranData.suras.sura[$scope.vars.tsme3Records.RecitationPlan.SwraStart].name;
@@ -158,6 +168,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                 console.log('tsmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee3');
                 console.log(data)
             }, function (error) {
+                $scope.spin = false;
                 console.log(error);
             })
     }
@@ -184,12 +195,14 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
         } else {
             d2 = assig.ScheduledDate;
         }
-
+        $scope.spin = true;
         tsmi3AssignmentServices.updateRecitationsAssignment(assig.Id, $scope.plan, d2,
             d1, assig.DayDifferent, assig.NumberOfFaults, assig.AssignmentPages, assig.EndAya,
             assig.StartAya, function (data) {
+                $scope.spin = false;
                 console.log(data);
             }, function (error) {
+                $scope.spin = false;
                 console.log(error);
             })
     }

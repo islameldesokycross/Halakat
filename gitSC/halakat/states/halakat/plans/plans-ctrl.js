@@ -7,6 +7,7 @@
     $scope.radio1Model = '0';
     $scope.$parent.vars.titleTxt = 'الخطط';
     $scope.selectedRing = $scope.$parent.$parent.selectedRing;
+    $scope.getting = true;
 
     $scope.checkModel = {
         saturday: false,
@@ -181,10 +182,12 @@
     $scope.getStudentsByRingId = function(ringId) {
         studentServices.getAllStudentByRingId(ringId,
             function(data) {
+                $scope.getting = false;
                 $scope.vars.ringStudents = data;
                 $scope.getSssignedStudenttoAplan();
             },
             function(err) {
+                $scope.getting = false;
                 console.log(err);
             })
     };
@@ -193,8 +196,19 @@
     $scope.opentasme3 = function (student) {
         var id = student.Id;
         $scope.student = student;
+
         if ($scope.vars.selectedRingPlan == null) {
-            alert("please save or select a plan first");
+            alert("يجب اختيار خطة أولا");
+            return;
+        }
+
+        if (student.isAssigned) {
+            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
+                console.log(data);
+                student.isAssigned = false;
+            }, function (error) {
+                console.log(error);
+            })
             return;
         }
         
@@ -336,24 +350,25 @@
 
                                                     });
                         } else {
-                            student.isAssigned = true;
                             tsmi3Services.createNewPlan(
                                                    studentId,
                                                    parseInt(scope.RecPlan.selectedSura.ayastartindex) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
                                                    d, //hijiri date
                                                    selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
                                                    function (data) {
+                                                       student.isAssigned = true;
                                                        console.log(data)
                                                        $modalInstance.close();
 
                                                    },
                                                    function (err) {
                                                        console.log(err)
+                                                       if (ErrorName == "DateError") {
+                                                           alert('يجب اختيار يوم من الأيام المقررة للخطة')
+                                                       }
                                                        $modalInstance.close();
-
-
                                                    });
-                        }
+                                               }
                     };
 
                     scope.cancel = function () {

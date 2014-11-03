@@ -1,7 +1,17 @@
-﻿
+﻿<style>
+    span div div div {
+        background: #45ad98 !important;
+    }
+
+    span > div {
+        top: 80% !important;
+    }
+</style>
+<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getting" spinner-start-active="1"></span>
+
 <div style="height: 100%;overflow: hidden">
 
-    <select ng-model="vars.selectedRingPlan" ng-options="ringplan.Name for ringplan in vars.ringPlans" ng-change="loadPlanData(vars.selectedRingPlan.Id)" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;color: rgb(155,155,155);outline: none;box-shadow: none;background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;margin-left: .5%;margin-right: .5%;margin-top: 5px;width: 99%;font-size: 14pt;">
+    <select ng-model="vars.selectedRingPlan" ng-options="ringplan.Name for ringplan in vars.ringPlans" ng-change="loadPlanData(vars.selectedRingPlan.Id)" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;color: rgb(155,155,155);outline: none;box-shadow: none;/*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/margin-left: .5%;margin-right: .5%;margin-top: 5px;width: 99%;font-size: 14pt;">
         <option value="">اختر خطة سابقة</option>
     </select>
     <input type="text" placeholder="اسم الخطة" ng-model="vars.plan.name" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; margin-left: .5%; margin-right: .5%; margin-top: 5px; position: relative; width: 99%; font-size: 14pt; text-align: center;" />
@@ -55,8 +65,9 @@
                 <li ng-repeat="student in vars.ringStudents" ng-class="{'assigned': student.isAssigned}">
                     <div ng-click="opentasme3(student)" class="st-pic"></div>
                     <div ng-click="opentasme3(student)" class="st-name">{{student.Name}}</div>
-                    <button ng-click="opentasme3(student)" style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus" ng-class="{'hidden': student.isAssigned}"></button>
-                    <button ng-click="unAssign(student)" class="btn st-icons glyphicon glyphicon-remove redy " ng-class="{'hidden': !student.isAssigned}"></button>
+                    <input type="checkbox" ng-disabled="vars.selectedRingPlan==null" ng-change="opentasme3(student)" ng-model="student.isAssigned" style="height: 25px; width: 25px; float: left; margin-top: -36px; margin-left: 10px;" />
+                    <!--<button ng-click="opentasme3(student)" style="color: lightgray" class="btn st-icons glyphicon glyphicon-plus" ng-class="{'hidden': student.isAssigned}"></button>
+                    <button ng-click="unAssign(student)" class="btn st-icons glyphicon glyphicon-remove redy " ng-class="{'hidden': !student.isAssigned}"></button>-->
                 </li>
             </ul>
         </div>
