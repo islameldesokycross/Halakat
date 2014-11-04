@@ -37,7 +37,7 @@
                             style="text-align: center;">
                             <a href="" class=" greeny calendar-cell"
                                ng-click="selectDay(constructedDay, $index, $parent.$index, $event)"
-                               ng-class="{ whitey: selectedDays[$parent.$index][$index].isSelected, bggreeny: selectedDays[$parent.$index][$index].isSelected}">
+                               ng-class="{ whitey: selectedDays[$parent.$index][$index].isSelected, bggreeny: selectedDays[$parent.$index][$index].isSelected, bgorangy: constructedDay == $parent.calendar.currentDay}">
                                 {{constructedDay}}
                             </a>
                         </td>
@@ -89,12 +89,13 @@
                     ng-click="student.selected = !student.selected">
                     <div class="st-pic"></div>
                     <div class="st-name">{{student.Name}}</div>
-                    <button class="btn st-icons glyphicon glyphicon-remove redy"
+                    <input type="checkbox" ng-change="student.selected = !student.selected" ng-model="student.selected" style="height: 25px; width: 25px; float: left; margin-top: -36px; margin-left: 10px;" />
+                    <!--<button class="btn st-icons glyphicon glyphicon-remove redy"
                             ng-show="student.selected"
                             ng-click="student.selected = false"></button>
                     <button class="btn st-icons glyphicon glyphicon-plus grayna"
                             ng-hide="student.selected"
-                            ng-click="student.selected = true"></button>
+                            ng-click="student.selected = true"></button>-->
                 </li>
             </ul>
         </div>

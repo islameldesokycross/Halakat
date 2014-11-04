@@ -167,6 +167,20 @@
                             selectedY: 0
                         };
 
+                        $scope.checkMonthes = function () {
+                            if ($scope.modalVars.selectedY == 0) {
+                                alert("إختر السنة أولا");
+                                return false;
+                            }
+                        };
+
+                        $scope.checkDays = function () {
+                            if ($scope.modalVars.selectedM == 0) {
+                                alert("إختر الشهر أولا");
+                                return false;
+                            }
+                        };
+
                         $scope.getRange = function (n, m) {
                             return _.range(n, m);
                         }
@@ -212,10 +226,10 @@
                         $scope.ok = function () {
                             console.log($scope.modalVars)
                             if (dates.index == 1) {
-                                dates.fromDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
+                                dates.fromDate = $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedY;
                             }
                             else {
-                                dates.toDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
+                                dates.toDate = $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedY;
                             }
                             $modalInstance.dismiss('cancel');
                         };

@@ -1,4 +1,13 @@
-﻿
+﻿<style>
+    span div div div {
+        background: #45ad98 !important;
+    }
+
+    span > div {
+        top: 90% !important;
+    }
+</style>
+<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getRings" spinner-start-active="1"></span>
 
 <div class="bg-pattern" style="height: 100%;">
 
@@ -70,10 +79,10 @@
         </div>
         <div class="row text-center" style="height: 70%;">
             <div ng-class="{'hidden': userType == 'student'}">
-                <label style="color: rgb(155,155,155); font-size: 14pt; font-weight: normal; margin-right: -17px; ">حلقة:</label>
-                <select ng-model="vars.myRing" ng-change="selectAction()" ng-options="ring.Name for ring in vars.rings" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;width: 212px;font-size: 14pt;color: rgb(155,155,155);outline: none;box-shadow: none;background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;margin-bottom: 12px;"></select>
+                <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">حلقة:</label>
+                <select ng-model="vars.myRing" ng-change="selectAction()" ng-options="ring.Name for ring in vars.rings" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
             </div>
-            <ul style="width: 300px; padding: 0; margin-left: auto; margin-right: auto;" class="home-content-box">
+            <ul style="width: 300px; padding: 0; margin-left: auto; margin-right: auto; margin-top: 30px;" class="home-content-box">
                 <li class="bggreeny whitey hom-box" style="">
                     <div>
                         <div class="pic box-icon box-icon-quran" ng-click="funs.goto('elmoshaf',{})"></div>

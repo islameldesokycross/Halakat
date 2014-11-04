@@ -1,5 +1,6 @@
 ﻿// create the module and name it scotchApp
-var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services', 'ngAnimate', 'angular-carousel']);
+var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services',
+    'ngAnimate', 'angular-carousel','angularSpinner']);
 
 
 // configure our routes
@@ -228,12 +229,12 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
             '<h3 class="modal-title">أختر التاريخ</h3>' +
         '</div>' +
         '<div class="modal-body">' +
-            '<div class="datecontaner"><select class="datedropdown" ng-model="modalVars.selectedD">' +
+            '<div class="datecontaner"><select class="datedropdown" ng-click="checkDays()" ng-model="modalVars.selectedD">' +
                 '<option value="0" disabled selected>اليوم</option> ' +
                 '<option ng-repeat="n in days" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+
-            '<div class="datecontaner middle"><select class="datedropdown" ng-model="modalVars.selectedM" ng-change="getDays(modalVars.selectedY, modalVars.selectedM)">' +
+            '<div class="datecontaner middle"><select class="datedropdown" ng-click="checkMonthes()" ng-model="modalVars.selectedM" ng-change="getDays(modalVars.selectedY, modalVars.selectedM)">' +
                 '<option value="0" disabled selected>الشهر</option>' +
                 '<option  ng-repeat="n in monthes" value="{{n}}">{{n}}</option>' +
             '</select>'+

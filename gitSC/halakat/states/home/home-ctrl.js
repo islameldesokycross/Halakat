@@ -4,9 +4,12 @@
     $scope.vars = { rings: [],myRing:{Name:"إختر حلقتك"} };
     $scope.funs = {};
     $scope.$parent.$parent.selectedRing = null;
-    $scope.getAllRings = function() {
+    $scope.getRings = true;
+
+    $scope.getAllRings = function () {
         ringServices.getAll(
             function(data) {
+                $scope.getRings = false;
                 if (typeof (data) != "undefined") {
                     $scope.vars.rings = data;
                     $scope.vars.myRing = $scope.vars.rings[0];
@@ -18,6 +21,7 @@
 
             },
             function(err) {
+                $scope.getRings = false;
                 console.log(err)
 
             });

@@ -110,11 +110,21 @@ halakatServices.factory("studentServices", function(serviceUtils) {
                 success: successFn,
                 error: errorFn
             });
-        };
+        },
+        getStudentSavingPlansReport = function (studentId, startDate, endDate, successFn, errorFn) {
+            serviceUtils.callService({
+                method: 'GET',
+                url: baseurl + 'GetStudentSavingPlansReport?StudentId=' + studentId + '&StartDate=' + startDate + '&EndDate=' + endDate,
+                data: {},
+                success: successFn,
+                error: errorFn
+            });
+        }
 
     return {
         getAll: getAll,
-        getAllStudentByRingId: getAllStudentByRingId
+        getAllStudentByRingId: getAllStudentByRingId,
+        getStudentSavingPlansReport:getStudentSavingPlansReport
     };
 });
 
@@ -276,7 +286,7 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
     var baseurl = "api/RecitationsPlan/";
     // get main or sub categories 
     // if categoryId == null ? Main : sub;
-    var createNewPlan = function (studentId, swraStart, startDate, savingPlanId, savingPlanNumber,planDays, successFn, errorFn) {
+    var createNewPlan = function (studentId, swraStart, startDate, savingPlanId,  successFn, errorFn) {
         serviceUtils.callService({
             method: 'Post',
             url: baseurl + 'CreateNewRecitationsPlan',
@@ -284,22 +294,19 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
                 "StudentId": studentId,
                 "SwraStart": swraStart,
                 "StartDate": startDate,
-                "SavingPlanId": savingPlanId,
-                "SavingPlanNumber": savingPlanNumber,
-                "PlanDays":planDays
+                "SavingPlanId": savingPlanId
             },
             success: successFn,
             error: errorFn
         });
     },
-        updatetsmi3Plan = function(tsmi3PlanId, studentID, swraStartDate, startDate, savingPlanId, ringId, successFn, errorFn) {
+        updatetsmi3Plan = function (studentID, SwraStart, startDate, savingPlanId, successFn, errorFn) {
             serviceUtils.callService({
                 method: 'Post',
                 url: baseurl + 'UpdateRecitationsPlan',
                 data: {
-                    "Id": tsmi3PlanId,
                     "StudentId": studentID,
-                    "SwraStartDate": swraStartDate,
+                    "SwraStart": SwraStart,
                     "StartDate": startDate,
                     "SavingPlanId": savingPlanId
                 },
@@ -333,6 +340,53 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
 
     };
 });
+
+halakatServices.factory("tsmi3AssignmentServices", function (serviceUtils) {
+    var baseurl = "api/RecitationsAssignment/";
+    var getRecitationPlanAndAssignmentsByStudentIdAndSavingPlanID = function (planId, studentId, successFn, errorFn) {
+        serviceUtils.callService({
+            method: 'GET',
+            url: baseurl + 'GetRecitationPlanAndAssignmentsByStudentIdAndSavingPlanID?SavingPlanId=' + planId + '&StudentId=' + studentId,
+            data: {},
+            success: successFn,
+            error: errorFn
+        })
+    },
+    getRecitationPlanByStudentIdAndSavingPlanID = function (planId, studentId, successFn, errorFn) {
+        serviceUtils.callService({
+            method: 'GET',
+            url: baseurl + 'GetRecitationPlanByStudentIdAndSavingPlanID?SavingPlanId=' + planId + '&StudentId=' + studentId,
+            data: {},
+            success: successFn,
+            error: errorFn
+        })
+    },
+    updateRecitationsAssignment = function (id, planId, ScheduledDate, ActualDate, DayDifferent,
+        NumberOfFaults, AssignmentPages, EndAya, StartAya, successFn, errorFn) {
+        serviceUtils.callService({
+            method: 'Post',
+            url: baseurl + 'UpdateRecitationsAssignment',
+            data: {
+                "id" : id,
+                "RecitationPlanId":planId,
+                "ScheduledDate" :ScheduledDate, 
+                "ActualDate" : ActualDate,
+                "DayDifferent":DayDifferent,
+                "NumberOfFaults":NumberOfFaults,
+                "AssignmentPages":AssignmentPages,
+                "EndAya": EndAya,
+                "StartAya": StartAya,
+            },
+            success: successFn,
+            error: errorFn
+        });
+    }
+    return {
+        getRecitationPlanAndAssignmentsByStudentIdAndSavingPlanID: getRecitationPlanAndAssignmentsByStudentIdAndSavingPlanID,
+        getRecitationPlanByStudentIdAndSavingPlanID: getRecitationPlanByStudentIdAndSavingPlanID,
+        updateRecitationsAssignment: updateRecitationsAssignment
+    }
+})
 
 halakatServices.factory("attendServices", function (serviceUtils) {
     var baseurl = "api/Attendance/";
