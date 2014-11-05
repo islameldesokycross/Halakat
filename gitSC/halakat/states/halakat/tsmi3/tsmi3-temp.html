@@ -6,24 +6,22 @@
     span > div {
         top: 60% !important;
     }
+    th {
+        border-left: 1px solid whitesmoke;
+        /*font-weight: normal;*/
+        /*padding: 3px;*/
+    }
+
+    td {
+        font-size: 11px;
+        border: 1px solid #ccc;
+    }
 </style>
-<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="spin" spinner-start-active="1"></span>
+<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="spinning" spinner-start-active="1"></span>
 
 <div style="height: 100%;">
 
-    <style>
-        th {
-            border-left: 1px solid whitesmoke;
-            /*font-weight: normal;*/
-            /*padding: 3px;*/
-        }
-        td {
-            font-size: 11px;
-            border: 1px solid #ccc;
-        }
-    </style>
-
-    <div style="position: relative; width: 100%; display: inline-block; padding: 20px 10px; ">
+<div style="position: relative; width: 100%; display: inline-block; padding: 20px 10px; ">
         <select ng-change="getPlans()" ng-model="student" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 54%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /* background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;*/">
             <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
@@ -39,28 +37,28 @@
         <table style="width: 97%; border-collapse: collapse;" align="center">
             <thead>
                 <tr>
-                    <th class="whitey bggreeny">
+                    <th class="whitey bggreeny" style="width:5%">
                         &nbsp;إعتماد&nbsp;
                     </th>
-                    <th class="whitey bggreeny" style="width: 22%;">
+                    <th class="whitey bggreeny" style="width: 18%;">
                         نهاية الواجب
                     </th>
-                    <th class="whitey bggreeny">
-                        كيفية الواجب
+                    <th class="whitey bggreeny" style="width: 12%;">
+                        كمية الواجب
                     </th>
-                    <th class="whitey bggreeny" style="width: 30%;">
+                    <th class="whitey bggreeny">
                         <div>
                             تاريخ التسميع
                         </div>
                         <div style="border-top: 1px solid whitesmoke;">
-                            <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;">المقرر</span>
-                            <span style="width: 45%; display: inline-block; margin: 0; padding: 0;">الفعلى</span>
+                            <span style="width: 47%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;">المقرر</span>
+                            <span style="width: 48%; display: inline-block; margin: 0; padding: 0;">الفعلى</span>
                         </div>
                     </th>
-                    <th class="whitey bggreeny">
+                    <th class="whitey bggreeny" style="width: 10%;">
                         فرق الأيام
                     </th>
-                    <th class="whitey bggreeny">
+                    <th class="whitey bggreeny" style="width: 12%;">
                         عدد الأخطاء
                     </th>
                 </tr>
@@ -68,7 +66,7 @@
             <tbody>
                 <tr>
                     <th colspan="6" class="bgblacky whitey" style="text-align: right; font-weight: bold; border: 1px solid; border-radius: 3px;">
-                        {{startSura}}
+                        {{startSura}} {{AyaStart}}
                     </th>
                 </tr>
 
@@ -77,40 +75,14 @@
                         <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0" ng-model="assig.done"></div>
                     </td>
                     <td>{{assig.StartSura}} {{assig.StartAya}}</td>
-                    <td>{{assig.AssignmentPages | number:2}}</td>
+                    <td>{{assig.AssignmentPages | number:2}}8.88</td>
                     <td>
-                        <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> {{assig.ScheduledDate}} </span>
-                        <span id="{{assig.Id}}" ng-click="opendate(assig)" style="width: 45%; display: inline-block; margin: 0; padding: 0;">{{assig.ActualDate}}12|12|12 </span>
+                        <span ng-click="opendate(assig,1)" style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> {{assig.ScheduledDate}}</span>
+                        <span ng-click="opendate(assig,2)" style="width: 45%; display: inline-block; margin: 0; padding: 0;">{{assig.ActualDate}}</span>
                     </td>
                     <td>{{assig.DayDifferent}}</td>
-                    <td style="width: 12%;"><input style="font-size: 11px;width:100%" type="number" ng-model="assig.NumberOfFaults" ng-change="update(assig)" /></td>
+                    <td style="width: 12%;"><!--<input style="font-size: 11px;width:100%" type="number" ng-model="assig.NumberOfFaults" ng-change="update(assig)" />--></td>
                 </tr>
-                <!--<tr>
-                    <td>
-                        <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div>
-                    </td>
-                    <td>آل عمران 25</td>
-                    <td>0.35</td>
-                    <td>
-                        <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> 12|08|14 </span>
-                        <span style="width: 45%; display: inline-block; margin: 0; padding: 0;"> 12|08|14 </span>
-                    </td>
-                    <td>-3</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0"></div>
-                    </td>
-                    <td>آل عمران 25</td>
-                    <td>0.35</td>
-                    <td>
-                        <span style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> 12|08|14 </span>
-                        <span style="width: 45%; display: inline-block; margin: 0; padding: 0;"> 12|08|14 </span>
-                    </td>
-                    <td>-3</td>
-                    <td>15</td>
-                </tr>-->
             </tbody>
         </table>
     </div>
