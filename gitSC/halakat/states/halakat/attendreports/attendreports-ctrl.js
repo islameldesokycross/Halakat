@@ -1,5 +1,5 @@
-﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices', 'attendServices',
-    function ($scope, $state, $modal, $templateCache, studentServices, attendServices) {
+﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices', 'attendServices','$rootScope',
+    function ($scope, $state, $modal, $templateCache, studentServices, attendServices, $rootScope) {
 
         $scope.vars = { ringStudents: [] };
         $scope.funs = {};
@@ -7,6 +7,7 @@
         $scope.radioModel1 = undefined;
         $scope.$parent.vars.titleTxt = 'تقرير الحضور';
         $scope.selectedRing = $scope.$parent.$parent.selectedRing;
+        $scope.userType = $scope.$parent.$parent.userType;
         $scope.AttendanceCount = {
             attend: 0, //1
             absent: 0, //2
@@ -20,7 +21,7 @@
         $scope.studentId = '';
         $scope.selectedDays = [];
         $scope.groupedArr = [];
-        //$scope.selectedMonth = $scope.$parent.calendar.selectedMonth;
+        $scope.getReports=false;
 
         $scope.updateCounters = function (attendanceDays) {
             for (var i in attendanceDays) {
@@ -55,13 +56,16 @@
 
         if ($scope.userType == "teacher") {
             $scope.getStudentsByRingId = function (ringId) {
+                $scope.getReports = true;
                 studentServices.getAllStudentByRingId(ringId,
                     function (data) {
+                        $scope.getReports = false;
                         console.log(data);
                         $scope.vars.ringStudents = data;
                         $scope.studentId = data[0].Id;
                     },
                     function (err) {
+                        $scope.getReports = false;
                         console.log(err);
                     })
             };
@@ -121,12 +125,13 @@
         //$scope.selectDays([2, 4]);
 
         $scope.getAttendance = function () {
+            $scope.getReports = true;
             var studentId = $scope.studentId;
             if ($scope.radioModel == "0") {
                 var startDate = ($scope.dates.fromDate).split('/');
                 var endDate = ($scope.dates.toDate).split('/');
-                var x = $.calendars.newDate(parseInt(startDate[2], 10), parseInt(startDate[0], 10), parseInt(startDate[1], 10), "Islamic", "ar");
-                var y = $.calendars.newDate(parseInt(endDate[2], 10), parseInt(endDate[0], 10), parseInt(endDate[1], 10), "Islamic", "ar");
+                var x = $.calendars.newDate(parseInt(startDate[2], 10), parseInt(startDate[1], 10), parseInt(startDate[0], 10), "Islamic", "ar");
+                var y = $.calendars.newDate(parseInt(endDate[2], 10), parseInt(endDate[1], 10), parseInt(endDate[0], 10), "Islamic", "ar");
                 if (x > y) return;
 
 
@@ -138,11 +143,13 @@
                 console.log(startDate, endDate);
             }
             attendServices.GetStudentAttendance(studentId, sd, ed, function (data) {
+                $scope.getReports = false;
                 console.log(data);
                 $scope.groupedArr = $scope.groupTypes(data);
                 //console.log($scope.groupTypes(data))
                 $scope.updateCounters(data);
             }, function (error) {
+                $scope.getReports = false;
                 console.log(error);
             })
         }

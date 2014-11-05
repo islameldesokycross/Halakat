@@ -1,7 +1,7 @@
 ﻿var tsmi3Ctrl = ['$scope', '$state', 'studentServices', 'planServices', '$timeout', 'tsmi3AssignmentServices',
-    '$modal', '$templateCache',
+   '$modal', '$templateCache',
 function ($scope, $state, studentServices, planServices, $timeout, tsmi3AssignmentServices, $modal,
-    $templateCache) {
+   $templateCache) {
 
     $scope.vars = { ringStudents: [], studentPlans: [], tsme3Records: [] };
     $scope.funs = {};
@@ -9,7 +9,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     $scope.student = '';
     $scope.plan = "";
     $scope.startSura = "";
-    $scope.date = { actualDate: '',scheduleDate:'', assig: {}, plan: '',type:'' };
+    $scope.date = { actualDate: '', scheduleDate: '', assig: {}, plan: '', type: '' };
 
     $scope.$parent.vars.titleTxt = 'التسميع';
     $scope.spinning = false;
@@ -97,10 +97,10 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                 }
                 $scope.ok = function () {
                     console.log($scope.modalVars)
-                    if (date.type==2) {
+                    if (date.type == 2) {
                         date.actualDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
-                    date.assig.ActualDate = date.actualDate;
-                    date.assig.done = true;
+                        date.assig.ActualDate = date.actualDate;
+                        date.assig.done = true;
                     }
                     else {
                         date.scheduleDate = $scope.modalVars.selectedM + '/' + $scope.modalVars.selectedD + '/' + $scope.modalVars.selectedY;
@@ -112,7 +112,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                         parseInt($scope.modalVars.selectedD), "Islamic", "ar");
                     var y = x.toJSDate();
 
-                    d = (y.getMonth() + 1) + '/' +y.getDate() + '/' +  y.getFullYear();
+                    d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
                     tsmi3AssignmentServices.updateRecitationsAssignment(date.assig.Id, date.plan, date.assig.ScheduledDate,
                     d, date.assig.DayDifferent, date.assig.NumberOfFaults, date.assig.AssignmentPages, date.assig.EndAya,
@@ -192,10 +192,10 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     var currentSDate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
                     $scope.vars.tsme3Records.RecitationPlanAssignments[i].ScheduledDate = currentSDate;
 
-                    if ($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate != null){
+                    if ($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate != null) {
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = true;
                         var fullDate = new Date($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate);
-                        var twoDigitMonth =fullDate.getMonth() + 1;
+                        var twoDigitMonth = fullDate.getMonth() + 1;
                         var currentADate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate = currentADate;
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].DayDifferent = $scope.daysBetween(new Date(currentSDate), new Date(currentADate));
@@ -203,9 +203,9 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     else {
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = false;
                     }
-                    
 
-                    
+
+
                 }
                 console.log('tsmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee3');
                 console.log(data)
