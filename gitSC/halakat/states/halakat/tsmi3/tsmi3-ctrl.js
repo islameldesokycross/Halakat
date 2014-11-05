@@ -14,6 +14,14 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     $scope.$parent.vars.titleTxt = 'التسميع';
     $scope.spin = false;
 
+    // Converting date to hijri date
+    // takes js date object 
+    // returns hijri date object
+    $scope.jsDateToHijri = function (jsDate) {
+        return $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar").fromJSDate(jsDate);
+    }(new Date());
+
+
     $scope.opendate = function (assig, date) {
         $scope.date.assig = assig;
         $scope.date.plan = $scope.plan;
