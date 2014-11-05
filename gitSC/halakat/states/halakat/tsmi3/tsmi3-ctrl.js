@@ -22,6 +22,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     }(new Date());
 
 
+
     $scope.opendate = function (assig, no, date) {
         $scope.date.assig = assig;
         $scope.date.plan = $scope.plan;
