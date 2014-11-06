@@ -18,8 +18,10 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     // takes js date object 
     // returns hijri date object
     $scope.jsDateToHijri = function (jsDate) {
-        return $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar").fromJSDate(jsDate);
-    }(new Date());
+
+        var hd = $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar")
+        return hd.fromJSDate(jsDate);
+    }
 
 
 
@@ -190,14 +192,18 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     var fullDate = new Date($scope.vars.tsme3Records.RecitationPlanAssignments[i].ScheduledDate);
                     var twoDigitMonth = fullDate.getMonth() + 1;
                     var currentSDate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
-                    $scope.vars.tsme3Records.RecitationPlanAssignments[i].ScheduledDate = currentSDate;
+                    var currentHijriSDate = $scope.jsDateToHijri(fullDate);
+                    var sDateFormat = currentHijriSDate._day + "/" + currentHijriSDate._month + "/" + currentHijriSDate._year;
+                    $scope.vars.tsme3Records.RecitationPlanAssignments[i].ScheduledDate = sDateFormat;
 
                     if ($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate != null){
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = true;
                         var fullDate = new Date($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate);
                         var twoDigitMonth =fullDate.getMonth() + 1;
                         var currentADate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
-                        $scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate = currentADate;
+                        var currentHijriADate = $scope.jsDateToHijri(fullDate);
+                        var aDateFormat = currentHijriADate._day + "/" + currentHijriADate._month + "/" + currentHijriADate._year;
+                        $scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate = aDateFormat;
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].DayDifferent = $scope.daysBetween(new Date(currentSDate), new Date(currentADate));
                     }
                     else {
