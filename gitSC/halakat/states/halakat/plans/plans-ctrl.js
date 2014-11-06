@@ -50,7 +50,7 @@
                 $scope.vars.plan.number = data.NumberOfDaysReq;
 
                 //retrieve the assignrd students for the new plan
-                $scope.getSssignedStudenttoAplan();
+                $scope.getAssignedStudenttoAplan();
 
                 var planDays = data.PlanDayWeeks.split(",");
                 $scope.checkModel.saturday = $scope.checkModel.sunday = $scope.checkModel.monday = $scope.checkModel.tuesday = $scope.checkModel.wensday = $scope.checkModel.thursday = $scope.checkModel.friday = false;
@@ -148,7 +148,7 @@
         
     };
 
-    $scope.getSssignedStudenttoAplan = function () {
+    $scope.getAssignedStudenttoAplan = function () {
         if ($scope.vars.plan.Id != null) {
             planServices.getStudentsassignedtoplan($scope.vars.plan.Id,
                 function (data) {
@@ -173,7 +173,9 @@
                 function(err) {
                     console.log(err);
                     if (err.ErrorDes == "No student has been found ") {
-                        $scope.vars.plan.assignedStudents = [];
+                        for (var i in $scope.vars.ringStudents) {
+                            $scope.vars.ringStudents[i].isAssigned = false;
+                        }
                     }
                 });
         }
@@ -184,7 +186,7 @@
             function(data) {
                 $scope.getting = false;
                 $scope.vars.ringStudents = data;
-                $scope.getSssignedStudenttoAplan();
+                $scope.getAssignedStudenttoAplan();
             },
             function(err) {
                 $scope.getting = false;
@@ -202,15 +204,15 @@
             return;
         }
 
-        if (student.isAssigned) {
-            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
-                console.log(data);
-                student.isAssigned = false;
-            }, function (error) {
-                console.log(error);
-            })
-            return;
-        }
+        //if (student.isAssigned) {
+        //    planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
+        //        console.log(data);
+        //        student.isAssigned = false;
+        //    }, function (error) {
+        //        console.log(error);
+        //    })
+        //    return;
+        //}
         
             $scope.StuId = id;
             //open pop of student
@@ -417,12 +419,17 @@
     $scope.getRingPlans($scope.selectedRing.ID);
     
     $scope.unAssign = function (student) {
+        if (student.isAssigned==false) {
             planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
                 console.log(data);
                 student.isAssigned = false;
             }, function (error) {
                 console.log(error);
             })
+        }
+        else {
+            $scope.opentasme3(student);
+        }
     }
     
 }];
