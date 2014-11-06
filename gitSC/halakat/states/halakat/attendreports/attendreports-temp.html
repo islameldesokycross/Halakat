@@ -1,9 +1,15 @@
 ﻿
 <div style="height: 100%;">
-
     <style>
-        
+        span div div div {
+            background: #45ad98 !important;
+        }
+
+        span > div {
+            top: 85% !important;
+        }
     </style>
+    <span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getReports" spinner-start-active="1"></span>
 
     <div ng-class="{'hidden': userType == 'student'}" style="position: relative; width: 100%; display: inline-block; padding: 10px 10px 0 10px">
         <select id="select" ng-change="fireEvent()" ng-model="studentId" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none;/* background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;*/">
