@@ -7,15 +7,7 @@
         $scope.checkModel = '0';
         $scope.selectedDays = [];
         $scope.seletedDate = [];
-        //    {
-        //    attend: 1,
-        //    absent: 2,
-        //    late: 3,
-        //    execuse: 4,
-        //    positive: 5,
-        //    negative: 6,
-        //    reminder: 7,
-        //};
+        $scope.saving = false;
         $scope.comment = ''
 
         $scope.$parent.vars.titleTxt = 'شاشة التحضير والملاحظات';
@@ -81,6 +73,7 @@
         $scope.getStudentsByRingId($scope.selectedRing.ID);
 
         $scope.createNewAttendance = function () {
+            $scope.saving = true;
             var selectedStudents = '';
             angular.forEach($scope.vars.ringStudents, function (student) {
                 if (student.selected) selectedStudents += ", " + student.Id;
@@ -93,8 +86,10 @@
             d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
             attendServices.CreateNewAttendanceNote(selectedStudents, $scope.checkModel, d, $scope.comment, function (data) {
+                $scope.saving = false;
                 console.log(data);
             }, function (error) {
+                $scope.saving = false;
                 console.log(error);
             })
         };

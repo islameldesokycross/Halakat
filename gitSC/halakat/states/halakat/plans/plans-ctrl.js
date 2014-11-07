@@ -8,6 +8,7 @@
     $scope.$parent.vars.titleTxt = 'الخطط';
     $scope.selectedRing = $scope.$parent.$parent.selectedRing;
     $scope.getting = true;
+    $scope.newPlan = true;
 
     $scope.checkModel = {
         saturday: false,
@@ -42,9 +43,12 @@
                 friday: false,
             };
         }else{
-        //empty the assigned students if change plan
+            $scope.newPlan = true;
+            //empty the assigned students if change plan
             $scope.vars.plan.assignedStudents = [];
+            $scope.getting = true;
             planServices.getAllPlansById(planId, function (data) {
+                $scope.getting = false;
                 $scope.vars.plan.Id = data.Id;
                 $scope.vars.plan.name = data.Name;
                 $scope.vars.plan.number = data.NumberOfDaysReq;
@@ -82,7 +86,8 @@
                 }
             },
                 function (err) {
-
+                    $scope.getting = false;
+                    console.log(err)
                 });
         }
         
@@ -122,14 +127,18 @@
         }
 
         if ($scope.vars.plan.Id != null) {
-            //TODO change parameters
+            $scope.getting = true;
             planServices.updatePlan($scope.vars.plan.Id, $scope.vars.plan.name, $scope.vars.plan.number, $scope.vars.plan.days, $scope.selectedRing.ID,
             function (data) {
+                $scope.getting = false;
+                $scope.newPlan = true;
+                $scope.getRingPlans($scope.selectedRing.ID);
                 $scope.vars.selectedRingPlan = data;
                 $scope.vars.selectedRingPlan.PlanDayWeeks = $scope.vars.plan.days;
                 console.log("updated successfully --> " + data)
             },
             function (err) {
+                $scope.getting = false;
                 console.log(err);
                 alert(err.ErrorDes);
             });
@@ -439,4 +448,8 @@
         }
     }
     
+    $scope.changed = function () {
+        console.log('changed')
+        $scope.newPlan = false;
+    }
 }];

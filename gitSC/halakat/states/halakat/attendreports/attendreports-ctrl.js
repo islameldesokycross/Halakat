@@ -1,4 +1,5 @@
-﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices', 'attendServices','$rootScope',
+﻿var attendreportsCtrl = ['$scope', '$state', '$modal', '$templateCache', 'studentServices', 'attendServices',
+    '$rootScope',
     function ($scope, $state, $modal, $templateCache, studentServices, attendServices, $rootScope) {
 
         $scope.vars = { ringStudents: [] };

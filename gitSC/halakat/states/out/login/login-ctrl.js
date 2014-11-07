@@ -27,12 +27,12 @@
                 $scope.loginObj.required2 = 0;
                 if (data.UserTypeId == 3) {
                     $rootScope.userType = "teacher";
-                    $scope.$parent.$parent.userType="teacher"
+                    $scope.$parent.userType="teacher"
                 } else {
                     $rootScope.userType = "student";
-                    $scope.$parent.$parent.userType = "student"
+                    $scope.$parent.userType = "student"
                 }
-                $scope.$parent.$parent.userId = data.Id;
+                $scope.$parent.userId = data.Id;
                 $rootScope.userId = data.Id;
                 $state.transitionTo('home');
             },

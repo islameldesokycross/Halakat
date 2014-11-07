@@ -1,7 +1,14 @@
-﻿
+﻿<style>
+    span div div div {
+        background: #45ad98 !important;
+    }
+
+    span > div {
+        top: 80% !important;
+    }
+</style>
+<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="saving" spinner-start-active="1"></span>
 <div style="height: 100%;">
-    <style>
-    </style>
     <div style="position: absolute; width: 100%; z-index: 10;">
         <!-- Calendar -->
         <div style="width: 100%; direction: rtl; padding: 0; margin: 0; padding-top: 5px; height: 190px;">
@@ -100,5 +107,5 @@
             </ul>
         </div>
     </div>
-    <button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="createNewAttendance()">save</button>
+    <button style="margin: 0 auto 0 auto;display: block;width: 50%;" class="btn whitey bggreeny" ng-click="createNewAttendance()">حفظ</button>
 </div>

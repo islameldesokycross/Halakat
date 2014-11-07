@@ -8,8 +8,8 @@
     $scope.getRings = true;
     
     $scope.getAllRings = function () {
-        //ringServices.getAllRingsByTeacherId($scope.userId,
-        ringServices.getAll(
+        ringServices.getAllRingsByTeacherId($scope.userId,
+        //ringServices.getAll(
             function (data) {
                 $scope.getRings = false;
                 if (typeof (data) != "undefined") {
