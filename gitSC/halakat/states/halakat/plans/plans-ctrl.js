@@ -419,13 +419,20 @@
     $scope.getRingPlans($scope.selectedRing.ID);
     
     $scope.unAssign = function (student) {
-        if (student.isAssigned==false) {
-            planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
-                console.log(data);
-                student.isAssigned = false;
-            }, function (error) {
-                console.log(error);
-            })
+        if (student.isAssigned == false) {
+            var confirm=window.confirm('هل تريد حذف الطالب من هذه الخطة؟')
+            if (confirm) {
+                planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
+                    console.log(data);
+                    student.isAssigned = false;
+                }, function (error) {
+                    console.log(error);
+                })
+            }
+            else {
+                student.isAssigned = true;
+                return;
+            }
         }
         else {
             $scope.opentasme3(student);

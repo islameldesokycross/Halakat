@@ -1,18 +1,32 @@
-﻿var homeCtrl = ['$scope', '$state', 'ringServices', '$rootScope', function ($scope, $state, ringServices, $rootScope) {
+﻿var homeCtrl = ['$scope', '$state', 'ringServices', '$rootScope',
+    function ($scope, $state, ringServices, $rootScope) {
 
     window.home = $scope;
     $scope.vars = { rings: [],myRing:{Name:"إختر حلقتك"} };
     $scope.funs = {};
     $scope.$parent.$parent.selectedRing = null;
     $scope.getRings = true;
-
+    
     $scope.getAllRings = function () {
+        //ringServices.getAllRingsByTeacherId($scope.userId,
         ringServices.getAll(
-            function(data) {
+            function (data) {
                 $scope.getRings = false;
                 if (typeof (data) != "undefined") {
                     $scope.vars.rings = data;
-                    $scope.vars.myRing = $scope.vars.rings[0];
+                    var id=localStorage.getItem('selectedRing');
+                    if (id) {
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].ID == id) {
+                                $scope.vars.myRing = data[i];
+                                break;
+                            }
+                        }
+                    }
+                    else {
+                        $scope.vars.myRing = $scope.vars.rings[0];
+                        localStorage.setItem('selectedRing', $scope.vars.myRing.ID)
+                        }
                     $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
                    } else {
                     alert("خطأ أثناء استرجاع الحلقات من فضلك تحقق من الانترنت واضغط ok")
@@ -43,5 +57,6 @@
 
     $scope.selectAction = function () {
         $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
-    }
+        localStorage.setItem('selectedRing', $scope.vars.myRing.ID)
+        }
 }];

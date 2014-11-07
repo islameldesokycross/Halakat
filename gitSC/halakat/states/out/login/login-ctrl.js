@@ -33,6 +33,7 @@
                     $scope.$parent.$parent.userType = "student"
                 }
                 $scope.$parent.$parent.userId = data.Id;
+                $rootScope.userId = data.Id;
                 $state.transitionTo('home');
             },
             function (err) {
