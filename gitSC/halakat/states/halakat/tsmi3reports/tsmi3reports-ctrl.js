@@ -7,10 +7,12 @@
     $scope.dates = { fromDate: '', toDate: '', index: 1 };
     $scope.studentId = "";
     $scope.reports = [];
+    $scope.getting = true;
     
     $scope.$parent.vars.titleTxt = 'تقرير التسميع';
 
     $scope.getReport = function () {
+        $scope.getting = true;
         var fromDate = $scope.dates.fromDate.split('/');
         var x = $.calendars.newDate(parseInt(fromDate[2]), parseInt(fromDate[1]), parseInt(fromDate[0]), "Islamic", "ar");
         var y = x.toJSDate();
@@ -22,18 +24,19 @@
         d1 = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
 
         studentServices.getStudentSavingPlansReport(
-            //$scope.studentId
-            4, d, d1, function (data) {
+            $scope.studentId, d, d1, function (data) {
+                $scope.getting = false;
                 console.log(data);
                 $scope.reports = data;
                 for (var i in $scope.reports) {
                     $scope.reports[i].SuraStart = QuranData.suras.sura[$scope.reports[i].SuraStart].name
                     $scope.reports[i].SuraEnd = QuranData.suras.sura[$scope.reports[i].SuraEnd].name
                 }
-        }, function (error) {
-            console.log(error)
-        })
-    }
+            }, function (error) {
+                $scope.getting = false;
+                console.log(error)
+            })
+    };
 
     $scope.opendate = function (index, dates) {
         $scope.dates.index = index;
@@ -126,14 +129,15 @@
     $scope.getStudentsByRingId = function (ringId) {
         studentServices.getAllStudentByRingId(ringId,
             function (data) {
+                $scope.getting = false;
                 $scope.vars.ringStudents = data;
                 $scope.studentId = $scope.vars.ringStudents[0].Id;
             },
             function (err) {
+                $scope.getting = false;
                 console.log(err);
             })
     };
     $scope.getStudentsByRingId($scope.selectedRing.ID);
-
 
 }];
