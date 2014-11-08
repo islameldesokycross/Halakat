@@ -148,6 +148,7 @@
             function (data) {
                 $scope.vars.selectedRingPlan = data;
                 $scope.vars.selectedRingPlan.PlanDayWeeks = $scope.vars.plan.days;
+                $scope.getRingPlans($scope.selectedRing.ID);
                 console.log("created successfully --> " + data)
             },
             function (err) {
@@ -397,7 +398,7 @@
                                                    },
                                                    function (err) {
                                                        console.log(err)
-                                                       if (ErrorName == "DateError") {
+                                                       if (err.ErrorName == "DateError") {
                                                            alert('يجب اختيار يوم من الأيام المقررة للخطة')
                                                        }
                                                        $modalInstance.close();
@@ -444,6 +445,7 @@
             }
         }
         else {
+            student.isAssigned = false;
             $scope.opentasme3(student);
         }
     }
