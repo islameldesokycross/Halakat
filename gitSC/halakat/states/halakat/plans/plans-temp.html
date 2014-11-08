@@ -93,7 +93,7 @@
         <div class="modal-body" style="padding-top: 10px;padding-bottom: 0;">
             <div style="width: 100%; ">
                 <span style="width: 59%;">
-                    <select ng-click="setSuraAyat()" ng-model="RecPlan.selectedSura" ng-options="sura.name for sura in RecPlan.suras" style="min-width: 58%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;">
+                    <select ng-change="setSuraAyat()" ng-click="setSuraAyat()" ng-model="RecPlan.selectedSura" ng-options="sura.name for sura in RecPlan.suras" style="min-width: 58%; padding-left: 20px; background-color: transparent; border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px; font-size: 1.2em; color: rgb(155,155,155); outline: none; box-shadow: none;">
                         <option value="">السورة</option>
                     </select>
                 </span>
