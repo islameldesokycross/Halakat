@@ -144,8 +144,11 @@
             });
         } else {
             //TODO change parameters
+            $scope.getting = true;
             planServices.createNewPlan($scope.vars.plan.name, $scope.vars.plan.number, $scope.vars.plan.days, $scope.selectedRing.ID,
             function (data) {
+                $scope.getting = false;
+                $scope.newPlan = true;
                 $scope.vars.selectedRingPlan = data;
                 $scope.vars.selectedRingPlan.PlanDayWeeks = $scope.vars.plan.days;
                 $scope.getRingPlans($scope.selectedRing.ID);
