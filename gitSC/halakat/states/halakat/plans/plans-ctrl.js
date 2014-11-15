@@ -254,6 +254,15 @@
                                 }
                             });
 
+                        scope.getColor = function (id) {
+                            if (id == selectedPlan.Id) {
+                                return "bgredy";
+                            }
+                            else {
+                                return "bggreeny";
+                            }
+                        }
+
                         scope.RecPlan = {
                             selectedSura: null,
                             selectedAya: null,
@@ -311,6 +320,7 @@
                                 return false;
                             }
                         };
+
                         scope.setSuraAyat = function () {
                             if (scope.RecPlan.selectedSura == null) {
                                 scope.RecPlan.ayat = ["إختر السورة أولا"];
@@ -374,16 +384,21 @@
                         }
 
                         scope.delete = function (plan) {
-                            $('#' + plan.Id).remove();
-                            scope.spinning = true;
-                            planServices.unassignStudFromPlan(studentId, plan.Id, function () {
-                                scope.spinning = false;
-                                console.log('deleted successfully');
-                            }, function (error) {
-                                scope.spinning = false;
-                                console.log(error)
-                            })
-
+                            var confirm = window.confirm('هل تريد حذف الطالب من هذه الخطة؟')
+                            if (confirm) {
+                                $('#' + plan.Id).remove();
+                                scope.spinning = true;
+                                planServices.unassignStudFromPlan(studentId, plan.Id, function () {
+                                    scope.spinning = false;
+                                    console.log('deleted successfully');
+                                }, function (error) {
+                                    scope.spinning = false;
+                                    console.log(error)
+                                })
+                            }
+                            else {
+                                return;
+                            }
                         }
 
                         scope.ok = function () {

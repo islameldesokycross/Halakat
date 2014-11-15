@@ -1,16 +1,5 @@
-﻿<style>
-    span div div div {
-        background: #45ad98 !important;
-    }
-
-    span > div {
-        top: 90% !important;
-    }
-</style>
-<span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getRings" spinner-start-active="1"></span>
-
+﻿
 <div class="bg-pattern" style="height: 100%;">
-
 
     <style>
         .bg-logo {
@@ -71,7 +60,17 @@
             white-space: nowrap;
             font-size: 12px !important;
         }
+
+        span div div div {
+            background: #45ad98 !important;
+        }
+
+        span > div {
+            top: 25% !important;
+        }
     </style>
+
+    <span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getRings" spinner-start-active="1"></span>
 
     <div class="container-fluid" style="height: 100% !important; top: 0; position: absolute; left: 0; width: 100%;">
         <div class="row text-center" style="height: 30%;padding: 5% 10%">
@@ -80,8 +79,14 @@
         <div class="row text-center" style="height: 70%;">
             <div ng-class="{'hidden': userType == 'student'}">
                 <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">حلقة:</label>
-                <select ng-model="vars.myRing" ng-change="selectAction()" ng-options="ring.Name for ring in vars.rings" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
+                <select ng-model="vars.myRing" ng-change="selectAction()" ng-options="ring.Name for ring in vars.rings" style="margin-right: 8px; border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
             </div>
+
+            <div ng-class="{'hidden': userType == 'student'}">
+                <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">مسجد:</label>
+                <select ng-model="vars.myMosq" ng-change="" ng-options="mosq.Name for mosq in vars.mosques" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
+            </div>
+
             <ul style="width: 300px; padding: 0; margin-left: auto; margin-right: auto; margin-top: 30px;" class="home-content-box">
                 <li class="bggreeny whitey hom-box" style="">
                     <div>

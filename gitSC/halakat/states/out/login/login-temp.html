@@ -7,7 +7,7 @@
         }
 
         span > div {
-            top: 70% !important;
+            top: 90% !important;
         }
     </style>
 
@@ -22,12 +22,14 @@
 
 
         <div class="form-group has-feedback">
-            <input type="password" class="form-control textboxy" ng-model="loginObj.password" placeholder="كلمة المرور" />
+            <input id="passInput" type="{{passwordType}}" ng-change="checkPass()" class="form-control textboxy" ng-model="loginObj.password" placeholder="كلمة المرور" />
             <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="loginObj.required2"></span>
         </div>
 
 
-        <button type="submit" class="btn whitey bggreeny base-btn" style="width: 100%;" ng-click="login(loginObj.userName,loginObj.password,'1')">دخول</button>
+        <button type="submit" class="btn whitey bggreeny base-btn" style="width: 100%; margin-bottom: 15px;" ng-click="login(loginObj.userName,loginObj.password,'1')">دخول</button>
+        
+        <button id="show" class="btn whitey bggreeny base-btn" ng-disabled="disShowPass" style="width: 100%;" ng-click="showPass()">{{showPassBtn}}</button>
 
         <br />
         <br />

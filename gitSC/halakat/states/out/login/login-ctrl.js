@@ -2,6 +2,9 @@
 
     $scope.loginObj = { userName: "", password: "", msg1: "user name is required", msg2: "password is required", required1: '0', required2: '0' };
     $scope.logging = false;
+    $scope.disShowPass = true;
+    $scope.showPassBtn = 'اظهار كلمة السر'
+    $scope.passwordType = 'password';
 
     $scope.login = function (userName, pass, type) {
         if ($scope.loginObj.userName.length == 0) {
@@ -38,10 +41,30 @@
             },
             function (err) {
                 $scope.logging = false;
-                if (err.ErrorDes == "Not Autharized.") {
+                if (err.ErrorDes == "Not Autharized." || err.ErrorName == "Something went wrong") {
                     alert('اسم المستخدم أو كلمة السر غير صحيحة')
                 }
                 console.log(err);
             });
+    };
+
+    $scope.checkPass = function () {
+        if ($scope.loginObj.password.length > 0) {
+            $scope.disShowPass = false;
+        }
+        else {
+            $scope.disShowPass = true;
+        }
+    };
+
+    $scope.showPass = function () {
+        if ($scope.passwordType=='text') {
+            $scope.showPassBtn = 'اظهار كلمة السر'
+            $scope.passwordType = 'password';
+        }
+        else {
+            $scope.showPassBtn = 'اخفاء كلمة السر'
+            $scope.passwordType = 'text';
+        }
     };
 }];

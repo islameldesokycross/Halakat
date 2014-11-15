@@ -2,7 +2,7 @@
     function ($scope, $state, ringServices, $rootScope) {
 
     window.home = $scope;
-    $scope.vars = { rings: [],myRing:{Name:"إختر حلقتك"} };
+    $scope.vars = { rings: [], myRing: { Name: "إختر حلقتك" },mosques: [], myMosq: {Name: "اختر مسجدك"}};
     $scope.funs = {};
     $scope.$parent.$parent.selectedRing = null;
     $scope.getRings = true;
