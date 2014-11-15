@@ -366,10 +366,10 @@
                                 return;
                             }
                             //var monthes = [];
-                            scope.monthes = (selY == scope.picker.currentYear) ?
-                                scope.getRange(scope.picker.currentMonth, 13)
-                              : scope.getRange(1, scope.picker.currentMonth);
-
+                            //scope.monthes = (selY == scope.picker.currentYear) ?
+                            //    scope.getRange(scope.picker.currentMonth, 13)
+                            //  : scope.getRange(1, scope.picker.currentMonth);
+                            scope.monthes = scope.getRange(1, 13);
                         }
 
                         scope.getDays = function (selY, selM) {
@@ -378,9 +378,10 @@
                                 scope.RecPlan.selectedD = null;
                                 return;
                             }
-                            scope.days = (selM == scope.picker.currentMonth) ?
-                                scope.getRange(scope.picker.currentDay, scope.picker.getDaysInMonth(selY, selM) + 1)
-                              : scope.getRange(1, scope.picker.getDaysInMonth(selY, selM));
+                            //scope.days = (selM == scope.picker.currentMonth) ?
+                            //    scope.getRange(scope.picker.currentDay, scope.picker.getDaysInMonth(selY, selM) + 1)
+                            //  : scope.getRange(1, scope.picker.getDaysInMonth(selY, selM));
+                            scope.days = scope.getRange(1, scope.picker.getDaysInMonth(selY, selM));
                         }
 
                         scope.delete = function (plan) {
