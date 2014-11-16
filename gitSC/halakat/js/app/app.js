@@ -1,6 +1,6 @@
 ﻿// create the module and name it scotchApp
 var halakatApp = angular.module('halakatApp', ['ui.router', 'ui.bootstrap', 'hammer', 'halakat.services',
-    'ngAnimate', 'angular-carousel','angularSpinner']);
+    'ngAnimate', 'angular-carousel', 'angularSpinner']);
 
 
 // configure our routes
@@ -139,7 +139,7 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
 
 }])
 
-.controller('mainController', ['$scope', '$location', 'CordovaService', '$modal', function ($scope, $location, CordovaService, $modal) {
+.controller('mainController', ['$scope', '$location', 'CordovaService', '$modal', '$modalStack', function ($scope, $location, CordovaService, $modal, $modalStack) {
 
     window.main = $scope;
     $scope.radioModel = "0";
@@ -192,8 +192,7 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
             }
         });
     };
-
-    
+      
 
     $scope.opentasme3 = function (size) {
 
@@ -217,6 +216,20 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
             }
         });
     };
+
+    CordovaService.ready.then(function () {
+
+        document.addEventListener("backbutton", onBackKeyDown, false);
+
+        var onBackKeyDown = function () {
+            var topModel = $modalStack.getTop();
+            if (topModel) {
+                $modalStack.dismiss(topModel.key);
+            }
+
+        }
+
+    });
 }])
 
 .run(['$rootScope', 'CordovaService', '$state', '$templateCache', function ($rootScope, CordovaService, $state, $templateCache) {
