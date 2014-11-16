@@ -14,7 +14,7 @@
                 $scope.getRings = false;
                 if (typeof (data) != "undefined") {
                     $scope.vars.rings = data;
-                    var id=localStorage.getItem('selectedRing');
+                    var id = localStorage.getItem('selectedRing');
                     if (id) {
                         for (var i = 0; i < data.length; i++) {
                             if (data[i].ID == id) {
@@ -28,7 +28,8 @@
                         localStorage.setItem('selectedRing', $scope.vars.myRing.ID)
                         }
                     $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
-                   } else {
+                    $scope.vars.myMosq = $scope.vars.myRing.mosqueName;
+                } else {
                     alert("خطأ أثناء استرجاع الحلقات من فضلك تحقق من الانترنت واضغط ok")
                     $scope.getAllRings()
                 }
@@ -57,6 +58,7 @@
 
     $scope.selectAction = function () {
         $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
+        $scope.vars.myMosq = $scope.vars.myRing.mosqueName;
         localStorage.setItem('selectedRing', $scope.vars.myRing.ID)
         }
 }];

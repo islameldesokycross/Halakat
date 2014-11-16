@@ -84,7 +84,7 @@
 
             <div ng-class="{'hidden': userType == 'student'}">
                 <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">مسجد:</label>
-                <select ng-model="vars.myMosq" ng-change="" ng-options="mosq.Name for mosq in vars.mosques" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
+                <input type="text" ng-model="vars.myMosq" style="border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;" ng-disabled="true"></input>
             </div>
 
             <ul style="width: 300px; padding: 0; margin-left: auto; margin-right: auto; margin-top: 30px;" class="home-content-box">

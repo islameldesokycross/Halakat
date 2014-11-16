@@ -10,6 +10,16 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
     $scope.plan = "";
     $scope.startSura = "";
     $scope.date = { actualDate: '', scheduleDate: '', assig: {}, plan: '', type: '' };
+    $scope.counter = 0;
+    
+    $scope.calcCounter = function () {
+        $scope.counter = 0;
+        for (var i = 0; i < $scope.vars.tsme3Records.RecitationPlanAssignments.length; i++) {
+            if ($scope.vars.tsme3Records.RecitationPlanAssignments[i].ActualDate == null) {
+                $scope.counter++;
+            }
+        }
+    }
 
     $scope.$parent.vars.titleTxt = 'التسميع';
     $scope.spinning = false;
@@ -22,8 +32,6 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
         var hd = $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar")
         return hd.fromJSDate(jsDate);
     }
-
-
 
     $scope.opendate = function (assig, no, date) {
         $scope.date.assig = assig;
@@ -40,14 +48,6 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     selectedM: 0,
                     selectedY: 0
                 };
-
-                if (date.type == 2) {
-                    $scope.modalVars.selectedY = $scope.date.assig.ScheduledDate.split('/')[2];
-                    scope.getMonths($scope.modalVars.selectedY);
-                    $scope.modalVars.selectedM = $scope.date.assig.ScheduledDate.split('/')[1];
-                    scope.getDays($scope.modalVars.selectedY, $scope.modalVars.selectedM);
-                    $scope.modalVars.selectedD = $scope.date.assig.ScheduledDate.split('/')[0];
-                }
 
                 $scope.getRange = function (n, m) {
                     return _.range(n, m);
@@ -91,6 +91,15 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                       $scope.getRange(1, ($scope.picker.currentDay + 1));
                     }
                 }
+
+                if (date.type == 2) {
+                    $scope.modalVars.selectedY = parseInt(date.assig.ScheduledDate.split('/')[2]);
+                    $scope.getMonths($scope.modalVars.selectedY);
+                    $scope.modalVars.selectedM = parseInt(date.assig.ScheduledDate.split('/')[1]);
+                    $scope.getDays($scope.modalVars.selectedY, $scope.modalVars.selectedM);
+                    $scope.modalVars.selectedD = parseInt(date.assig.ScheduledDate.split('/')[0]);
+                }
+
                 $scope.daysBetween = function (date1, date2) {
                     //Get 1 day in milliseconds
                     var one_day = 1000 * 60 * 60 * 24;
@@ -104,7 +113,8 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
 
                     // Convert back to days and return
                     return Math.round(difference_ms / one_day);
-                }
+                };
+
                 $scope.ok = function () {
                     console.log($scope.modalVars)
                     if (date.type == 2) {
@@ -156,6 +166,11 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
             }
         });
 
+        modalInstance.result.then(function () {
+            $scope.calcCounter();
+        }, function () {
+            $scope.calcCounter();
+        })
 
     };
 
@@ -228,10 +243,8 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     else {
                         $scope.vars.tsme3Records.RecitationPlanAssignments[i].done = false;
                     }
-
-
-
-                }
+               }
+                $scope.calcCounter();
                 console.log('tsmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee3');
                 console.log(data)
             }, function (error) {
@@ -240,39 +253,39 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
             })
     }
 
-    $scope.update = function (assig) {
-        if (assig.ActualDate != null && assig.ActualDate != undefined) {
-            var dateActual = assig.ActualDate.split('/');
+    //$scope.update = function (assig) {
+    //    if (assig.ActualDate != null && assig.ActualDate != undefined) {
+    //        var dateActual = assig.ActualDate.split('/');
 
-            var d1 = '';
-            var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
-            var y = x.toJSDate();
-            d1 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
-        } else {
-            d1 = assig.ActualDate;
-        }
+    //        var d1 = '';
+    //        var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
+    //        var y = x.toJSDate();
+    //        d1 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+    //    } else {
+    //        d1 = assig.ActualDate;
+    //    }
 
-        if (assig.ScheduledDate != null && assig.ScheduledDate != undefined) {
-            var dateActual = assig.ScheduledDate.split('/');
+    //    if (assig.ScheduledDate != null && assig.ScheduledDate != undefined) {
+    //        var dateActual = assig.ScheduledDate.split('/');
 
-            var d2 = '';
-            var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
-            var y = x.toJSDate();
-            d2 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
-        } else {
-            d2 = assig.ScheduledDate;
-        }
-        $scope.spinning = true;
-        tsmi3AssignmentServices.updateRecitationsAssignment(assig.Id, $scope.plan, d2,
-            d1, assig.DayDifferent, assig.NumberOfFaults, assig.AssignmentPages, assig.EndAya,
-            assig.StartAya, function (data) {
-                $scope.spinning = false;
-                console.log(data);
-            }, function (error) {
-                $scope.spinning = false;
-                console.log(error);
-            })
-    };
+    //        var d2 = '';
+    //        var x = $.calendars.newDate(parseInt(dateActual[2]), parseInt(dateActual[1]), parseInt(dateActual[0]), "Islamic", "ar");
+    //        var y = x.toJSDate();
+    //        d2 = y.getDate() + '/' + (y.getMonth() + 1) + '/' + y.getFullYear();
+    //    } else {
+    //        d2 = assig.ScheduledDate;
+    //    }
+    //    $scope.spinning = true;
+    //    tsmi3AssignmentServices.updateRecitationsAssignment(assig.Id, $scope.plan, d2,
+    //        d1, assig.DayDifferent, assig.NumberOfFaults, assig.AssignmentPages, assig.EndAya,
+    //        assig.StartAya, function (data) {
+    //            $scope.spinning = false;
+    //            console.log(data);
+    //        }, function (error) {
+    //            $scope.spinning = false;
+    //            console.log(error);
+    //        })
+    //};
 
     $scope.daysBetween = function (date1, date2) {
         //Get 1 day in milliseconds
