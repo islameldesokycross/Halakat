@@ -286,7 +286,7 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
     var baseurl = "api/RecitationsPlan/";
     // get main or sub categories 
     // if categoryId == null ? Main : sub;
-    var createNewPlan = function (studentId, swraStart, startDate, savingPlanId,  successFn, errorFn) {
+    var createNewPlan = function (studentId, swraStart, AyaStart, startDate, savingPlanId,  successFn, errorFn) {
         serviceUtils.callService({
             method: 'Post',
             url: baseurl + 'CreateNewRecitationsPlan',
@@ -294,13 +294,14 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
                 "StudentId": studentId,
                 "SwraStart": swraStart,
                 "StartDate": startDate,
-                "SavingPlanId": savingPlanId
+                "SavingPlanId": savingPlanId,
+                "AyaStart": AyaStart
             },
             success: successFn,
             error: errorFn
         });
     },
-        updatetsmi3Plan = function (studentID, SwraStart, startDate, savingPlanId, successFn, errorFn) {
+        updatetsmi3Plan = function (studentID, SwraStart, AyaStart, startDate, savingPlanId, successFn, errorFn) {
             serviceUtils.callService({
                 method: 'Post',
                 url: baseurl + 'UpdateRecitationsPlan',
@@ -308,7 +309,8 @@ halakatServices.factory("tsmi3Services", function (serviceUtils) {
                     "StudentId": studentID,
                     "SwraStart": SwraStart,
                     "StartDate": startDate,
-                    "SavingPlanId": savingPlanId
+                    "SavingPlanId": savingPlanId,
+                    "AyaStart": AyaStart
                 },
                 success: successFn,
                 error: errorFn

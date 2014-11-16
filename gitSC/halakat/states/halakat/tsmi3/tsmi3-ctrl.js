@@ -41,6 +41,14 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     selectedY: 0
                 };
 
+                if (date.type == 2) {
+                    $scope.modalVars.selectedY = $scope.date.assig.ScheduledDate.split('/')[2];
+                    scope.getMonths($scope.modalVars.selectedY);
+                    $scope.modalVars.selectedM = $scope.date.assig.ScheduledDate.split('/')[1];
+                    scope.getDays($scope.modalVars.selectedY, $scope.modalVars.selectedM);
+                    $scope.modalVars.selectedD = $scope.date.assig.ScheduledDate.split('/')[0];
+                }
+
                 $scope.getRange = function (n, m) {
                     return _.range(n, m);
                 }

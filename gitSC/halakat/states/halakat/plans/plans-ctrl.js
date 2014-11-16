@@ -21,12 +21,15 @@
         };
 
         $scope.getRingPlans = function (ringId) {
+            $scope.getting = true;
             planServices.getAllPlansByRingId(ringId,
                 function (data) {
+                    $scope.getting = false;
                     console.log(data)
                     $scope.vars.ringPlans = data;
                 },
                 function (err) {
+                    $scope.getting = false;
                     console.log(err)
                 });
         };
@@ -421,7 +424,8 @@
                                 scope.spinning = true;
                                 tsmi3Services.updatetsmi3Plan(
                                                         studentId,
-                                                        parseInt(scope.RecPlan.selectedSura.index) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
+                                                        parseInt(scope.RecPlan.selectedSura.index),
+                                                        parseInt(scope.RecPlan.selectedAya.name),
                                                         d, //hijiri date
                                                         selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
                                                         function (data) {
@@ -441,7 +445,8 @@
                                 scope.spinning = true;
                                 tsmi3Services.createNewPlan(
                                                        studentId,
-                                                       parseInt(scope.RecPlan.selectedSura.index) + scope.RecPlan.selectedAya.name - 1,//aya index in quraan
+                                                       parseInt(scope.RecPlan.selectedSura.index),
+                                                       parseInt(scope.RecPlan.selectedAya.name),
                                                        d, //hijiri date
                                                        selectedPlan.Id || selectedPlan.id,//plan id in prev or new plan
                                                        function (data) {

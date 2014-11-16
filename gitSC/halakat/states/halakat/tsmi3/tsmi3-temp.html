@@ -75,7 +75,7 @@
                         <div class="chkboxparent"><input type="checkbox" name="chkbx2" value="0" ng-model="assig.done"></div>
                     </td>
                     <td>{{assig.StartSura}} {{assig.StartAya}}</td>
-                    <td>{{assig.AssignmentPages | number:2}}</td>
+                    <td>{{assig.Amount | number:2}}</td>
                     <td>
                         <span ng-click="opendate(assig,1)" style="width: 45%; display: inline-block; margin: 0; padding: 0; border-left: 1px solid whitesmoke;"> {{assig.ScheduledDate}}</span>
                         <span ng-click="opendate(assig,2)" style="width: 45%; display: inline-block; margin: 0; padding: 0; height: 15px;">{{assig.ActualDate}}</span>
