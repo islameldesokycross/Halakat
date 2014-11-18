@@ -242,19 +242,19 @@ halakatApp.config(['$stateProvider', '$urlRouterProvider',function ($stateProvid
             '<h3 class="modal-title">أختر التاريخ</h3>' +
         '</div>' +
         '<div class="modal-body">' +
-            '<div class="datecontaner"><select class="datedropdown" ng-click="checkDays()" ng-model="modalVars.selectedD">' +
-                '<option value="0" disabled selected>اليوم</option> ' +
-                '<option ng-repeat="n in days" value="{{n}}">{{n}}</option>' +
+            '<div class="datecontaner"><select class="datedropdown" ng-click="checkDays()" ng-model="modalVars.selectedD"  ng-options="d for d in days">' +
+                '<option value="">اليوم</option> ' +
+                //'<option ng-repeat="n in days" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+
-            '<div class="datecontaner middle"><select class="datedropdown" ng-click="checkMonthes()" ng-model="modalVars.selectedM" ng-change="getDays(modalVars.selectedY, modalVars.selectedM)">' +
-                '<option value="0" disabled selected>الشهر</option>' +
-                '<option  ng-repeat="n in monthes" value="{{n}}">{{n}}</option>' +
+            '<div class="datecontaner middle"><select class="datedropdown" ng-click="checkMonthes()" ng-model="modalVars.selectedM" ng-change="getDays(modalVars.selectedY, modalVars.selectedM)" ng-options="m for m in monthes">' +
+                '<option value="">الشهر</option>' +
+                //'<option  ng-repeat="n in monthes" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+
-            '<div class="datecontaner"><select class="datedropdown"  ng-model="modalVars.selectedY" ng-change="getMonths(modalVars.selectedY)">' +
-                '<option  value="0" disabled selected>السنة</option>' +
-                '<option ng-repeat="n in getRange(picker.currentYear - 1, picker.currentYear + 1)" value="{{n}}">{{n}}</option>' +
+            '<div class="datecontaner"><select class="datedropdown"  ng-model="modalVars.selectedY" ng-change="getMonths(modalVars.selectedY)" ng-options="y for y in getRange(picker.currentYear - 1, picker.currentYear + 1)">' +
+                '<option  value="">السنة</option>' +
+                //'<option ng-repeat="n in getRange(picker.currentYear - 1, picker.currentYear + 1)" value="{{n}}">{{n}}</option>' +
             '</select>'+
             '</div>'+ 
         '</div>' +

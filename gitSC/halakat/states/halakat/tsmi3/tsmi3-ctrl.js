@@ -44,9 +44,9 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
             function ($scope, $modalInstance, date, tsmi3AssignmentServices) {
 
                 $scope.modalVars = {
-                    selectedD: 0,
-                    selectedM: 0,
-                    selectedY: 0
+                    selectedD: null,
+                    selectedM: null,
+                    selectedY: null
                 };
 
                 $scope.getRange = function (n, m) {
@@ -92,6 +92,7 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     }
                 }
 
+
                 if (date.type == 2) {
                     $scope.modalVars.selectedY = parseInt(date.assig.ScheduledDate.split('/')[2]);
                     $scope.getMonths($scope.modalVars.selectedY);
@@ -99,6 +100,8 @@ function ($scope, $state, studentServices, planServices, $timeout, tsmi3Assignme
                     $scope.getDays($scope.modalVars.selectedY, $scope.modalVars.selectedM);
                     $scope.modalVars.selectedD = parseInt(date.assig.ScheduledDate.split('/')[0]);
                 }
+               
+                
 
                 $scope.daysBetween = function (date1, date2) {
                     //Get 1 day in milliseconds

@@ -18,7 +18,7 @@
     </div>
     
     <div class="btn-group tab-group" style="padding: 10px 10px 12.5px;">
-        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'">فترة شهر</label>
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'" ng-click="getAttendance(true)">فترة شهر</label>
         <label class="btn tab-btn" ng-model="radioModel" btn-radio="'0'">زمن مخصص</label>
     </div>
     <div ng-show="radioModel=='0'" style="position: relative;width: 100%;display: inline-block;padding: 0px 10px;">

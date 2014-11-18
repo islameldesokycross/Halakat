@@ -46,9 +46,9 @@
                 function ($scope, $modalInstance, dates) {
 
                     $scope.modalVars = {
-                        selectedD: 0,
-                        selectedM: 0,
-                        selectedY: 0
+                        selectedD: null,
+                        selectedM: null,
+                        selectedY: null
                     };
 
                     $scope.getRange = function (n, m) {

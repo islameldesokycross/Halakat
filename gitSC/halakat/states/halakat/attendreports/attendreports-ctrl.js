@@ -2,6 +2,10 @@
     '$rootScope',
     function ($scope, $state, $modal, $templateCache, studentServices, attendServices, $rootScope) {
 
+        var todaysHijriDate = $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar")
+        ,todaysDate = new Date()
+        ,fromMonthDate = new Date(new Date().setDate(new Date().getDate() - 30));
+        
         $scope.vars = { ringStudents: [] };
         $scope.funs = {};
         $scope.radioModel = "0";
@@ -23,6 +27,9 @@
         $scope.selectedDays = [];
         $scope.groupedArr = [];
         $scope.getReports=false;
+
+        $scope.fromMonthDate = todaysHijriDate.fromJSDate(fromMonthDate);
+
 
         $scope.updateCounters = function (attendanceDays) {
             for (var i in attendanceDays) {
@@ -125,7 +132,10 @@
         //$scope.removeSelected();
         //$scope.selectDays([2, 4]);
 
-        $scope.getAttendance = function () {
+        $scope.getAttendance = function (flag) {
+            if (flag == true) {
+                $scope.radioModel = "1";
+            }
             $scope.getReports = true;
             var studentId = $scope.studentId;
             if ($scope.radioModel == "0") {
@@ -141,6 +151,11 @@
 
                 var sd = (x1.getMonth() + 1) + '/' + x1.getDate() + '/' + x1.getFullYear();
                 var ed = (y1.getMonth() + 1) + '/' + y1.getDate() + '/' + y1.getFullYear();
+                console.log(startDate, endDate);
+            }
+            else {
+                var sd = (fromMonthDate.getMonth() + 1) + '/' + fromMonthDate.getDate() + '/' + fromMonthDate.getFullYear();
+                var ed = (todaysDate.getMonth() + 1) + '/' + todaysDate.getDate() + '/' + todaysDate.getFullYear();
                 console.log(startDate, endDate);
             }
             attendServices.GetStudentAttendance(studentId, sd, ed, function (data) {
