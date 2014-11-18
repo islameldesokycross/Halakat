@@ -12,13 +12,14 @@
     <span us-spinner="{width:2,height:3}" spinner-key="spinner-matches" ng-show="getReports" spinner-start-active="1"></span>
 
     <div ng-class="{'hidden': userType == 'student'}" style="position: relative; width: 100%; display: inline-block; padding: 10px 10px 0 10px">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: fixed; margin-top: 68px; margin-right: 86%; color: grey;"></span>
         <select id="select" ng-change="fireEvent()" ng-model="studentId" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none;/* background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;*/">
             <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
     </div>
     
     <div class="btn-group tab-group" style="padding: 10px 10px 12.5px;">
-        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'" ng-click="getAttendance(true)">فترة شهر</label>
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'" ng-click="getReport(true)">فترة شهر</label>
         <label class="btn tab-btn" ng-model="radioModel" btn-radio="'0'">زمن مخصص</label>
     </div>
     <div ng-show="radioModel=='0'" style="position: relative;width: 100%;display: inline-block;padding: 0px 10px;">

@@ -22,11 +22,13 @@
 <div style="height: 100%;">
 
 <div style="position: relative; width: 100%; display: inline-block; padding: 20px 10px; ">
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: fixed; margin-top: 80px; margin-right: 138px; color: grey; "></span>
         <select ng-change="getPlans()" ng-model="student" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 54%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /* background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;*/">
             <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
         
 
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: absolute; margin-top: 34px; margin-right: 35%; color: grey;"></span>
         <select ng-change="getTsme3Data()" ng-model="plan" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 44%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /* background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px;*/">
             <option ng-repeat="plan in vars.studentPlans" value="{{plan.Id}}">{{plan.Name}}</option>
         </select>
@@ -86,7 +88,7 @@
             </tbody>
         </table>
     </div>
-    <div style="margin-top: 10%; font-size: 14pt; color: grey;">عداد ختم المصحف: {{counter}}</div>
+    <div style="margin-top: 10%; font-size: 14pt; color: rgb(115,155,155); margin-right: 5px;">عداد ختم المصحف: {{counter}}</div>
 
 </div>
 

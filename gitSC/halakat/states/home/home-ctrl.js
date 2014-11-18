@@ -9,7 +9,6 @@
     
     $scope.getAllRings = function () {
         ringServices.getAllRingsByTeacherId($scope.userId,
-        //ringServices.getAll(
             function (data) {
                 $scope.getRings = false;
                 if (typeof (data) != "undefined") {
@@ -60,5 +59,5 @@
         $scope.$parent.$parent.selectedRing = $scope.vars.myRing;
         $scope.vars.myMosq = $scope.vars.myRing.mosqueName;
         localStorage.setItem('selectedRing', $scope.vars.myRing.ID)
-        }
+    };
 }];

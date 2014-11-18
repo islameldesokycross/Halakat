@@ -222,16 +222,6 @@
                 return;
             }
 
-            //if (student.isAssigned) {
-            //    planServices.unassignStudFromPlan(student.Id, $scope.vars.selectedRingPlan.Id, function (data) {
-            //        console.log(data);
-            //        student.isAssigned = false;
-            //    }, function (error) {
-            //        console.log(error);
-            //    })
-            //    return;
-            //}
-
             $scope.StuId = id;
             //open pop of student
             var modalInstance = $modal.open({
@@ -388,7 +378,11 @@
                         }
 
                         scope.delete = function (plan) {
-                            var confirm = window.confirm('هل تريد حذف الطالب من هذه الخطة؟')
+                            var date = scope.jsDateToHijri(new Date(plan.StartDate));
+                            var startDate=date._day+'/'+date._month+'/'+date._year;
+                            var sura=QuranData.suras.sura[plan.StartSwra].name;
+                            var msg = 'هل تريد حذف الطالب من هذه الخطة؟' + '\n' + ' تبدأ في ' + startDate + ' من سورة ' + sura + ' الآية ' + plan.startAya;
+                            var confirm = window.confirm(msg);
                             if (confirm) {
                                 $('#' + plan.Id).remove();
                                 scope.spinning = true;

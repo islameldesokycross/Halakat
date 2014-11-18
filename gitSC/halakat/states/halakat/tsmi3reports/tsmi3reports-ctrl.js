@@ -8,21 +8,36 @@
     $scope.studentId = "";
     $scope.reports = [];
     $scope.getting = true;
-    
+    $scope.radioModel = '0';
+    $scope.dayDifference = 0;
+
     $scope.$parent.vars.titleTxt = 'تقرير التسميع';
 
-    $scope.getReport = function () {
+    var todaysHijriDate = $.calendars.newDate(undefined, undefined, undefined, "Islamic", "ar")
+    , todaysDate = new Date()
+    , fromMonthDate = new Date(new Date().setDate(new Date().getDate() - 30));
+
+    $scope.getReport = function (flag) {
+        if (flag == true) {
+            $scope.radioModel = "1";
+        }
+        if (flag) {
+            var d = (fromMonthDate.getMonth() + 1) + '/' + fromMonthDate.getDate() + '/' + fromMonthDate.getFullYear();
+            var d1 = (todaysDate.getMonth() + 1) + '/' + todaysDate.getDate() + '/' + todaysDate.getFullYear();
+        }
+        else {
+            var fromDate = $scope.dates.fromDate.split('/');
+            var x = $.calendars.newDate(parseInt(fromDate[2]), parseInt(fromDate[1]), parseInt(fromDate[0]), "Islamic", "ar");
+            var y = x.toJSDate();
+            d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
+
+            var toDate = $scope.dates.toDate.split('/');
+            var x = $.calendars.newDate(parseInt(toDate[2]), parseInt(toDate[1]), parseInt(toDate[0]), "Islamic", "ar");
+            var y = x.toJSDate();
+            d1 = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
+        }
+        $scope.dayDifference = $scope.daysBetween(new Date(d), new Date(d1));
         $scope.getting = true;
-        var fromDate = $scope.dates.fromDate.split('/');
-        var x = $.calendars.newDate(parseInt(fromDate[2]), parseInt(fromDate[1]), parseInt(fromDate[0]), "Islamic", "ar");
-        var y = x.toJSDate();
-        d = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
-
-        var toDate = $scope.dates.toDate.split('/');
-        var x = $.calendars.newDate(parseInt(toDate[2]), parseInt(toDate[1]), parseInt(toDate[0]), "Islamic", "ar");
-        var y = x.toJSDate();
-        d1 = (y.getMonth() + 1) + '/' + y.getDate() + '/' + y.getFullYear();
-
         studentServices.getStudentSavingPlansReport(
             $scope.studentId, d, d1, function (data) {
                 $scope.getting = false;
@@ -139,5 +154,20 @@
             })
     };
     $scope.getStudentsByRingId($scope.selectedRing.ID);
+
+    $scope.daysBetween = function (date1, date2) {
+        //Get 1 day in milliseconds
+        var one_day = 1000 * 60 * 60 * 24;
+
+        // Convert both dates to milliseconds
+        var date1_ms = date1.getTime();
+        var date2_ms = date2.getTime();
+
+        // Calculate the difference in milliseconds
+        var difference_ms = date2_ms - date1_ms;
+
+        // Convert back to days and return
+        return Math.round(difference_ms / one_day);
+    };
 
 }];

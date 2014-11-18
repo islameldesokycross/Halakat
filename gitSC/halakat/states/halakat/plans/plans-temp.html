@@ -11,6 +11,7 @@
 
 <div style="height: 100%;overflow: hidden">
 
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: fixed; margin-top: 61px; margin-right: 93%; color: grey; "></span>
     <select ng-model="vars.selectedRingPlan" ng-options="ringplan.Name for ringplan in vars.ringPlans" ng-change="loadPlanData(vars.selectedRingPlan.Id)" style="border: 1px solid lightgray;height: 40px;border-radius: 2px;padding: 6px 6px 6px 25px;color: rgb(155,155,155);outline: none;box-shadow: none;/*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/margin-left: .5%;margin-right: .5%;margin-top: 5px;width: 99%;font-size: 14pt;">
         <option value="">اختر خطة سابقة</option>
     </select>

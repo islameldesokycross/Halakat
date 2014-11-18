@@ -79,6 +79,7 @@
         <div class="row text-center" style="height: 70%;">
             <div ng-class="{'hidden': userType == 'student'}">
                 <label style="color: rgb(155,155,155);font-size: 14pt;font-weight: normal;">حلقة:</label>
+                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: absolute; margin-top: 200px; margin-right: 60%; color: grey;"></span>
                 <select ng-model="vars.myRing" ng-change="selectAction()" ng-options="ring.Name for ring in vars.rings" style="margin-right: 8px; border: 1px solid lightgray; height: 40px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 215px; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png);background-repeat: no-repeat;background-position: 2%;background-size: 12px;*/ margin-bottom: 12px;"></select>
             </div>
 

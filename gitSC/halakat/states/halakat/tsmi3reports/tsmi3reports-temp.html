@@ -11,25 +11,34 @@
 <div style="height: 100%;">
 
     <div style="position: relative; width: 100%; display: inline-block; padding: 10px 10px; padding-top: 20px;">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="position: fixed; margin-top: 78px; margin-right: 86%; color: grey;"></span>
+        <span style="position: fixed; margin-top: 8px; margin-right: 69%; color: rgb(155,155,155); font-size: 14pt;"> {{dayDifference}} يوم </span>
         <select ng-model="studentId" style="border: 1px solid lightgray; height: 45px; border-radius: 2px; padding: 6px 6px 6px 25px; width: 100%; font-size: 14pt; color: rgb(155,155,155); outline: none; box-shadow: none; /*background-image: url(images/arrowdown.png); background-repeat: no-repeat; background-position: 2%; background-size: 12px; */">
             <option ng-repeat="student in vars.ringStudents" value="{{student.Id}}">{{student.Name}}</option>
         </select>
     </div>
 
-    <div style="position: relative;width: 100%;display: inline-block;padding: 10px 10px;">
-        <div style="display: inline-block; float: right; width: 50%;">
-            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 85%; float: left">
-                <input ng-model="dates.fromDate" value="dates.fromDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(1)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
-                <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
-            </div>
-        </div>
-        <div style="display: inline-block; float: right; width: 50%;">
-            <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 85%;float:left">
-                <input ng-model="dates.toDate" value="dates.toDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(2)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
-                <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
-            </div>
-        </div>
+    <div class="btn-group tab-group" style="padding: 10px 10px 12.5px;">
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'1'" ng-click="getReport(true)">فترة شهر</label>
+        <label class="btn tab-btn" ng-model="radioModel" btn-radio="'0'">زمن مخصص</label>
     </div>
+
+    <div ng-show="radioModel=='0'">
+        <div style="position: relative;width: 100%;display: inline-block;padding: 10px 10px;">
+            <div style="display: inline-block; float: right; width: 50%;">
+                <span style="padding: 10px 3px 10px 2px; display: inline-block; "> من </span><div style="position: relative; display: inline-block; width: 85%; float: left">
+                    <input ng-model="dates.fromDate" value="dates.fromDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(1)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                    <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
+                </div>
+            </div>
+            <div style="display: inline-block; float: right; width: 50%;">
+                <span style="padding: 10px 3px 10px 2px; display: inline-block; "> الي </span><div style="position: relative; display: inline-block; width: 85%;float:left">
+                    <input ng-model="dates.toDate" value="dates.toDate" type="text" placeholder=" 12 | 12 | 12 " ng-focus="opendate(2)" style="background-color: transparent;direction: ltr;border: 1px solid lightgray;height: 36px;border-radius: 4px;padding: 6px;max-width: 100%;font-size: 1.2em;">
+                    <span class="glyphicon glyphicon-calendar" style="position: absolute;right: 3px;top: 50%;margin-top: -10px;font-size: 16pt;z-index: -1"></span>
+                </div>
+            </div>
+        </div>
+    </div ng-show="radioModel=='0'">
 
     <div style="position: relative; width: 100%; top: 0; height: 100%; padding-bottom: 140px; ">
         <ul style="list-style: none; margin: 0; padding: 0; overflow-y: scroll; overflow-x: hidden;height: 100% ">
