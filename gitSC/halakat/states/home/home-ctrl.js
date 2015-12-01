@@ -6,7 +6,7 @@
     $scope.funs = {};
     $scope.$parent.$parent.selectedRing = null;
     $scope.getRings = true;
-    
+    //new comment
     $scope.getAllRings = function () {
         ringServices.getAllRingsByTeacherId($scope.userId,
             function (data) {
